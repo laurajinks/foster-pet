@@ -23,6 +23,26 @@ export default class Login extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    signInFoster = event => {
+        event.preventDefault();
+        const { username, password } = this.state;
+        axios
+            .post("/auth/login/user", { username, password })
+            .then(response => {
+                console.log(response.data);
+                this.setState({ username: "", password: "" });
+            });
+    };
+
+    signInOrg = event => {
+        event.preventDefault();
+        const { username, password } = this.state;
+        axios.post("/auth/login/org", { username, password }).then(response => {
+            console.log(response.data);
+            this.setState({ username: "", password: "" });
+        });
+    };
+
     render() {
         return (
             <div>
@@ -31,7 +51,7 @@ export default class Login extends Component {
                     Organization Log In
                 </button>
                 {this.state.fosterLogIn && (
-                    <form>
+                    <form onSubmit={this.signInFoster}>
                         Foster Username{" "}
                         <input
                             type="text"
@@ -48,16 +68,16 @@ export default class Login extends Component {
                     </form>
                 )}
                 {!this.state.fosterLogIn && (
-                    <form>
+                    <form onSubmit={this.signInOrg}>
                         Organization Username
                         <input
                             type="text"
                             name="username"
                             onChange={this.handleInputChange}
                         />
-                        Password{" "}
+                        Password
                         <input
-                            type="submit"
+                            type="text"
                             name="password"
                             onChange={this.handleInputChange}
                         />

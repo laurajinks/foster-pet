@@ -27,7 +27,8 @@ export default class SignUp extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    addUser = () => {
+    addUser = event => {
+        event.preventDefault();
         const { username, displayName, password, email } = this.state;
         axios
             .post("/auth/register/user", {
@@ -44,11 +45,13 @@ export default class SignUp extends Component {
                     password: "",
                     orgName: "",
                     zipcode: ""
-                }).catch(err => alert(err.response.request.response));
-            });
+                });
+            })
+            .catch(err => alert(err.response.request.response));
     };
 
-    addOrg = () => {
+    addOrg = event => {
+        event.preventDefault();
         const { username, orgName, password, email, zipcode } = this.state;
         axios
             .post("/auth/register/org", {
@@ -66,8 +69,9 @@ export default class SignUp extends Component {
                     password: "",
                     orgName: "",
                     zipcode: ""
-                }).catch(err => alert(err.response.request.response));
-            });
+                });
+            })
+            .catch(err => alert(err.response.request.response));
     };
 
     render() {
