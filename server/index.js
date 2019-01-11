@@ -6,6 +6,7 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const port = 3001;
 const app = express();
+const { addUser, addOrg } = require("./controllers/authController");
 app.use(json());
 app.use(cors());
 
@@ -23,5 +24,13 @@ app.use(
         saveUninitialized: false
     })
 );
+
+//Register/Log In/Log OUt End Points
+app.post("/auth/register/user", addUser);
+app.post("/auth/register/org", addOrg);
+app.post("auth/login/user");
+app.post("/auth/login/org");
+app.post("/auth/logout/user");
+app.post("/auth/logout/org");
 
 app.listen(port, console.log(`Listening on ${port}`));
