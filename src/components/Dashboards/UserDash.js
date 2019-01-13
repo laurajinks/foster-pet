@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import UserHeader from "../Headers/UserHeader";
 
 class UserDash extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class UserDash extends Component {
         };
     }
 
-    componentDidMount = () => {
+    componentWillMount = () => {
         axios
             .get("/auth/user")
             .then(response => {
@@ -31,7 +32,8 @@ class UserDash extends Component {
     render() {
         return (
             <div>
-                <h1>UserDash</h1>
+                <UserHeader />
+                <h1>Hello, {this.state.username}</h1>
             </div>
         );
     }
