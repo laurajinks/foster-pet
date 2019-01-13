@@ -1,7 +1,9 @@
-import { createStore } from "redux";
-// import reducer from "./reducer";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import promiseMiddleware from "redux-promise-middleware";
+import authReducer from "./reducers/authReducer";
 
-export default createStore(
-    // reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const reducers = combineReducers({ authReducer });
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancer = composeEnhancers(applyMiddleware(promiseMiddleware()));
+
+export default createStore(reducers, enhancer);

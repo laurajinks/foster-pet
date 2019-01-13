@@ -1,6 +1,11 @@
 const bcrypt = require("bcryptjs");
 
 module.exports = {
+    authAccount: (req, res) => {
+        console.log(req.session);
+        res.status(201).json(req.session.user);
+    },
+
     addUser: async (req, res) => {
         const { username, displayName, password, email } = req.body;
         const hash = await bcrypt.hash(password, 10);
@@ -11,9 +16,11 @@ module.exports = {
                 const user = response[0];
                 req.session.user = {
                     id: user.user_id,
-                    username: user.username
+                    username: user.username,
+                    isOrg: user.isOrg
                 };
-                res.status(201).json(user);
+                console.log(req.session.user);
+                res.status(201).json(req.session.user);
             })
             .catch(err => console.log(err));
     },
@@ -28,9 +35,10 @@ module.exports = {
                 const user = response[0];
                 req.session.user = {
                     id: user.org_id,
-                    username: user.username
+                    username: user.username,
+                    isOrg: user.isOrg
                 };
-                res.status(201).json(user);
+                res.status(201).json(req.session.user);
             });
     },
 
@@ -57,7 +65,8 @@ module.exports = {
                         } else {
                             req.session.user = {
                                 id: user.user_id,
-                                username: user.username
+                                username: user.username,
+                                isOrg: user.isOrg
                             };
                             res.status(200).json(req.session.user);
                         }
@@ -88,8 +97,9 @@ module.exports = {
                             });
                         } else {
                             req.session.user = {
-                                d: user.org_id,
-                                username: user.username
+                                id: user.org_id,
+                                username: user.username,
+                                isOrg: user.isOrg
                             };
                             res.status(200).json(req.session.user);
                         }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
     return (
         <div className="homepage">
-            <img className="homepageBackground" />
+            <img className="homepageBackground" alt="background" />
             <h1>Page Title</h1>
             <h3>Page subheader</h3>
             <Link to="/login">

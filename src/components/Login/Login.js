@@ -28,19 +28,21 @@ export default class Login extends Component {
         const { username, password } = this.state;
         axios
             .post("/auth/login/user", { username, password })
-            .then(response => {
-                console.log(response.data);
-                this.setState({ username: "", password: "" });
-            });
+            .then(() => {
+                this.props.history.push("/dashboard/user");
+            })
+            .catch(err => alert(err.response.request.response));
     };
 
     signInOrg = event => {
         event.preventDefault();
         const { username, password } = this.state;
-        axios.post("/auth/login/org", { username, password }).then(response => {
-            console.log(response.data);
-            this.setState({ username: "", password: "" });
-        });
+        axios
+            .post("/auth/login/org", { username, password })
+            .then(() => {
+                this.props.history.push("/dashboard/org");
+            })
+            .catch(err => alert(err.response.request.response));
     };
 
     render() {

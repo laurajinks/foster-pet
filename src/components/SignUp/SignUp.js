@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { updateUser } from "../../ducks/reducers/authReducer";
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     constructor() {
         super();
         this.state = {
@@ -37,17 +39,26 @@ export default class SignUp extends Component {
                 password,
                 email
             })
-            .then(() => {
-                this.setState({
-                    username: "",
-                    displayName: "",
-                    email: "",
-                    password: "",
-                    orgName: "",
-                    zipcode: ""
+            .then(response => {
+                const { username, id, isOrg } = response.data;
+                this.props.updateUser({
+                    username: username,
+                    id: id,
+                    isOrg: isOrg
                 });
+                this.setState(
+                    {
+                        username: "",
+                        displayName: "",
+                        email: "",
+                        password: "",
+                        orgName: "",
+                        zipcode: ""
+                    },
+                    this.props.history.push("/dashboard/user")
+                );
             })
-            .catch(err => alert(err.response.request.response));
+            .catch(err => alert(err));
     };
 
     addOrg = event => {
@@ -61,7 +72,13 @@ export default class SignUp extends Component {
                 email,
                 zipcode
             })
-            .then(() => {
+            .then(response => {
+                const { username, id, isOrg } = response.data;
+                this.props.updateUser({
+                    username: username,
+                    id: id,
+                    isOrg: isOrg
+                });
                 this.setState({
                     username: "",
                     displayName: "",
@@ -70,8 +87,9 @@ export default class SignUp extends Component {
                     orgName: "",
                     zipcode: ""
                 });
+                this.props.history.push("/dashboard/org");
             })
-            .catch(err => alert(err.response.request.response));
+            .catch(err => alert(err));
     };
 
     render() {
@@ -149,3 +167,10 @@ export default class SignUp extends Component {
         );
     }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(
+    mapStateToProps,
+    { updateUser }
+)(SignUp);

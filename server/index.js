@@ -6,7 +6,9 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const port = 3001;
 const app = express();
+const { usersOnly, orgOnly } = require("./middleware/authMiddleware");
 const {
+    authAccount,
     addUser,
     addOrg,
     logInUser,
@@ -27,11 +29,16 @@ app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: true,
-        saveUninitialized: false
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 14
+        }
     })
 );
 
-//Register/Log In/Log OUt End Points
+//Authentication Endpoints
+app.get("/auth/user", usersOnly, authAccount);
+app.get("/auth/org", orgOnly, authAccount);
 app.post("/auth/register/user", addUser);
 app.post("/auth/register/org", addOrg);
 app.post("/auth/login/user", logInUser);
