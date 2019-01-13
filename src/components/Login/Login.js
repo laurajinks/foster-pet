@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+import { updateUser } from "../../ducks/reducers/authReducer";
 
-export default class Login extends Component {
+class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -28,7 +30,13 @@ export default class Login extends Component {
         const { username, password } = this.state;
         axios
             .post("/auth/login/user", { username, password })
-            .then(() => {
+            .then(response => {
+                const { username, id, isOrg } = response.data;
+                this.props.updateUser({
+                    username: username,
+                    id: id,
+                    isOrg: isOrg
+                });
                 this.props.history.push("/dashboard/user");
             })
             .catch(err => alert(err.response.request.response));
@@ -39,7 +47,13 @@ export default class Login extends Component {
         const { username, password } = this.state;
         axios
             .post("/auth/login/org", { username, password })
-            .then(() => {
+            .then(response => {
+                const { username, id, isOrg } = response.data;
+                this.props.updateUser({
+                    username: username,
+                    id: id,
+                    isOrg: isOrg
+                });
                 this.props.history.push("/dashboard/org");
             })
             .catch(err => alert(err.response.request.response));
@@ -90,3 +104,10 @@ export default class Login extends Component {
         );
     }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(
+    mapStateToProps,
+    { updateUser }
+)(Login);

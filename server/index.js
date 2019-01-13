@@ -39,6 +39,7 @@ app.use(
 
 //Authentication Endpoints
 app.get("/auth/user", usersOnly, authAccount);
+app.get("auth/getuser", authAccount);
 app.get("/auth/org", orgOnly, authAccount);
 app.post("/auth/register/user", addUser);
 app.post("/auth/register/org", addOrg);

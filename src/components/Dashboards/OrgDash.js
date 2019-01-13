@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import Header from "../Header/Header";
 
 class OrgDash extends Component {
     constructor() {
@@ -31,6 +32,7 @@ class OrgDash extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <h1>Hello, {this.state.username}</h1>
             </div>
         );

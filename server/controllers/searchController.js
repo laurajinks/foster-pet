@@ -29,7 +29,6 @@ module.exports = {
                     };
                     searchResults.push(animal);
                 });
-                console.log(searchResults);
                 res.status(200).json(searchResults);
             })
             .then((searchResults = []))
