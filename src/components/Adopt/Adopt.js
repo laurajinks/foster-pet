@@ -9,21 +9,18 @@ export default class Adopt extends Component {
         this.state = {
             zipcode: "",
             animalType: "cat",
-            age: "baby",
+            age: "Baby",
             sex: "female",
             results: []
         };
     }
 
-    searchAdoptable = () => {
+    searchAdoptable = event => {
+        event.preventDefault();
         const { zipcode, animalType, age, sex } = this.state;
+        const search = `&zipcode=${zipcode}&animal=${animalType}&age=${age}&sex=${sex}`;
         axios
-            .get(
-                `/api/search/adoptable/?search=${(zipcode,
-                animalType,
-                age,
-                sex)}`
-            )
+            .get(`/api/search/adoptable/?=${search}`)
             .then(response => {
                 this.setState({ results: response.data });
             })
@@ -51,10 +48,10 @@ export default class Adopt extends Component {
                     </select>
                     Age
                     <select name="age" onChange={this.handleInputChange}>
-                        <option value="baby">Baby</option>
-                        <option value="young">Young</option>
-                        <option value="adult">Adult</option>
-                        <option value="senior">Senior</option>
+                        <option value="Baby">Baby</option>
+                        <option value="Young">Young</option>
+                        <option value="Adult">Adult</option>
+                        <option value="Senior">Senior</option>
                     </select>
                     Sex
                     <select name="sex" onChange={this.handleInputChange}>
@@ -63,7 +60,19 @@ export default class Adopt extends Component {
                     </select>
                     <input type="submit" value="Submit" />
                 </form>
-                <AdoptableAnimal />
+                {this.state.results.map(result => (
+                    <AdoptableAnimal
+                        key={result.id}
+                        id={result.id}
+                        name={result.name}
+                        img={result.img}
+                        size={result.size}
+                        description={result.description}
+                        breed={result.breed}
+                        age={result.age}
+                        shelterId={result.shelterId}
+                    />
+                ))}
             </div>
         );
     }
