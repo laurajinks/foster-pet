@@ -20,7 +20,7 @@ const {
     logout
 } = require("./controllers/authController");
 const { createApp } = require("./controllers/applicationController");
-const { searchAdoptable } = require("./controllers/searchController");
+const { searchAdoptable, getOrgs } = require("./controllers/searchController");
 const {
     getOrgAnimals,
     getUserAnimals,
@@ -60,6 +60,7 @@ app.post("/auth/logout", logout);
 
 //Search Endpoints
 app.get("/api/search/adoptable", searchAdoptable);
+app.get("/api/organizations", getOrgs);
 
 //Application Endpoints
 app.put("/api/createapplication", createApp);

@@ -33,5 +33,13 @@ module.exports = {
             })
             .then((searchResults = []))
             .catch(err => console.log(err));
+    },
+
+    getOrgs: (req, res) => {
+        req.app
+            .get("db")
+            .get_orgs()
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

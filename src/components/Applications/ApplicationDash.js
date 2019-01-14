@@ -6,7 +6,7 @@ export default class ApplicationDash extends Component {
     constructor() {
         super();
         this.state = {
-            applications: []
+            applications: null
         };
         axios
             .get(`/auth/org`)
@@ -25,10 +25,10 @@ export default class ApplicationDash extends Component {
     render() {
         return (
             <div>
-                <h1>TEST</h1>
                 <Link to="/org/applications/create">
                     <button>Create Application</button>
                 </Link>
+                {!this.state.applications && <h1>No Applications To Review</h1>}
             </div>
         );
     }
