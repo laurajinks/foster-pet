@@ -5,7 +5,9 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import UserDash from "./components/Dashboards/UserDash";
 import OrgDash from "./components/Dashboards/OrgDash";
-import Adopt from './components/Adopt/Adopt'
+import Adopt from "./components/Adopt/Adopt";
+import ApplicationDash from "./components/Applications/ApplicationDash";
+import CreateApplication from "./components/Applications/CreateApplication";
 
 export default (
     <Switch>
@@ -13,7 +15,9 @@ export default (
         <Route path="/signup" component={SignUp} />
         <Route path="/dashboard/user" component={UserDash} />
         <Route path="/dashboard/org" component={OrgDash} />
-        <Route path='/adopt' component={Adopt} />
+        <Route path="/adopt" component={Adopt} />
+        <Route path="/applications/create" component={CreateApplication} />
+        <Route path="/applications" component={ApplicationDash} />
         <Route exact path="/" component={Home} />
     </Switch>
 );

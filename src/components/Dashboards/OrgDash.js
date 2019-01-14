@@ -11,13 +11,9 @@ class OrgDash extends Component {
             username: "",
             id: ""
         };
-    }
-
-    componentWillMount = () => {
         axios
-            .get("/auth/user")
+            .get("/auth/org")
             .then(response => {
-                console.log(response.data);
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
@@ -27,7 +23,7 @@ class OrgDash extends Component {
                 console.log(err);
                 this.props.history.push("/login");
             });
-    };
+    }
 
     render() {
         return (

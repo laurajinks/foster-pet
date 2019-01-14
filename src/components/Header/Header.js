@@ -12,7 +12,7 @@ class Header extends Component {
                 <h1>SiteLogo</h1>
                 {!this.props.authReducer.isOrg && (
                     <>
-                        <Link to="/newsfeed">
+                        <Link to="/dashboard/user">
                             <p>Newsfeed</p>
                         </Link>
                         <Link to="/fosteranimals">
