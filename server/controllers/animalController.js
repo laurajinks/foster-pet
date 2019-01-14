@@ -14,7 +14,7 @@ module.exports = {
         } = req.body;
         req.app
             .get("db")
-            .add_animal(
+            .animal.add_animal(
                 org_id,
                 name,
                 animalType,
@@ -34,7 +34,7 @@ module.exports = {
     getOrgAnimals: (req, res) => {
         req.app
             .get("db")
-            .get_org_animals(req.session.user.id)
+            .animal.get_org_animals(req.session.user.id)
             .then(response => {
                 res.status(200).json(response);
             })
@@ -44,7 +44,7 @@ module.exports = {
     getUserAnimals: (req, res) => {
         req.app
             .get("db")
-            .get_user_animals(req.session.user.id)
+            .animal.get_user_animals(req.session.user.id)
             .then(response => {
                 res.status(200).json(response);
             })
@@ -55,7 +55,7 @@ module.exports = {
         console.log(req.params);
         req.app
             .get("db")
-            .remove_animal(req.params.id)
+            .animal.remove_animal(req.params.id)
             .then(response => {
                 res.status(200);
             })

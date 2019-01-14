@@ -4,7 +4,7 @@ module.exports = {
         const { id, app } = req.body;
         req.app
             .get("db")
-            .create_application(id, app)
+            .application.create_application(id, app)
             .then(() => {
                 res.status(200);
             })
