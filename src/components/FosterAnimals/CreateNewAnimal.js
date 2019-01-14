@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { storage } from "../../firebase";
 import ImageUpload from "../ImageUpload/ImageUpload";
-const url = "http://localhost:3001";
+// const url = "http://localhost:3001";
 
 export default class CreateNewAnimal extends Component {
     constructor() {
@@ -20,7 +20,7 @@ export default class CreateNewAnimal extends Component {
             url: ""
         };
         axios
-            .get(`${url}/auth/getuser`)
+            .get(`/auth/org`)
             .then(response => {
                 const { id } = response.data;
                 this.setState({ org_id: id });
@@ -81,7 +81,7 @@ export default class CreateNewAnimal extends Component {
             url
         } = this.state;
         axios
-            .post(`${url}/api/animals`, {
+            .post(`/api/animals`, {
                 org_id,
                 name,
                 animalType,
@@ -104,6 +104,7 @@ export default class CreateNewAnimal extends Component {
                     description: "",
                     url: ""
                 });
+                this.props.history.push("/org/animals");
             })
             .catch(err => alert(err));
     };

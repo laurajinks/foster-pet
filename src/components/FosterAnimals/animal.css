@@ -1,0 +1,7 @@
+.animalContainer {
+    width: 400px;
+}
+
+.animalContainer > img {
+    max-width: 200px;
+}

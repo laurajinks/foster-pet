@@ -20,7 +20,8 @@ const { searchAdoptable } = require("./controllers/searchController");
 const {
     getOrgAnimals,
     getUserAnimals,
-    addAnimal
+    addAnimal,
+    removeAnimal
 } = require("./controllers/animalController");
 app.use(json());
 app.use(cors());
@@ -63,5 +64,6 @@ app.post("/api/createapplication", createApp);
 app.get("/api/animals/org", getOrgAnimals);
 app.get("/api/animals/user/:id", getUserAnimals);
 app.post("/api/animals", addAnimal);
+app.delete("/api/animals/:id", removeAnimal);
 
 app.listen(port, console.log(`Listening on ${port}`));

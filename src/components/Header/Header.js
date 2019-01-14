@@ -6,9 +6,6 @@ import "./header.css";
 // const url = "http://localhost:3001";
 
 class Header extends Component {
-    constructor() {
-        super();
-    }
     logout = () => {
         axios
             .post(`/auth/logout`)

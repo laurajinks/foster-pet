@@ -30,16 +30,20 @@ class OrgAnimals extends Component {
     componentDidMount = () => {
         axios.get(`/api/animals/org`).then(response => {
             const results = response.data;
-            console.log(results);
             this.setState({ animalList: results });
         });
+    };
+
+    removeAnimal = id => {
+        axios.delete(`/api/animals/${id}`);
     };
 
     render() {
         const animals = this.state.animalList.map(animal => {
             return (
                 <Animal
-                    key={animal.id}
+                    key={animal.animal_id}
+                    id={animal.animal_id}
                     org_id={animal.org_id}
                     user_id={animal.user_id}
                     name={animal.name}
@@ -49,6 +53,8 @@ class OrgAnimals extends Component {
                     img={animal.img}
                     sex={animal.sex}
                     size={animal.size}
+                    description={animal.description}
+                    removeAnimal={this.removeAnimal}
                 />
             );
         });

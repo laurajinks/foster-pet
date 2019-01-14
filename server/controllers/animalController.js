@@ -1,5 +1,6 @@
 module.exports = {
     addAnimal: (req, res) => {
+        // console.log(req.body);
         const {
             org_id,
             name,
@@ -46,6 +47,17 @@ module.exports = {
             .get_user_animals(req.session.user.id)
             .then(response => {
                 res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+
+    removeAnimal: (req, res) => {
+        console.log(req.params);
+        req.app
+            .get("db")
+            .remove_animal(req.params.id)
+            .then(response => {
+                res.status(200);
             })
             .catch(err => console.log(err));
     }

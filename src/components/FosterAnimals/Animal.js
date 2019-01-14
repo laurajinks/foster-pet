@@ -1,4 +1,5 @@
 import React from "react";
+import "./animal.css";
 
 const Animal = props => {
     return (
@@ -10,6 +11,8 @@ const Animal = props => {
             <p>Breed: {props.breed}</p>
             <p>Sex: {props.sex}</p>
             <p>Size: {props.size}</p>
+            <p>Description: {props.description}</p>
+            <button onClick={() => props.removeAnimal(props.id)}>X</button>
         </div>
     );
 };

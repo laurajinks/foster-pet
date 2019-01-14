@@ -1,6 +1,6 @@
 module.exports = {
     usersOnly: (req, res, next) => {
-        console.log(req.session);
+        // console.log(req.session);
         if (!req.session) {
             res.status(401).json("Please log in");
         } else if (req.session.user.isOrg) {
@@ -13,7 +13,7 @@ module.exports = {
     },
 
     orgOnly: (req, res, next) => {
-        console.log(req);
+        // console.log(req);
         if (!req.session) {
             res.status(401).json("Please log in");
         } else if (!req.session.user.isOrg) {
