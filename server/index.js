@@ -58,7 +58,7 @@ app.post("/auth/logout", logout);
 app.get("/api/search/adoptable", searchAdoptable);
 
 //Application Endpoints
-app.post("/api/createapplication", createApp);
+app.put("/api/createapplication", createApp);
 
 //Animal Endpoints
 app.get("/api/animals/org", getOrgAnimals);

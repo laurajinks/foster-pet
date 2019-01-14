@@ -20,8 +20,8 @@ export default (
         <Route path="/org/animals/create" component={CreateNewAnimal} />
         <Route path="/org/animals" component={OrgAnimals} />
         <Route path="/adopt" component={Adopt} />
-        <Route path="/applications/create" component={CreateApplication} />
-        <Route path="/applications" component={ApplicationDash} />
+        <Route path="/org/applications/create" component={CreateApplication} />
+        <Route path="/org/applications" component={ApplicationDash} />
         <Route exact path="/" component={Home} />
     </Switch>
 );

@@ -8,9 +8,24 @@ class CreateApplication extends Component {
     constructor() {
         super();
         this.state = {
+            username: "",
+            id: "",
             input: "",
             application: []
         };
+
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                this.props.history.push("/login");
+            });
     }
 
     handleInputChange = e => {
@@ -35,12 +50,11 @@ class CreateApplication extends Component {
     };
 
     submitApplication = () => {
+        const app = this.state.application.join("/0");
+        const { id } = this.state;
         axios
-            .post(`/api/createapplication`, [
-                this.props.authReducer.id,
-                this.state.application
-            ])
-            .then(this.props.history.push("/applications"))
+            .put(`/api/createapplication`, { id, app })
+            .then(this.props.history.push("/org/applications"))
             .catch(err => console.log(err));
     };
 
