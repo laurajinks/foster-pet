@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import Header from "../Header/Header";
+// const url = "http://localhost:3001";
 
 class UserDash extends Component {
     constructor() {
@@ -13,7 +14,7 @@ class UserDash extends Component {
         };
 
         axios
-            .get("/auth/user")
+            .get(`/auth/user`)
             .then(response => {
                 this.setState({
                     username: response.data.username,

@@ -17,6 +17,11 @@ const {
 } = require("./controllers/authController");
 const { createApp } = require("./controllers/applicationController");
 const { searchAdoptable } = require("./controllers/searchController");
+const {
+    getOrgAnimals,
+    getUserAnimals,
+    addAnimal
+} = require("./controllers/animalController");
 app.use(json());
 app.use(cors());
 
@@ -40,8 +45,8 @@ app.use(
 
 //Authentication Endpoints
 app.get("/auth/user", usersOnly, authAccount);
-app.get("auth/getuser", authAccount);
 app.get("/auth/org", orgOnly, authAccount);
+app.get("/auth/getuser", authAccount);
 app.post("/auth/register/user", addUser);
 app.post("/auth/register/org", addOrg);
 app.post("/auth/login/user", logInUser);
@@ -53,5 +58,10 @@ app.get("/api/search/adoptable", searchAdoptable);
 
 //Application Endpoints
 app.post("/api/createapplication", createApp);
+
+//Animal Endpoints
+app.get("/api/animals/org", getOrgAnimals);
+app.get("/api/animals/user/:id", getUserAnimals);
+app.post("/api/animals", addAnimal);
 
 app.listen(port, console.log(`Listening on ${port}`));

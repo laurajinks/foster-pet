@@ -18,6 +18,7 @@ module.exports = {
                     username: user.username,
                     isOrg: user.isOrg
                 };
+                // console.log(req.session);
                 res.status(201).json(req.session.user);
             })
             .catch(err => console.log(err));
@@ -36,6 +37,7 @@ module.exports = {
                     username: user.username,
                     isOrg: user.isOrg
                 };
+                // console.log(req.session);
                 res.status(201).json(req.session.user);
             });
     },
@@ -66,6 +68,7 @@ module.exports = {
                                 username: user.username,
                                 isOrg: user.isOrg
                             };
+                            // console.log(req.session);
                             res.status(200).json(req.session.user);
                         }
                     });
@@ -99,6 +102,7 @@ module.exports = {
                                 username: user.username,
                                 isOrg: user.isOrg
                             };
+                            // console.log(req.session);
                             res.status(200).json(req.session.user);
                         }
                     });

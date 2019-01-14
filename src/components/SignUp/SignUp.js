@@ -4,6 +4,7 @@ import { storage } from "../../firebase";
 import { connect } from "react-redux";
 import { updateUser } from "../../ducks/reducers/authReducer";
 import ImageUpload from "../ImageUpload/ImageUpload";
+// const apiurl = "http://localhost:3001";
 
 class SignUp extends Component {
     constructor() {
@@ -40,9 +41,11 @@ class SignUp extends Component {
         }
     };
 
-    handleUpload = () => {
+    handleUpload = event => {
+        event.preventDefault();
         const { image } = this.state;
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        const randomStr = Math.floor(Math.random() * 1000000) + image.name;
+        const uploadTask = storage.ref(`images/${randomStr}`).put(image);
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -56,7 +59,7 @@ class SignUp extends Component {
                 //complete function
                 storage
                     .ref("images")
-                    .child(image.name)
+                    .child(randomStr)
                     .getDownloadURL()
                     .then(url => this.setState({ url }));
             }
@@ -67,7 +70,7 @@ class SignUp extends Component {
         event.preventDefault();
         const { username, displayName, password, email, url } = this.state;
         axios
-            .post("/auth/register/user", {
+            .post(`auth/register/user`, {
                 username,
                 displayName,
                 password,
@@ -102,7 +105,7 @@ class SignUp extends Component {
         event.preventDefault();
         const { username, orgName, password, email, zipcode, url } = this.state;
         axios
-            .post("/auth/register/org", {
+            .post(`/auth/register/org`, {
                 username,
                 orgName,
                 password,

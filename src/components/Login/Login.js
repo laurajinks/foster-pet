@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { updateUser } from "../../ducks/reducers/authReducer";
+// const url = "http://localhost:3001";
 
 class Login extends Component {
     constructor() {
@@ -29,7 +30,7 @@ class Login extends Component {
         event.preventDefault();
         const { username, password } = this.state;
         axios
-            .post("/auth/login/user", { username, password })
+            .post(`/auth/login/user`, { username, password })
             .then(response => {
                 const { username, id, isOrg } = response.data;
                 this.props.updateUser({
@@ -46,7 +47,7 @@ class Login extends Component {
         event.preventDefault();
         const { username, password } = this.state;
         axios
-            .post("/auth/login/org", { username, password })
+            .post(`/auth/login/org`, { username, password })
             .then(response => {
                 const { username, id, isOrg } = response.data;
                 this.props.updateUser({

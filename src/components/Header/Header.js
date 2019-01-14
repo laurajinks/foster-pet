@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./header.css";
+// const url = "http://localhost:3001";
 
 class Header extends Component {
     constructor() {
@@ -10,13 +11,12 @@ class Header extends Component {
     }
     logout = () => {
         axios
-            .post("/auth/logout")
+            .post(`/auth/logout`)
             .then(() => this.props.history.push("/"))
             .catch(err => console.log(err));
     };
 
     render() {
-        console.log(this.props);
         return (
             <div className="headerContainer">
                 <h1>SiteLogo</h1>
@@ -41,13 +41,13 @@ class Header extends Component {
                         <Link to="/blog">
                             <p>Blog</p>
                         </Link>
-                        <Link to="/applications">
+                        <Link to="/org/applications">
                             <p>Applications</p>
                         </Link>
-                        <Link to="/animals">
+                        <Link to="/org/animals">
                             <p>Animals</p>
                         </Link>
-                        <Link to="/fosters">
+                        <Link to="/org/fosters">
                             <p>Fosters</p>
                         </Link>
                     </>

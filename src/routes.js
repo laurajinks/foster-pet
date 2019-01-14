@@ -8,6 +8,8 @@ import OrgDash from "./components/Dashboards/OrgDash";
 import Adopt from "./components/Adopt/Adopt";
 import ApplicationDash from "./components/Applications/ApplicationDash";
 import CreateApplication from "./components/Applications/CreateApplication";
+import CreateNewAnimal from "./components/FosterAnimals/CreateNewAnimal";
+import OrgAnimals from "./components/FosterAnimals/OrgAnimals";
 
 export default (
     <Switch>
@@ -15,6 +17,8 @@ export default (
         <Route path="/signup" component={SignUp} />
         <Route path="/dashboard/user" component={UserDash} />
         <Route path="/dashboard/org" component={OrgDash} />
+        <Route path="/org/animals/create" component={CreateNewAnimal} />
+        <Route path="/org/animals" component={OrgAnimals} />
         <Route path="/adopt" component={Adopt} />
         <Route path="/applications/create" component={CreateApplication} />
         <Route path="/applications" component={ApplicationDash} />
