@@ -6,6 +6,30 @@ import "./header.css";
 // const url = "http://localhost:3001";
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            displayName: "",
+            id: "",
+            img: ""
+        };
+
+        axios
+            .get(`/auth/getcurrentuser`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    displayName: response.data.displayName,
+                    id: response.data.id,
+                    img: response.data.img
+                });
+            })
+
+            .catch(err => {
+                console.log(err);
+            });
+    }
     logout = () => {
         axios.post(`/auth/logout`).catch(err => console.log(err));
     };
@@ -48,9 +72,9 @@ class Header extends Component {
                 )}
 
                 <Link to="/">
-                    <button onClick={() => this.logout()}>
-                        Logout {this.props.authReducer.username}
-                    </button>
+                    <button onClick={() => this.logout()}>Logout</button>
+                    <img src={this.state.img} alt="avatar" width="50" />
+                    <p>{this.state.username}</p>
                 </Link>
             </div>
         );

@@ -27,6 +27,9 @@ module.exports = {
                 req.session.user = {
                     id: user.user_id,
                     username: user.username,
+                    img: user.img,
+                    email: user.email,
+                    displayName: user.user_display_name,
                     isOrg: user.isOrg
                 };
                 // console.log(req.session);
@@ -57,6 +60,9 @@ module.exports = {
                 req.session.user = {
                     id: user.org_id,
                     username: user.username,
+                    displayName: user.org_display_name,
+                    zipcode: user.zipcode,
+                    img: user.img,
                     isOrg: user.isOrg
                 };
                 // console.log(req.session);
@@ -88,6 +94,9 @@ module.exports = {
                             req.session.user = {
                                 id: user.user_id,
                                 username: user.username,
+                                img: user.img,
+                                email: user.email,
+                                displayName: user.user_display_name,
                                 isOrg: user.isOrg
                             };
                             // console.log(req.session);
@@ -122,6 +131,9 @@ module.exports = {
                             req.session.user = {
                                 id: user.org_id,
                                 username: user.username,
+                                displayName: user.org_display_name,
+                                zipcode: user.zipcode,
+                                img: user.img,
                                 isOrg: user.isOrg
                             };
                             // console.log(req.session);

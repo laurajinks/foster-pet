@@ -6,7 +6,11 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const port = 3001;
 const app = express();
-const { usersOnly, orgOnly } = require("./middleware/authMiddleware");
+const {
+    currentSession,
+    usersOnly,
+    orgOnly
+} = require("./middleware/authMiddleware");
 const {
     authAccount,
     addUser,
@@ -47,7 +51,7 @@ app.use(
 //Authentication Endpoints
 app.get("/auth/user", usersOnly, authAccount);
 app.get("/auth/org", orgOnly, authAccount);
-app.get("/auth/getuser", authAccount);
+app.get("/auth/getcurrentuser", currentSession, authAccount);
 app.post("/auth/register/user", addUser);
 app.post("/auth/register/org", addOrg);
 app.post("/auth/login/user", logInUser);

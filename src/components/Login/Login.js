@@ -57,7 +57,7 @@ class Login extends Component {
                 });
                 this.props.history.push("/dashboard/org");
             })
-            .catch(err => alert(err.response.request.response));
+            .catch(err => alert(err));
     };
 
     render() {

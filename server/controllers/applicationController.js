@@ -1,6 +1,6 @@
 module.exports = {
     createApp: (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
         const { id, app } = req.body;
         req.app
             .get("db")
