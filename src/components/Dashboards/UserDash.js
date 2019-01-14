@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import Header from "../Headers/UserHeader";
+import Header from "../Header/Header";
 
 class UserDash extends Component {
     constructor() {

@@ -5,6 +5,16 @@ import { connect } from "react-redux";
 import "./header.css";
 
 class Header extends Component {
+    constructor() {
+        super();
+    }
+    logout = () => {
+        axios
+            .post("/auth/logout")
+            .then(() => this.props.history.push("/"))
+            .catch(err => console.log(err));
+    };
+
     render() {
         console.log(this.props);
         return (
@@ -43,7 +53,9 @@ class Header extends Component {
                     </>
                 )}
 
-                <h1>{this.props.authReducer.username}</h1>
+                <button onClick={() => this.logout()}>
+                    Logout {this.props.authReducer.username}
+                </button>
             </div>
         );
     }

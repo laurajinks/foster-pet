@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import AppField from "./AppField";
 
-export default class CreateApplication extends Component {
+class CreateApplication extends Component {
     constructor() {
         super();
         this.state = {
@@ -33,7 +34,13 @@ export default class CreateApplication extends Component {
     };
 
     submitApplication = () => {
-        //TODO
+        axios
+            .post("/api/createapplication", [
+                this.props.authReducer.id,
+                this.state.application
+            ])
+            .then(this.props.history.push("/applications"))
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -59,3 +66,7 @@ export default class CreateApplication extends Component {
         );
     }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(CreateApplication);

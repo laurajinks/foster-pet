@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { storage } from "../../firebase";
 import { connect } from "react-redux";
 import { updateUser } from "../../ducks/reducers/authReducer";
+import ImageUpload from "../ImageUpload/ImageUpload";
 
 class SignUp extends Component {
     constructor() {
@@ -13,7 +15,9 @@ class SignUp extends Component {
             email: "",
             password: "",
             orgName: "",
-            zipcode: ""
+            zipcode: "",
+            image: null,
+            url: ""
         };
     }
 
@@ -29,15 +33,46 @@ class SignUp extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    handleFileChange = e => {
+        if (e.target.files[0]) {
+            const image = e.target.files[0];
+            this.setState({ image });
+        }
+    };
+
+    handleUpload = () => {
+        const { image } = this.state;
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                //progress function
+            },
+            error => {
+                //error function
+                console.log(error);
+            },
+            () => {
+                //complete function
+                storage
+                    .ref("images")
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => this.setState({ url }));
+            }
+        );
+    };
+
     addUser = event => {
         event.preventDefault();
-        const { username, displayName, password, email } = this.state;
+        const { username, displayName, password, email, url } = this.state;
         axios
             .post("/auth/register/user", {
                 username,
                 displayName,
                 password,
-                email
+                email,
+                url
             })
             .then(response => {
                 const { username, id, isOrg } = response.data;
@@ -53,7 +88,9 @@ class SignUp extends Component {
                         email: "",
                         password: "",
                         orgName: "",
-                        zipcode: ""
+                        zipcode: "",
+                        image: null,
+                        url: ""
                     },
                     this.props.history.push("/dashboard/user")
                 );
@@ -63,14 +100,15 @@ class SignUp extends Component {
 
     addOrg = event => {
         event.preventDefault();
-        const { username, orgName, password, email, zipcode } = this.state;
+        const { username, orgName, password, email, zipcode, url } = this.state;
         axios
             .post("/auth/register/org", {
                 username,
                 orgName,
                 password,
                 email,
-                zipcode
+                zipcode,
+                url
             })
             .then(response => {
                 const { username, id, isOrg } = response.data;
@@ -85,7 +123,9 @@ class SignUp extends Component {
                     email: "",
                     password: "",
                     orgName: "",
-                    zipcode: ""
+                    zipcode: "",
+                    image: null,
+                    url: ""
                 });
                 this.props.history.push("/dashboard/org");
             })
@@ -124,6 +164,11 @@ class SignUp extends Component {
                             type="text"
                             name="password"
                             onChange={this.handleInputChange}
+                        />
+                        <ImageUpload
+                            handleFileChange={this.handleFileChange}
+                            handleUpload={this.handleUpload}
+                            url={this.state.url}
                         />
                         <input type="submit" value="Submit" />
                     </form>

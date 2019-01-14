@@ -2,16 +2,15 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     authAccount: (req, res) => {
-        console.log(req.session);
         res.status(201).json(req.session.user);
     },
 
     addUser: async (req, res) => {
-        const { username, displayName, password, email } = req.body;
+        const { username, displayName, password, email, url } = req.body;
         const hash = await bcrypt.hash(password, 10);
         req.app
             .get("db")
-            .add_user(username, displayName, hash, email)
+            .add_user(username, displayName, hash, email, url)
             .then(response => {
                 const user = response[0];
                 req.session.user = {
@@ -19,18 +18,17 @@ module.exports = {
                     username: user.username,
                     isOrg: user.isOrg
                 };
-                console.log(req.session.user);
                 res.status(201).json(req.session.user);
             })
             .catch(err => console.log(err));
     },
 
     addOrg: async (req, res) => {
-        const { username, orgName, password, email, zipcode } = req.body;
+        const { username, orgName, password, email, zipcode, url } = req.body;
         const hash = await bcrypt.hash(password, 10);
         req.app
             .get("db")
-            .add_organization(username, orgName, hash, email, zipcode)
+            .add_organization(username, orgName, hash, email, zipcode, url)
             .then(response => {
                 const user = response[0];
                 req.session.user = {

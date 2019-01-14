@@ -1,6 +1,8 @@
 module.exports = {
     usersOnly: (req, res, next) => {
-        if (req.session.user.isOrg) {
+        if (!req.session.user) {
+            res.status(401).json("Please log in");
+        } else if (req.session.user.isOrg) {
             res.status(401).json(
                 "You do not have permission to view this page"
             );
@@ -10,7 +12,9 @@ module.exports = {
     },
 
     orgOnly: (req, res, next) => {
-        if (!req.session.user.isOrg) {
+        if (!req.session.user) {
+            res.status(401).json("Please log in");
+        } else if (!req.session.user.isOrg) {
             res.status(401).json(
                 "You do not have permission to view this page"
             );

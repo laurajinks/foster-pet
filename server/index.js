@@ -15,6 +15,7 @@ const {
     logInOrg,
     logout
 } = require("./controllers/authController");
+const { createApp } = require("./controllers/applicationController");
 const { searchAdoptable } = require("./controllers/searchController");
 app.use(json());
 app.use(cors());
@@ -45,9 +46,12 @@ app.post("/auth/register/user", addUser);
 app.post("/auth/register/org", addOrg);
 app.post("/auth/login/user", logInUser);
 app.post("/auth/login/org", logInOrg);
-app.post("/auth/logout/user", logout);
+app.post("/auth/logout", logout);
 
 //Search Endpoints
 app.get("/api/search/adoptable", searchAdoptable);
+
+//Application Endpoints
+app.post("/api/createapplication", createApp);
 
 app.listen(port, console.log(`Listening on ${port}`));
