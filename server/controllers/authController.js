@@ -7,6 +7,17 @@ module.exports = {
 
     addUser: async (req, res) => {
         const { username, displayName, password, email, url } = req.body;
+        if (
+            username === "animal" ||
+            username === "users" ||
+            username === "organization" ||
+            username === "application" ||
+            username === "post" ||
+            username === "member" ||
+            username === "game"
+        ) {
+            res.status(403).json("Invalid username");
+        }
         const hash = await bcrypt.hash(password, 10);
         req.app
             .get("db")
@@ -26,6 +37,17 @@ module.exports = {
 
     addOrg: async (req, res) => {
         const { username, orgName, password, email, zipcode, url } = req.body;
+        if (
+            username === "animal" ||
+            username === "users" ||
+            username === "organization" ||
+            username === "application" ||
+            username === "post" ||
+            username === "member" ||
+            username === "game"
+        ) {
+            res.status(403).json("Invalid username");
+        }
         const hash = await bcrypt.hash(password, 10);
         req.app
             .get("db")

@@ -6,11 +6,12 @@ import "./header.css";
 // const url = "http://localhost:3001";
 
 class Header extends Component {
+    constructor() {
+        super();
+    }
+
     logout = () => {
-        axios
-            .post(`/auth/logout`)
-            .then(() => this.props.history.push("/"))
-            .catch(err => console.log(err));
+        axios.post(`/auth/logout`).catch(err => console.log(err));
     };
 
     render() {
@@ -50,9 +51,11 @@ class Header extends Component {
                     </>
                 )}
 
-                <button onClick={() => this.logout()}>
-                    Logout {this.props.authReducer.username}
-                </button>
+                <Link to="/">
+                    <button onClick={() => this.logout()}>
+                        Logout {this.props.authReducer.username}
+                    </button>
+                </Link>
             </div>
         );
     }

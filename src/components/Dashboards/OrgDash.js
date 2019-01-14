@@ -5,8 +5,10 @@ import Header from "../Header/Header";
 // const url = "http://localhost:3001";
 
 class OrgDash extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        console.log(this.props);
 
         this.state = {
             username: "",

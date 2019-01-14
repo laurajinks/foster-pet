@@ -5,8 +5,8 @@ import Header from "../Header/Header";
 // const url = "http://localhost:3001";
 
 class UserDash extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             username: "",
