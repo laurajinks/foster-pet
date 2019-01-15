@@ -1,13 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Header from "../Header/Header";
 import Organization from "./Organization";
 
 export default class FindGroups extends Component {
     constructor() {
         super();
         this.state = {
+            user_id: "",
             organizations: []
         };
+        axios
+            .get(`/auth/user`)
+            .then(response => {
+                this.setState({
+                    user_id: response.data.id
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                this.props.history.push("/login");
+            });
     }
 
     componentDidMount = () => {
@@ -21,15 +34,22 @@ export default class FindGroups extends Component {
             return (
                 <Organization
                     key={org.org_id}
-                    id={org.org_id}
-                    username={org.username}
-                    displayName={org.displayName}
+                    user_id={this.state.user_id}
+                    org_id={org.org_id}
+                    org_username={org.username}
+                    displayName={org.org_display_name}
+                    email={org.email}
                     zipcode={org.zipcode}
                     img={org.img}
-                    appliation={org.application}
+                    application={org.application}
                 />
             );
         });
-        return <div>{list}</div>;
+        return (
+            <div>
+                <Header />
+                {list}
+            </div>
+        );
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AdoptableAnimal from "./AdoptableAnimal";
+import Header from "../Header/Header";
 
 export default class Adopt extends Component {
     constructor() {
@@ -34,6 +35,7 @@ export default class Adopt extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <form onSubmit={this.searchAdoptable}>
                     Zip Code
                     <input

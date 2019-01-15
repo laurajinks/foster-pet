@@ -38,7 +38,7 @@ module.exports = {
     getOrgs: (req, res) => {
         req.app
             .get("db")
-            .get_orgs()
+            .search.get_orgs()
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     }
