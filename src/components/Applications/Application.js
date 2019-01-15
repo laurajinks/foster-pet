@@ -33,6 +33,23 @@ export default class Application extends Component {
             .catch(err => console.log(err));
     };
 
+    acceptApplication = () => {
+        const { application_id, user_id, org_id } = this.props;
+        axios
+            .post("/api/members", { user_id, org_id })
+            .then(() => {
+                axios
+                    .delete(`/api/applications/${application_id}`)
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    };
+
+    denyApplication = () => {
+        const id = this.props.application_id;
+        axios.delete(`/api/applications/${id}`);
+    };
+
     render() {
         const array = this.props.content.split("/0");
         const answers = array.map(item => {
@@ -44,8 +61,8 @@ export default class Application extends Component {
                 <h1>{this.state.username}</h1>
                 <h2>{this.state.email}</h2>
                 {answers}
-                <button>Accept</button>
-                <button>Deny</button>
+                <button onClick={this.acceptApplication}>Accept</button>
+                <button onClick={this.denyApplication}>Deny</button>
             </div>
         );
     }

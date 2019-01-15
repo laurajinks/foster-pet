@@ -52,7 +52,6 @@ module.exports = {
     },
 
     removeAnimal: (req, res) => {
-        console.log(req.params);
         req.app
             .get("db")
             .animal.remove_animal(req.params.id)

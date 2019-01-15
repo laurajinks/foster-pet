@@ -50,6 +50,7 @@ export default class ApplicationDash extends Component {
             return (
                 <Application
                     key={app.application_id}
+                    application_id={app.application_id}
                     org_id={app.org_id}
                     user_id={app.user_id}
                     content={app.app_content}

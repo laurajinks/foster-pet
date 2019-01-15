@@ -46,7 +46,7 @@ module.exports = {
     deleteApp: (req, res) => {
         req.app
             .get("db")
-            .application.delete_app(req.params.id)
+            .application.delete_application(req.params.id)
             .then(() => res.status(200))
             .catch(err => console.log(err));
     },
