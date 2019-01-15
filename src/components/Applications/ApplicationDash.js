@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 import Application from "./Application";
 
 export default class ApplicationDash extends Component {
@@ -13,7 +14,6 @@ export default class ApplicationDash extends Component {
         axios
             .get(`/auth/org`)
             .then(response => {
-                console.log(response.data);
                 this.setState({
                     id: response.data.id
                 });
@@ -28,21 +28,29 @@ export default class ApplicationDash extends Component {
         axios
             .post("/api/applications/org")
             .then(response => {
-                console.log(response);
                 this.setState({ applications: response.data });
             })
             .catch(err => console.log(err));
     };
 
-    acceptApp = (org_id, user_id, key) => {
-        axios.post("/api/members", { org_id, user_id });
-        //
-
-        axios.delete(`/api/applications/${key}`);
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.state !== prevState) {
+            axios
+                .post("/api/applications/org")
+                .then(response => {
+                    this.setState({ applications: response.data });
+                })
+                .catch(err => console.log(err));
+        }
     };
 
-    denyApp = key => {
-        axios.delete(`/api/applications/${key}`);
+    acceptApp = async (org_id, user_id, id) => {
+        await axios.post("/api/members", { org_id, user_id });
+        axios.delete(`/api/applications/${id}`);
+    };
+
+    denyApp = async id => {
+        await axios.delete(`/api/applications/${id}`);
     };
 
     render() {
@@ -59,10 +67,13 @@ export default class ApplicationDash extends Component {
         });
         return (
             <div>
+                <Header />
                 <Link to="/org/applications/create">
                     <button>Create Application</button>
                 </Link>
-                {!this.state.applications && <h1>No Applications To Review</h1>}
+                {!this.state.applications[0] && (
+                    <h1>No Applications To Review</h1>
+                )}
                 {apps}
             </div>
         );

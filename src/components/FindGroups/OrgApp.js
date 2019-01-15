@@ -19,29 +19,37 @@ export default class OrgApp extends Component {
         const string = newArr.join("/0");
         axios
             .post("/api/application", { org_id, user_id, string })
-            .then(() => this.props.hideApp())
+            .then(this.props.hideApp())
             .catch(err => console.log(err));
     };
 
     render() {
-        const app = this.props.application.split("/0");
-        const inputs = app.map(inputField => {
-            return (
-                <>
-                    <span>{inputField}</span>
-                    <input
-                        name={inputField}
-                        onChange={this.handleInputChange}
-                    />
-                </>
-            );
-        });
+        let inputs = "";
+        if (this.props.application) {
+            const app = this.props.application.split("/0");
+            inputs = app.map(inputField => {
+                return (
+                    <>
+                        <span>{inputField}</span>
+                        <input
+                            name={inputField}
+                            onChange={this.handleInputChange}
+                        />
+                    </>
+                );
+            });
+        }
         return (
-            <div>
-                <form onSubmit={this.submitApp}>
-                    {inputs}
-                    <input type="submit" value="Submit" />
-                </form>
+            <div className="">
+                {!this.props.application && (
+                    <h1>No Application Currently on File</h1>
+                )}
+                {this.props.application && (
+                    <form onSubmit={this.submitApp}>
+                        {inputs}
+                        <input type="submit" value="Submit" />
+                    </form>
+                )}
                 <button onClick={() => this.props.hideApp()}>X</button>
             </div>
         );

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Animal from "./Animal";
-// const url = "http://localhost:3001";
+import Header from "../Header/Header";
 
 class OrgAnimals extends Component {
     constructor() {
@@ -34,8 +34,21 @@ class OrgAnimals extends Component {
         });
     };
 
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.state !== prevState) {
+            axios.get(`/api/animals/org`).then(response => {
+                const results = response.data;
+                this.setState({ animalList: results });
+            });
+        }
+    };
+
     removeAnimal = id => {
         axios.delete(`/api/animals/${id}`);
+    };
+
+    removeFosterParent = id => {
+        axios.put("/api/animals/org/fosterparent", { id });
     };
 
     render() {
@@ -50,16 +63,18 @@ class OrgAnimals extends Component {
                     age={animal.age}
                     animalType={animal.animal_type}
                     breed={animal.breed}
-                    img={animal.img}
+                    img={animal.animal_img}
                     sex={animal.sex}
                     size={animal.size}
                     description={animal.description}
                     removeAnimal={this.removeAnimal}
+                    removeFosterParent={this.removeFosterParent}
                 />
             );
         });
         return (
             <div>
+                <Header />
                 <Link to="/org/animals/create">
                     <button>Create New Animal Listing</button>
                 </Link>

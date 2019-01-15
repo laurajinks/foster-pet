@@ -37,11 +37,11 @@ export default class Application extends Component {
         const { application_id, user_id, org_id } = this.props;
         axios
             .post("/api/members", { user_id, org_id })
-            .then(() => {
+            .then(
                 axios
                     .delete(`/api/applications/${application_id}`)
-                    .catch(err => console.log(err));
-            })
+                    .catch(err => console.log(err))
+            )
             .catch(err => console.log(err));
     };
 

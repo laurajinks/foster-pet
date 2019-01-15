@@ -11,6 +11,7 @@ import CreateApplication from "./components/Applications/CreateApplication";
 import CreateNewAnimal from "./components/FosterAnimals/CreateNewAnimal";
 import OrgAnimals from "./components/FosterAnimals/OrgAnimals";
 import FindGroups from "./components/FindGroups/FindGroups";
+import UserAnimals from "./components/FosterAnimals/UserAnimals";
 
 export default (
     <Switch>
@@ -20,6 +21,7 @@ export default (
         <Route path="/dashboard/org" component={OrgDash} />
         <Route path="/org/animals/create" component={CreateNewAnimal} />
         <Route path="/org/animals" component={OrgAnimals} />
+        <Route path="/user/animals" component={UserAnimals} />
         <Route path="/adopt" component={Adopt} />
         <Route path="/organizations" component={FindGroups} />
         <Route path="/org/applications/create" component={CreateApplication} />

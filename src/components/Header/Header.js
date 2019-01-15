@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import "./header.css";
-// const url = "http://localhost:3001";
 
-class Header extends Component {
+export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +20,8 @@ class Header extends Component {
                     username: response.data.username,
                     displayName: response.data.displayName,
                     id: response.data.id,
-                    img: response.data.img
+                    img: response.data.img,
+                    isOrg: response.data.isOrg
                 });
             })
 
@@ -38,12 +37,12 @@ class Header extends Component {
         return (
             <div className="headerContainer">
                 <h1>SiteLogo</h1>
-                {!this.props.authReducer.isOrg && (
+                {!this.state.isOrg && (
                     <>
                         <Link to="/dashboard/user">
                             <p>Newsfeed</p>
                         </Link>
-                        <Link to="/fosteranimals">
+                        <Link to="/user/animals">
                             <p>Foster Animals</p>
                         </Link>
                         <Link to="/organizations">
@@ -54,7 +53,7 @@ class Header extends Component {
                         </Link>
                     </>
                 )}
-                {this.props.authReducer.isOrg && (
+                {this.state.isOrg && (
                     <>
                         <Link to="/blog">
                             <p>Blog</p>
@@ -80,7 +79,3 @@ class Header extends Component {
         );
     }
 }
-
-const mapStateToProps = state => state;
-
-export default connect(mapStateToProps)(Header);

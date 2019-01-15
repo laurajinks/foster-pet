@@ -32,7 +32,6 @@ module.exports = {
                     displayName: user.user_display_name,
                     isOrg: user.isOrg
                 };
-                // console.log(req.session);
                 res.status(201).json(req.session.user);
             })
             .catch(err => console.log(err));
@@ -65,7 +64,6 @@ module.exports = {
                     img: user.img,
                     isOrg: user.isOrg
                 };
-                // console.log(req.session);
                 res.status(201).json(req.session.user);
             });
     },
@@ -99,7 +97,6 @@ module.exports = {
                                 displayName: user.user_display_name,
                                 isOrg: user.isOrg
                             };
-                            // console.log(req.session);
                             res.status(200).json(req.session.user);
                         }
                     });
@@ -136,7 +133,6 @@ module.exports = {
                                 img: user.img,
                                 isOrg: user.isOrg
                             };
-                            // console.log(req.session);
                             res.status(200).json(req.session.user);
                         }
                     });

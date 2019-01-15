@@ -40,7 +40,10 @@ const {
     getOrgAnimals,
     getUserAnimals,
     addAnimal,
-    removeAnimal
+    removeAnimal,
+    getEligibleAnimals,
+    addFosterParent,
+    removeFosterParent
 } = require("./controllers/animalController");
 app.use(json());
 app.use(cors());
@@ -92,8 +95,11 @@ app.delete("/api/applications/:id", deleteApp);
 
 //Animal Endpoints
 app.get("/api/animals/org", getOrgAnimals);
-app.get("/api/animals/user/:id", getUserAnimals);
+app.post("/api/animals/user", getUserAnimals);
+app.get("/api/animals/user/eligible", getEligibleAnimals);
 app.post("/api/animals", addAnimal);
+app.put("/api/animals/fosterparent", addFosterParent);
+app.put("/api/animals/org/fosterparent", removeFosterParent);
 app.delete("/api/animals/:id", removeAnimal);
 
 app.listen(port, console.log(`Listening on ${port}`));

@@ -1,6 +1,5 @@
 module.exports = {
     createApp: (req, res) => {
-        // console.log(req.body);
         const { id, app } = req.body;
         req.app
             .get("db")
@@ -22,7 +21,6 @@ module.exports = {
     },
 
     submitApp: (req, res) => {
-        console.log(req.body);
         const { org_id, user_id, string } = req.body;
         req.app
             .get("db")
@@ -32,7 +30,6 @@ module.exports = {
     },
 
     getAppStatus: (req, res) => {
-        // console.log(req.body);
         const { user_id, org_id } = req.body;
         req.app
             .get("db")
@@ -56,7 +53,6 @@ module.exports = {
             .get("db")
             .application.get_applications(req.session.user.id)
             .then(response => {
-                console.log(response);
                 res.status(200).json(response);
             })
             .catch(err => console.log(err));

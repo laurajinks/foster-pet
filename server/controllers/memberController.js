@@ -4,13 +4,7 @@ module.exports = {
         req.app
             .get("db")
             .member.get_member_status(user_id, org_id)
-            .then(response => {
-                if (response) {
-                    return res.status(200).json("true");
-                } else if (!response) {
-                    return res.status(200).json("false");
-                }
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 

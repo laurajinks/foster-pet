@@ -12,7 +12,20 @@ const Animal = props => {
             <p>Sex: {props.sex}</p>
             <p>Size: {props.size}</p>
             <p>Description: {props.description}</p>
-            <button onClick={() => props.removeAnimal(props.id)}>X</button>
+            {props.user_username && <p>Foster: {props.user_username}</p>}
+            {props.removeAnimal && (
+                <button onClick={() => props.removeAnimal(props.id)}>X</button>
+            )}
+            {props.fosterAnimal && (
+                <button onClick={() => props.fosterAnimal(props.id)}>
+                    Foster This Animal
+                </button>
+            )}
+            {props.removeFosterParent && props.user_id !== null && (
+                <button onClick={() => props.removeFosterParent(props.id)}>
+                    Remove Foster Parent
+                </button>
+            )}
         </div>
     );
 };
