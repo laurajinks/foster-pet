@@ -20,8 +20,8 @@ module.exports = {
         }
         const hash = await bcrypt.hash(password, 10);
         req.app
-            .get("db")
-            .auth.add_user(username, displayName, hash, email, url)
+            .get("db/auth")
+            .add_user(username, displayName, hash, email, url)
             .then(response => {
                 const user = response[0];
                 req.session.user = {
@@ -53,7 +53,7 @@ module.exports = {
         }
         const hash = await bcrypt.hash(password, 10);
         req.app
-            .get("db")
+            .get("db/auth")
             .auth.add_organization(username, orgName, hash, email, zipcode, url)
             .then(response => {
                 const user = response[0];
@@ -73,7 +73,7 @@ module.exports = {
     logInUser: (req, res) => {
         const { username, password } = req.body;
         req.app
-            .get("db")
+            .get("db/auth")
             .auth.get_user(username)
             .then(response => {
                 const foundUser = response;
@@ -110,7 +110,7 @@ module.exports = {
     logInOrg: (req, res) => {
         const { username, password } = req.body;
         req.app
-            .get("db")
+            .get("db/auth")
             .auth.get_org(username)
             .then(response => {
                 const foundOrg = response;
