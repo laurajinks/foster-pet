@@ -31,7 +31,11 @@ const {
     getMemberStatus,
     addMembership
 } = require("./controllers/memberController");
-const { searchAdoptable, getOrgs } = require("./controllers/searchController");
+const {
+    searchAdoptable,
+    getOrgs,
+    getUser
+} = require("./controllers/searchController");
 const {
     getOrgAnimals,
     getUserAnimals,
@@ -76,6 +80,7 @@ app.post("/api/members", addMembership);
 //Search Endpoints
 app.get("/api/search/adoptable", searchAdoptable);
 app.get("/api/organizations", getOrgs);
+app.post("/api/user", getUser);
 
 //Application Endpoints
 app.get("/api/orgapp", getApp);

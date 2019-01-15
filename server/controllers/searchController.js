@@ -41,5 +41,14 @@ module.exports = {
             .search.get_orgs()
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+
+    getUser: (req, res) => {
+        // console.log(req.body);
+        req.app
+            .get("db")
+            .search.get_user(req.body.id)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };
