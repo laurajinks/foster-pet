@@ -41,28 +41,44 @@ export default class UserAnimals extends Component {
             );
     };
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (this.state !== prevState) {
-            axios
-                .post("/api/animals/user")
-                .then(response =>
-                    this.setState({ currentAnimals: response.data })
-                );
+    // componentDidUpdate = (prevProps, prevState) => {
+    //     if (this.state !== prevState) {
+    //         axios
+    //             .post("/api/animals/user")
+    //             .then(response =>
+    //                 this.setState({ currentAnimals: response.data })
+    //             );
 
-            axios
-                .get("/api/animals/user/eligible")
-                .then(response =>
-                    this.setState({ eligibleAnimals: response.data })
-                );
-        }
-    };
+    //         axios
+    //             .get("/api/animals/user/eligible")
+    //             .then(response =>
+    //                 this.setState({ eligibleAnimals: response.data })
+    //             );
+    //     }
+    // };
 
     toggleFosterView = () => {
         this.setState({ showEligible: !this.state.showEligible });
     };
 
     fosterAnimal = animal_id => {
-        axios.put("/api/animals/fosterparent", { animal_id });
+        axios
+            .put("/api/animals/fosterparent", { animal_id })
+            .then(
+                axios
+                    .post("/api/animals/user")
+                    .then(
+                        response =>
+                            this.setState({ currentAnimals: response.data }),
+                        axios
+                            .get("/api/animals/user/eligible")
+                            .then(response =>
+                                this.setState({
+                                    eligibleAnimals: response.data
+                                })
+                            )
+                    )
+            );
     };
 
     render() {
