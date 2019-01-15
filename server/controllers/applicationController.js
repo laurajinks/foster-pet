@@ -41,5 +41,24 @@ module.exports = {
                 return res.status(200).json(response);
             })
             .catch(err => console.log(err));
+    },
+
+    deleteApp: (req, res) => {
+        req.app
+            .get("db")
+            .application.delete_app(req.params.id)
+            .then(() => res.status(200))
+            .catch(err => console.log(err));
+    },
+
+    getApps: (req, res) => {
+        req.app
+            .get("db")
+            .application.get_applications(req.session.user.id)
+            .then(response => {
+                console.log(response);
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
     }
 };

@@ -23,9 +23,14 @@ const {
     createApp,
     getAppStatus,
     getApp,
-    submitApp
+    getApps,
+    submitApp,
+    deleteApp
 } = require("./controllers/applicationController");
-const { getMemberStatus } = require("./controllers/memberController");
+const {
+    getMemberStatus,
+    addMembership
+} = require("./controllers/memberController");
 const { searchAdoptable, getOrgs } = require("./controllers/searchController");
 const {
     getOrgAnimals,
@@ -66,6 +71,7 @@ app.post("/auth/logout", logout);
 
 //Membership Endpoints
 app.post("/api/memberstatus", getMemberStatus);
+app.post("/api/members", addMembership);
 
 //Search Endpoints
 app.get("/api/search/adoptable", searchAdoptable);
@@ -73,9 +79,11 @@ app.get("/api/organizations", getOrgs);
 
 //Application Endpoints
 app.get("/api/orgapp", getApp);
+app.post("/api/applications/org", getApps);
 app.post("/api/appstatus", getAppStatus);
 app.post("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
+app.delete("/api/applications/:id", deleteApp);
 
 //Animal Endpoints
 app.get("/api/animals/org", getOrgAnimals);
