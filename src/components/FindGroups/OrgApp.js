@@ -19,7 +19,10 @@ export default class OrgApp extends Component {
         const string = newArr.join("/0");
         axios
             .post("/api/application", { org_id, user_id, string })
-            .then(this.props.hideApp())
+            .then(async () => {
+                await this.props.hideApp();
+                this.props.reRender();
+            })
             .catch(err => console.log(err));
     };
 

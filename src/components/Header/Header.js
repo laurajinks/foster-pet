@@ -33,12 +33,12 @@ class Header extends Component {
     logout = () => {
         axios
             .post(`/auth/logout`)
-            .then(() => this.props.history.push("/org/blog"))
+            .then(() => this.props.history.push("/"))
             .catch(err => console.log(err));
     };
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (this.props.authReducer.id != prevProps)
+        if (this.props.authReducer.id !== prevProps)
             axios
                 .get(`/auth/getcurrentuser`)
                 .then(response => {

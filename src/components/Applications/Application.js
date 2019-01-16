@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Application extends Component {
@@ -58,7 +59,9 @@ export default class Application extends Component {
         return (
             <div>
                 <img src={this.state.img} alt="avatar" width="100" />
-                <h1>{this.state.username}</h1>
+                <Link to={`/profile/user/${this.props.user_id}`}>
+                    <h1>{this.state.username}</h1>
+                </Link>
                 <h2>{this.state.email}</h2>
                 {answers}
                 <button onClick={this.acceptApplication}>Accept</button>
