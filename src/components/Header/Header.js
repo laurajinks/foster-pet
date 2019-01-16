@@ -39,7 +39,7 @@ export default class Header extends Component {
                 <h1>SiteLogo</h1>
                 {!this.state.isOrg && (
                     <>
-                        <Link to="/dashboard/user">
+                        <Link to="/user/newsfeed">
                             <p>Newsfeed</p>
                         </Link>
                         <Link to="/user/animals">
@@ -55,7 +55,7 @@ export default class Header extends Component {
                 )}
                 {this.state.isOrg && (
                     <>
-                        <Link to="/blog">
+                        <Link to="/org/blog">
                             <p>Blog</p>
                         </Link>
                         <Link to="/org/applications">

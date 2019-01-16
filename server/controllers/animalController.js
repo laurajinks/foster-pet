@@ -24,9 +24,7 @@ module.exports = {
                 description,
                 url
             )
-            .then(response => {
-                res.status(200);
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 
@@ -64,9 +62,7 @@ module.exports = {
         req.app
             .get("db")
             .animal.remove_animal(req.params.id)
-            .then(response => {
-                res.status(200);
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 
@@ -75,9 +71,7 @@ module.exports = {
         req.app
             .get("db")
             .animal.add_foster_parent(req.session.user.id, animal_id)
-            .then(() => {
-                res.status(200);
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 
@@ -86,9 +80,7 @@ module.exports = {
         req.app
             .get("db")
             .animal.remove_foster_parent(id)
-            .then(() => {
-                res.status(200);
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     }
 };

@@ -45,6 +45,11 @@ const {
     addFosterParent,
     removeFosterParent
 } = require("./controllers/animalController");
+const {
+    writePost,
+    getPosts,
+    getMemberPosts
+} = require("./controllers/blogController");
 app.use(json());
 app.use(cors());
 
@@ -66,7 +71,7 @@ app.use(
     })
 );
 
-//Authentication Endpoints
+//AUTHENTICATION ENDPOINTS
 app.get("/auth/user", usersOnly, authAccount);
 app.get("/auth/org", orgOnly, authAccount);
 app.get("/auth/getcurrentuser", currentSession, authAccount);
@@ -76,16 +81,16 @@ app.post("/auth/login/user", logInUser);
 app.post("/auth/login/org", logInOrg);
 app.post("/auth/logout", logout);
 
-//Membership Endpoints
+//MEMBERSHIP ENDPOINTS
 app.post("/api/memberstatus", getMemberStatus);
 app.post("/api/members", addMembership);
 
-//Search Endpoints
+//SEARCH ENDPOINTS
 app.get("/api/search/adoptable", searchAdoptable);
 app.get("/api/organizations", getOrgs);
 app.post("/api/user", getUser);
 
-//Application Endpoints
+//APPLICATION ENDPOINTS
 app.get("/api/orgapp", getApp);
 app.post("/api/applications/org", getApps);
 app.post("/api/appstatus", getAppStatus);
@@ -93,7 +98,7 @@ app.post("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
 app.delete("/api/applications/:id", deleteApp);
 
-//Animal Endpoints
+//ANIMAL ENDPOINTS
 app.get("/api/animals/org", getOrgAnimals);
 app.post("/api/animals/user", getUserAnimals);
 app.get("/api/animals/user/eligible", getEligibleAnimals);
@@ -101,5 +106,10 @@ app.post("/api/animals", addAnimal);
 app.put("/api/animals/fosterparent", addFosterParent);
 app.put("/api/animals/org/fosterparent", removeFosterParent);
 app.delete("/api/animals/:id", removeAnimal);
+
+//BLOG ENDPOINTS
+app.post("/api/blog", writePost);
+app.post("/api/blog/org", getPosts);
+app.post("/api/blog/member", getMemberPosts);
 
 app.listen(port, console.log(`Listening on ${port}`));

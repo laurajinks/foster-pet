@@ -4,9 +4,7 @@ module.exports = {
         req.app
             .get("db")
             .application.create_application(id, app)
-            .then(() => {
-                res.status(200);
-            })
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 
@@ -25,7 +23,7 @@ module.exports = {
         req.app
             .get("db")
             .application.submit_application(org_id, user_id, string)
-            .then(() => res.status(200))
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 
@@ -44,7 +42,7 @@ module.exports = {
         req.app
             .get("db")
             .application.delete_application(req.params.id)
-            .then(() => res.status(200))
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },
 

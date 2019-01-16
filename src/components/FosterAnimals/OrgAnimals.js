@@ -34,14 +34,14 @@ class OrgAnimals extends Component {
         });
     };
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (this.state !== prevState) {
-            axios.get(`/api/animals/org`).then(response => {
-                const results = response.data;
-                this.setState({ animalList: results });
-            });
-        }
-    };
+    // componentDidUpdate = (prevProps, prevState) => {
+    //     if (this.state !== prevState) {
+    //         axios.get(`/api/animals/org`).then(response => {
+    //             const results = response.data;
+    //             this.setState({ animalList: results });
+    //         });
+    //     }
+    // };
 
     removeAnimal = id => {
         axios.delete(`/api/animals/${id}`);
@@ -58,6 +58,7 @@ class OrgAnimals extends Component {
                     key={animal.animal_id}
                     id={animal.animal_id}
                     org_id={animal.org_id}
+                    user_username={animal.username}
                     user_id={animal.user_id}
                     name={animal.name}
                     age={animal.age}

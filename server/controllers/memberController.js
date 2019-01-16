@@ -13,7 +13,7 @@ module.exports = {
         req.app
             .get("db")
             .member.add_membership(user_id, org_id)
-            .then(() => res.status(200))
+            .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     }
 };
