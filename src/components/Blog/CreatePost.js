@@ -17,9 +17,13 @@ export default class CreatePost extends Component {
 
     submitPost = event => {
         event.preventDefault();
+        const newDate = new Date();
+        const currentDate = newDate.toDateString();
+        const currentTime = newDate.toLocaleTimeString();
         const { title, content } = this.state;
+        console.log(currentDate);
         axios
-            .post("/api/blog", { title, content })
+            .post("/api/blog", { title, content, currentDate, currentTime })
             .then(() => {
                 this.props.history.push("/org/blog");
             })

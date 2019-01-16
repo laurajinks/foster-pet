@@ -1,9 +1,15 @@
 module.exports = {
     writePost: (req, res) => {
-        const { title, content } = req.body;
+        const { title, content, currentDate, currentTime } = req.body;
         req.app
             .get("db")
-            .blog.add_post(req.session.user.id, title, content)
+            .blog.add_post(
+                req.session.user.id,
+                title,
+                content,
+                currentDate,
+                currentTime
+            )
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },

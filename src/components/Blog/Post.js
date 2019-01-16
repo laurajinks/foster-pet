@@ -39,6 +39,8 @@ export default class Post extends Component {
             <div>
                 <img src={this.props.img} alt="avatar" />
                 <p>{this.props.username}</p>
+                <p>{this.props.date}</p>
+                <p>{this.props.time}</p>
                 <h1>{this.props.title}</h1>
                 <p>{this.props.content}</p>
                 {this.props.allowEdit && (

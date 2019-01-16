@@ -32,6 +32,8 @@ export default class BlogHome extends Component {
             return (
                 <Post
                     key={post.post_id}
+                    date={post.date}
+                    time={post.time}
                     post_id={post.post_id}
                     username={post.username}
                     img={post.img}
