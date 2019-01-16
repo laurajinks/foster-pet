@@ -33,21 +33,24 @@ class OrgAnimals extends Component {
         });
     };
 
-    // componentDidUpdate = (prevProps, prevState) => {
-    //     if (this.state !== prevState) {
-    //         axios.get(`/api/animals/org`).then(response => {
-    //             const results = response.data;
-    //             this.setState({ animalList: results });
-    //         });
-    //     }
-    // };
-
     removeAnimal = id => {
-        axios.delete(`/api/animals/${id}`);
+        axios.delete(`/api/animals/${id}`).then(
+            axios.get(`/api/animals/org`).then(response => {
+                const results = response.data;
+                this.setState({ animalList: results });
+            })
+        );
     };
 
     removeFosterParent = id => {
-        axios.put("/api/animals/org/fosterparent", { id });
+        axios.put("/api/animals/org/fosterparent", { id }).then(
+            axios.delete(`/api/animals/${id}`).then(
+                axios.get(`/api/animals/org`).then(response => {
+                    const results = response.data;
+                    this.setState({ animalList: results });
+                })
+            )
+        );
     };
 
     render() {
@@ -57,6 +60,7 @@ class OrgAnimals extends Component {
                     key={animal.animal_id}
                     id={animal.animal_id}
                     org_id={animal.org_id}
+                    org_display_name={animal.org_display_name}
                     user_username={animal.username}
                     user_id={animal.user_id}
                     name={animal.name}

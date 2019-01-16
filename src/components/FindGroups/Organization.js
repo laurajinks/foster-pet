@@ -34,29 +34,6 @@ export default class Organization extends Component {
             .catch(err => console.log(err));
     };
 
-    // componentDidUpdate = (prevProps, prevState) => {
-    //     if (prevState !== this.state) {
-    //         const { user_id, org_id } = this.props;
-    //         axios
-    //             .post("/api/appstatus", { user_id, org_id })
-    //             .then(response => {
-    //                 if (response.data[0]) {
-    //                     this.setState({ pendingApp: true });
-    //                 }
-    //             })
-    //             .catch(err => console.log(err));
-
-    //         axios
-    //             .post("/api/memberstatus", { user_id, org_id })
-    //             .then(response => {
-    //                 if (response.data[0]) {
-    //                     this.setState({ isMember: true });
-    //                 }
-    //             })
-    //             .catch(err => console.log(err));
-    //     }
-    // };
-
     reRender = () => {
         const { user_id, org_id } = this.props;
         axios

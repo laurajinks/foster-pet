@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./animal.css";
 
 const Animal = props => {
@@ -12,7 +13,14 @@ const Animal = props => {
             <p>Sex: {props.sex}</p>
             <p>Size: {props.size}</p>
             <p>Description: {props.description}</p>
-            {props.user_username && <p>Foster: {props.user_username}</p>}
+            <Link to={`/profile/org/${props.org_id}`}>
+                <p>Organization: {props.org_display_name}</p>
+            </Link>
+            {props.user_username && (
+                <Link to={`/profile/user/${props.user_id}`}>
+                    <p>Foster: {props.user_username}</p>
+                </Link>
+            )}
             {props.removeAnimal && (
                 <button onClick={() => props.removeAnimal(props.id)}>X</button>
             )}
