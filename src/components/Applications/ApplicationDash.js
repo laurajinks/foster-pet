@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Application from "./Application";
+import AnimalApplication from "./AnimalApplication";
 
 export default class ApplicationDash extends Component {
     constructor() {
         super();
         this.state = {
             id: "",
-            applications: []
+            applications: [],
+            animalApplications: []
         };
         axios
             .get(`/auth/org`)
@@ -64,6 +66,18 @@ export default class ApplicationDash extends Component {
                 />
             );
         });
+
+        const animalApps = this.state.applications.map(app => {
+            return (
+                <AnimalApplication
+                    key={app.animal_id}
+                    animal_id={app.animal_id}
+                    org_id={app.org_id}
+                    user_id={app.user_id}
+                />
+            );
+        });
+
         return (
             <div>
                 <Link to="/org/applications/create">
