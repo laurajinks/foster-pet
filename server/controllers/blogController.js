@@ -22,5 +22,15 @@ module.exports = {
             .blog.get_member_posts(req.session.user.id)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+
+    updateBlog: (req, res) => {
+        console.log(req.body);
+        const { post_id, title, content } = req.body;
+        req.app
+            .get("db")
+            .blog.update_post(post_id, title, content)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

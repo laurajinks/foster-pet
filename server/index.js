@@ -49,7 +49,8 @@ const {
 const {
     writePost,
     getPosts,
-    getMemberPosts
+    getMemberPosts,
+    updateBlog
 } = require("./controllers/blogController");
 app.use(json());
 app.use(cors());
@@ -113,5 +114,6 @@ app.delete("/api/animals/:id", removeAnimal);
 app.post("/api/blog", writePost);
 app.post("/api/blog/org", getPosts);
 app.post("/api/blog/member", getMemberPosts);
+app.put("/api/blog/org", updateBlog);
 
 app.listen(port, console.log(`Listening on ${port}`));

@@ -1,5 +1,6 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import axios from "axios";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
@@ -17,6 +18,8 @@ import OrgAnimals from "./components/FosterAnimals/OrgAnimals";
 import FindGroups from "./components/FindGroups/FindGroups";
 import UserAnimals from "./components/FosterAnimals/UserAnimals";
 import UserNewsFeed from "./components/Blog/UserNewsFeed";
+
+//get session if available
 
 export default (
     <Switch>

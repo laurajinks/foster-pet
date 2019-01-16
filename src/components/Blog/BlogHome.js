@@ -8,11 +8,19 @@ export default class BlogHome extends Component {
         super();
 
         this.state = {
-            posts: []
+            posts: [],
+            allowEdit: true
         };
     }
 
     componentDidMount = () => {
+        axios
+            .post("/api/blog/org")
+            .then(response => this.setState({ posts: response.data }))
+            .catch(err => console.log(err));
+    };
+
+    reRender = () => {
         axios
             .post("/api/blog/org")
             .then(response => this.setState({ posts: response.data }))
@@ -24,10 +32,13 @@ export default class BlogHome extends Component {
             return (
                 <Post
                     key={post.post_id}
+                    post_id={post.post_id}
                     username={post.username}
                     img={post.img}
                     title={post.title}
                     content={post.content}
+                    allowEdit={this.state.allowEdit}
+                    reRender={this.reRender}
                 />
             );
         });
