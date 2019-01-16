@@ -25,7 +25,6 @@ module.exports = {
     },
 
     updateBlog: (req, res) => {
-        console.log(req.body);
         const { post_id, title, content } = req.body;
         req.app
             .get("db")

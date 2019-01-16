@@ -18,6 +18,7 @@ import OrgAnimals from "./components/FosterAnimals/OrgAnimals";
 import FindGroups from "./components/FindGroups/FindGroups";
 import UserAnimals from "./components/FosterAnimals/UserAnimals";
 import UserNewsFeed from "./components/Blog/UserNewsFeed";
+import CurrentFosters from "./components/Profiles/CurrentFosters";
 
 //get session if available
 
@@ -34,6 +35,7 @@ export default (
         <Route path="/org/blog" component={BlogHome} />
         <Route path="/org/animals/create" component={CreateNewAnimal} />
         <Route path="/org/animals" component={OrgAnimals} />
+        <Route path="/org/currentfosters" component={CurrentFosters} />
         <Route path="/user/animals" component={UserAnimals} />
         <Route path="/adopt" component={Adopt} />
         <Route path="/organizations" component={FindGroups} />

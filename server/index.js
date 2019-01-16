@@ -29,7 +29,9 @@ const {
 } = require("./controllers/applicationController");
 const {
     getMemberStatus,
-    addMembership
+    addMembership,
+    getCurrentFosters,
+    deleteFoster
 } = require("./controllers/memberController");
 const {
     searchAdoptable,
@@ -86,6 +88,8 @@ app.post("/auth/logout", logout);
 //MEMBERSHIP ENDPOINTS
 app.post("/api/memberstatus", getMemberStatus);
 app.post("/api/members", addMembership);
+app.post("/api/org/members", getCurrentFosters);
+app.delete("/api/org/members/:id", deleteFoster);
 
 //SEARCH ENDPOINTS
 app.get("/api/search/adoptable", searchAdoptable);

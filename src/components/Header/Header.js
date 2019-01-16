@@ -87,7 +87,7 @@ class Header extends Component {
                         <Link to="/org/animals">
                             <p>Animals</p>
                         </Link>
-                        <Link to="/org/fosters">
+                        <Link to="/org/currentfosters">
                             <p>Fosters</p>
                         </Link>
                     </>
