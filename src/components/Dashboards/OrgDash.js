@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import Header from "../Header/Header";
-// const url = "http://localhost:3001";
 
 class OrgDash extends Component {
     constructor(props) {
@@ -29,7 +27,6 @@ class OrgDash extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <h1>Hello, {this.state.username}</h1>
             </div>
         );

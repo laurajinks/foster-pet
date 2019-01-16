@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 import "./header.css";
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,14 +31,36 @@ export default class Header extends Component {
             });
     }
     logout = () => {
-        axios.post(`/auth/logout`).catch(err => console.log(err));
+        axios
+            .post(`/auth/logout`)
+            .then(() => this.props.history.push("/org/blog"))
+            .catch(err => console.log(err));
+    };
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.props.authReducer.id != prevProps)
+            axios
+                .get(`/auth/getcurrentuser`)
+                .then(response => {
+                    this.setState({
+                        username: response.data.username,
+                        displayName: response.data.displayName,
+                        id: response.data.id,
+                        img: response.data.img,
+                        isOrg: response.data.isOrg
+                    });
+                })
+
+                .catch(err => {
+                    console.log(err);
+                });
     };
 
     render() {
         return (
             <div className="headerContainer">
                 <h1>SiteLogo</h1>
-                {!this.state.isOrg && (
+                {this.state.isOrg === false && (
                     <>
                         <Link to="/user/newsfeed">
                             <p>Newsfeed</p>
@@ -53,7 +76,7 @@ export default class Header extends Component {
                         </Link>
                     </>
                 )}
-                {this.state.isOrg && (
+                {this.state.isOrg === true && (
                     <>
                         <Link to="/org/blog">
                             <p>Blog</p>
@@ -70,12 +93,20 @@ export default class Header extends Component {
                     </>
                 )}
 
-                <Link to="/">
-                    <button onClick={() => this.logout()}>Logout</button>
-                    <img src={this.state.img} alt="avatar" width="50" />
-                    <p>{this.state.username}</p>
-                </Link>
+                {this.state.id && (
+                    <>
+                        <button onClick={() => this.logout()}>Logout</button>
+                        <Link to="/">
+                            <img src={this.state.img} alt="avatar" width="50" />
+                            <p>{this.state.username}</p>
+                        </Link>
+                    </>
+                )}
             </div>
         );
     }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(withRouter(Header));

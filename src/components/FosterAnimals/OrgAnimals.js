@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Animal from "./Animal";
-import Header from "../Header/Header";
 
 class OrgAnimals extends Component {
     constructor() {
@@ -75,7 +74,6 @@ class OrgAnimals extends Component {
         });
         return (
             <div>
-                <Header />
                 <Link to="/org/animals/create">
                     <button>Create New Animal Listing</button>
                 </Link>

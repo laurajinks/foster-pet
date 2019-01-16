@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { storage } from "../../firebase";
 import ImageUpload from "../ImageUpload/ImageUpload";
-// const url = "http://localhost:3001";
 
 export default class CreateNewAnimal extends Component {
     constructor() {

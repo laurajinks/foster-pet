@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import Header from "../Header/Header";
 import Post from "./Post";
 
 export default class UserNewsFeed extends Component {
@@ -32,11 +30,6 @@ export default class UserNewsFeed extends Component {
                 />
             );
         });
-        return (
-            <div>
-                <Header />
-                {prevPosts}
-            </div>
-        );
+        return <div>{prevPosts}</div>;
     }
 }

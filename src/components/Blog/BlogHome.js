@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Header from "../Header/Header";
 import Post from "./Post";
 
 export default class BlogHome extends Component {
@@ -34,7 +33,6 @@ export default class BlogHome extends Component {
         });
         return (
             <div>
-                <Header />
                 <Link to="/org/blog/create">Create New Post</Link>
                 {prevPosts}
             </div>

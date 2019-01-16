@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import AppField from "./AppField";
-// const url = "http://localhost:3001";
 
 class CreateApplication extends Component {
     constructor() {

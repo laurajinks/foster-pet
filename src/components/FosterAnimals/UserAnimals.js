@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Header from "../Header/Header";
 import Animal from "./Animal";
 
 export default class UserAnimals extends Component {
@@ -62,23 +61,16 @@ export default class UserAnimals extends Component {
     };
 
     fosterAnimal = animal_id => {
-        axios
-            .put("/api/animals/fosterparent", { animal_id })
-            .then(
-                axios
-                    .post("/api/animals/user")
-                    .then(
-                        response =>
-                            this.setState({ currentAnimals: response.data }),
-                        axios
-                            .get("/api/animals/user/eligible")
-                            .then(response =>
-                                this.setState({
-                                    eligibleAnimals: response.data
-                                })
-                            )
-                    )
-            );
+        axios.put("/api/animals/fosterparent", { animal_id }).then(
+            axios.post("/api/animals/user").then(
+                response => this.setState({ currentAnimals: response.data }),
+                axios.get("/api/animals/user/eligible").then(response =>
+                    this.setState({
+                        eligibleAnimals: response.data
+                    })
+                )
+            )
+        );
     };
 
     render() {
@@ -123,7 +115,6 @@ export default class UserAnimals extends Component {
 
         return (
             <div>
-                <Header />
                 <h1>Current Foster Animals</h1>
                 {current}
                 {!this.state.showEligible && (

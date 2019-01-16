@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Header from "../Header/Header";
 import Organization from "./Organization";
 
 export default class FindGroups extends Component {
@@ -45,11 +44,6 @@ export default class FindGroups extends Component {
                 />
             );
         });
-        return (
-            <div>
-                <Header />
-                {list}
-            </div>
-        );
+        return <div>{list}</div>;
     }
 }

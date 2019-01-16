@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header";
 import Application from "./Application";
 
 export default class ApplicationDash extends Component {
@@ -67,7 +66,6 @@ export default class ApplicationDash extends Component {
         });
         return (
             <div>
-                <Header />
                 <Link to="/org/applications/create">
                     <button>Create Application</button>
                 </Link>
