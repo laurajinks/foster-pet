@@ -1,58 +1,94 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./animal.css";
 
-const Animal = props => {
-    return (
-        <div className="animalContainer">
-            <img src={props.img} alt="animal" />
-            <h2>Name: {props.name}</h2>
-            <p>Age: {props.age}</p>
-            <p>Type: {props.animalType}</p>
-            <p>Breed: {props.breed}</p>
-            <p>Sex: {props.sex}</p>
-            <p>Size: {props.size}</p>
-            <p>Description: {props.description}</p>
-            <Link to={`/profile/org/${props.org_id}`}>
-                <p>Organization: {props.org_display_name}</p>
-            </Link>
-            {props.user_username && (
-                <Link to={`/profile/user/${props.user_id}`}>
-                    <p>Foster: {props.user_username}</p>
+export default class Animal extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            showConfirmation: false
+        };
+    }
+
+    toggleConfirmation = () => {
+        this.setState({ showConfirmation: !this.state.showConfirmation });
+    };
+
+    render() {
+        return (
+            <div className="animalContainer">
+                <img src={this.props.img} alt="animal" />
+                <h2>Name: {this.props.name}</h2>
+                <p>Age: {this.props.age}</p>
+                <p>Type: {this.props.animalType}</p>
+                <p>Breed: {this.props.breed}</p>
+                <p>Sex: {this.props.sex}</p>
+                <p>Size: {this.props.size}</p>
+                <p>Description: {this.props.description}</p>
+                <Link to={`/profile/org/${this.props.org_id}`}>
+                    <p>Organization: {this.props.org_display_name}</p>
                 </Link>
-            )}
-            {props.org_accept === false && <p>Pending...</p>}
-            {props.removeAnimal && (
-                <button onClick={() => props.removeAnimal(props.id)}>X</button>
-            )}
-            {props.applyToFosterAnimal && (
-                <button
-                    onClick={() =>
-                        props.applyToFosterAnimal(props.id, props.org_id)
-                    }
-                >
-                    Foster This Animal
-                </button>
-            )}
-            {props.fosterAnimal && props.org_accept && (
-                <div>
-                    <p>Application Approved</p>
+                {this.props.user_username && (
+                    <Link to={`/profile/user/${this.props.user_id}`}>
+                        <p>Foster: {this.props.user_username}</p>
+                    </Link>
+                )}
+                {this.props.org_accept === false && <p>Pending...</p>}
+                {this.props.removeAnimal &&
+                    this.state.showConfirmation === false && (
+                        <button onClick={this.toggleConfirmation}>
+                            Delete Animal
+                        </button>
+                    )}
+                {this.props.removeAnimal &&
+                    this.state.showConfirmation === true && (
+                        <button
+                            onClick={() =>
+                                this.props.removeAnimal(this.props.id)
+                            }
+                        >
+                            Confirm Delete Animal
+                        </button>
+                    )}
+                {this.props.applyToFosterAnimal && (
                     <button
                         onClick={() =>
-                            props.fosterAnimal(props.id, props.user_id)
+                            this.props.applyToFosterAnimal(
+                                this.props.id,
+                                this.props.org_id
+                            )
                         }
                     >
-                        Accept Foster
+                        Foster This Animal
                     </button>
-                </div>
-            )}
-            {props.removeFosterParent && props.user_id !== null && (
-                <button onClick={() => props.removeFosterParent(props.id)}>
-                    Remove Foster Parent
-                </button>
-            )}
-        </div>
-    );
-};
-
-export default Animal;
+                )}
+                {this.props.fosterAnimal && this.props.org_accept && (
+                    <div>
+                        <p>Application Approved</p>
+                        <button
+                            onClick={() =>
+                                this.props.fosterAnimal(
+                                    this.props.id,
+                                    this.props.user_id
+                                )
+                            }
+                        >
+                            Accept Foster
+                        </button>
+                    </div>
+                )}
+                {this.props.removeFosterParent &&
+                    this.props.user_id !== null && (
+                        <button
+                            onClick={() =>
+                                this.props.removeFosterParent(this.props.id)
+                            }
+                        >
+                            Remove Foster Parent
+                        </button>
+                    )}
+            </div>
+        );
+    }
+}

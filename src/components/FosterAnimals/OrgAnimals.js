@@ -51,6 +51,8 @@ class OrgAnimals extends Component {
         );
     };
 
+    showConfirmation = () => {};
+
     render() {
         const animals = this.state.animalList.map(animal => {
             return (
