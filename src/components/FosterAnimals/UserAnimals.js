@@ -62,19 +62,22 @@ export default class UserAnimals extends Component {
         );
     };
 
-    fosterAnimal = animal_id => {
+    fosterAnimal = (animal_id, user_id) => {
+        console.log(user_id);
         axios.put("/api/animals/fosterparent", { animal_id }).then(
-            axios.delete(`/api/animal/application/${animal_id}`).then(
-                axios.post("/api/animals/user").then(
-                    response =>
-                        this.setState({ currentAnimals: response.data }),
-                    axios.get("/api/animals/user/eligible").then(response =>
-                        this.setState({
-                            eligibleAnimals: response.data
-                        })
+            axios
+                .post("/api/animal/application/delete", { animal_id, user_id })
+                .then(
+                    axios.post("/api/animals/user").then(
+                        response =>
+                            this.setState({ currentAnimals: response.data }),
+                        axios.get("/api/animals/user/eligible").then(response =>
+                            this.setState({
+                                eligibleAnimals: response.data
+                            })
+                        )
                     )
                 )
-            )
         );
     };
 

@@ -14,29 +14,27 @@ export default class AnimalApplication extends Component {
                 <img src={this.props.img} alt="foster avatar" width="100" />
                 <h2>{this.props.username}</h2>
                 {!this.props.org_accept && (
-                    <div>
-                        <button
-                            onClick={() =>
-                                this.props.acceptAnimalApp(
-                                    this.props.animal_id,
-                                    this.props.user_id
-                                )
-                            }
-                        >
-                            Accept
-                        </button>
-                        <button
-                            onClick={() =>
-                                this.props.denyAnimalApp(
-                                    this.props.animal_id,
-                                    this.props.user_id
-                                )
-                            }
-                        >
-                            Deny
-                        </button>
-                    </div>
+                    <button
+                        onClick={() =>
+                            this.props.acceptAnimalApp(
+                                this.props.animal_id,
+                                this.props.user_id
+                            )
+                        }
+                    >
+                        Accept
+                    </button>
                 )}
+                <button
+                    onClick={() =>
+                        this.props.denyAnimalApp(
+                            this.props.animal_id,
+                            this.props.user_id
+                        )
+                    }
+                >
+                    Deny
+                </button>
                 {this.props.org_accept && (
                     <div>
                         <h1>Pending Foster Acceptance</h1>

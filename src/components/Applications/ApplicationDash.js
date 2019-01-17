@@ -86,7 +86,7 @@ export default class ApplicationDash extends Component {
 
     denyAnimalApp = (animal_id, user_id) => {
         axios
-            .delete(`/api/animal/application/${animal_id}`, { user_id })
+            .post("/api/animal/application/delete", { animal_id, user_id })
             .then(() => this.setState({ refresh: true }));
     };
 

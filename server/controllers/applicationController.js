@@ -81,10 +81,11 @@ module.exports = {
             .catch(err => console.log(err));
     },
     removeAnimalApp: (req, res) => {
-        const { user_id } = req.body;
+        console.log(req.body);
+        const { animal_id, user_id } = req.body;
         req.app
             .get("db")
-            .application.remove_animal_application(req.params.id, user_id)
+            .application.remove_animal_application(animal_id, user_id)
             .then(response => {
                 res.status(200).json(response);
             })

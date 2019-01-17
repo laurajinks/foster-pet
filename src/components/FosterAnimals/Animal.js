@@ -37,7 +37,11 @@ const Animal = props => {
             {props.fosterAnimal && props.org_accept && (
                 <div>
                     <p>Application Approved</p>
-                    <button onClick={() => props.fosterAnimal(props.id)}>
+                    <button
+                        onClick={() =>
+                            props.fosterAnimal(props.id, props.user_id)
+                        }
+                    >
                         Accept Foster
                     </button>
                 </div>

@@ -110,7 +110,7 @@ app.post("/api/appstatus", getAppStatus);
 app.post("/api/animal/application", addAnimalApp);
 app.post("/api/animal/application/accept", acceptAnimal);
 app.put("/api/animal/application", animalAppPending);
-app.delete("/api/animal/application/:id", removeAnimalApp);
+app.post("/api/animal/application/delete", removeAnimalApp);
 app.post("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
 app.delete("/api/applications/:id", deleteApp);

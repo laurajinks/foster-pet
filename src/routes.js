@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+// import axios from "axios";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
@@ -19,7 +20,15 @@ import UserAnimals from "./components/FosterAnimals/UserAnimals";
 import UserNewsFeed from "./components/Blog/UserNewsFeed";
 import CurrentFosters from "./components/Profiles/CurrentFosters";
 
-//get session if available
+// const loggedIn = false;
+// const isOrg = false;
+
+// axios
+//     .get("/auth/getcurrentuser")
+//     .then(response => {
+//         (loggedIn = true), (isOrg = response.data.isOrg);
+//     })
+//     .catch(err => (loggedIn = false));
 
 export default (
     <Switch>
