@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import UserNewsFeed from "../Blog/UserNewsFeed";
+import UserAnimals from "../FosterAnimals/UserAnimals";
 
 class UserDash extends Component {
     constructor(props) {
@@ -8,7 +10,8 @@ class UserDash extends Component {
 
         this.state = {
             username: "",
-            id: ""
+            id: "",
+            currentAnimals: []
         };
 
         axios
@@ -25,10 +28,23 @@ class UserDash extends Component {
             });
     }
 
+    componentDidMount = () => {
+        axios
+            .post("/api/animals/user")
+            .then(response => this.setState({ currentAnimals: response.data }));
+    };
+
     render() {
         return (
             <div>
                 <h1>Hello, {this.state.username}</h1>
+                <div>
+                    <h1>Current Animals</h1>
+                    {animals}
+                </div>
+                <div>
+                    <UserNewsFeed />
+                </div>
             </div>
         );
     }

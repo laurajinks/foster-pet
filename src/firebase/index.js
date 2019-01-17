@@ -1,11 +1,12 @@
 import firebase from "firebase/app";
 import "firebase/storage";
 import dotenv from "dotenv";
+import FIREBASE_API_KEY from "./apiKey";
 dotenv.config();
 
 // Initialize Firebase
 var config = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: FIREBASE_API_KEY,
     authDomain: "animal-foster-project.firebaseapp.com",
     databaseURL: "https://animal-foster-project.firebaseio.com",
     projectId: "animal-foster-project",
