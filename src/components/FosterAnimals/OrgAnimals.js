@@ -44,12 +44,10 @@ class OrgAnimals extends Component {
 
     removeFosterParent = id => {
         axios.put("/api/animals/org/fosterparent", { id }).then(
-            axios.delete(`/api/animals/${id}`).then(
-                axios.get(`/api/animals/org`).then(response => {
-                    const results = response.data;
-                    this.setState({ animalList: results });
-                })
-            )
+            axios.get(`/api/animals/org`).then(response => {
+                const results = response.data;
+                this.setState({ animalList: results });
+            })
         );
     };
 

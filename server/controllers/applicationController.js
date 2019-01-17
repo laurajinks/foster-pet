@@ -56,16 +56,21 @@ module.exports = {
             .catch(err => console.log(err));
     },
     addAnimalApp: (req, res) => {
-        const { animal_id, user_id, org_id } = req.body;
+        const { animal_id, org_id } = req.body;
         req.app
             .get("db")
-            .application.submit_animal_application(animal_id, user_id, org_id)
+            .application.submit_animal_application(
+                animal_id,
+                req.session.user.id,
+                org_id
+            )
             .then(response => {
                 res.status(200).json(response);
             })
             .catch(err => console.log(err));
     },
     animalAppPending: (req, res) => {
+        console.log(req.body);
         const { animal_id, user_id } = req.body;
         req.app
             .get("db")
@@ -76,10 +81,10 @@ module.exports = {
             .catch(err => console.log(err));
     },
     removeAnimalApp: (req, res) => {
-        const { animal_id, user_id } = req.body;
+        const { user_id } = req.body;
         req.app
             .get("db")
-            .application.remove_animal_application(animal_id, user_id)
+            .application.remove_animal_application(req.params.id, user_id)
             .then(response => {
                 res.status(200).json(response);
             })
@@ -87,10 +92,20 @@ module.exports = {
     },
 
     acceptAnimal: (req, res) => {
-        const { animal_id, user_id } = req.body;
+        const { animal_id } = req.body;
         req.app
             .get("db")
-            .application.user_accept_animal(animal_id, user_id)
+            .application.user_accept_animal(animal_id, req.session.user.id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+
+    getOrgAnimalApps: (req, res) => {
+        req.app
+            .get("db")
+            .application.get_animal_applications(req.session.user.id)
             .then(response => {
                 res.status(200).json(response);
             })

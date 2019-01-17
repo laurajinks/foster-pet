@@ -10,7 +10,8 @@ export default class ApplicationDash extends Component {
         this.state = {
             id: "",
             applications: [],
-            animalApplications: []
+            animalApplications: [],
+            refresh: false
         };
         axios
             .get(`/auth/org`)
@@ -32,14 +33,33 @@ export default class ApplicationDash extends Component {
                 this.setState({ applications: response.data });
             })
             .catch(err => console.log(err));
+
+        axios
+            .get("/api/animal/applications")
+            .then(response => {
+                this.setState({
+                    animalApplications: response.data
+                });
+            })
+            .catch(err => console.log(err));
     };
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (this.state !== prevState) {
-            axios
+    componentDidUpdate = async (prevProps, prevState) => {
+        if (this.state.refresh) {
+            await axios
                 .post("/api/applications/org")
                 .then(response => {
                     this.setState({ applications: response.data });
+                })
+                .catch(err => console.log(err));
+
+            axios
+                .get("/api/animal/applications")
+                .then(response => {
+                    this.setState({
+                        animalApplications: response.data,
+                        refresh: false
+                    });
                 })
                 .catch(err => console.log(err));
         }
@@ -47,11 +67,27 @@ export default class ApplicationDash extends Component {
 
     acceptApp = async (org_id, user_id, id) => {
         await axios.post("/api/members", { org_id, user_id });
-        axios.delete(`/api/applications/${id}`);
+        axios
+            .delete(`/api/applications/${id}`)
+            .then(() => this.setState({ refresh: true }));
     };
 
     denyApp = async id => {
-        await axios.delete(`/api/applications/${id}`);
+        await axios
+            .delete(`/api/applications/${id}`)
+            .then(() => this.setState({ refresh: true }));
+    };
+
+    acceptAnimalApp = (animal_id, user_id) => {
+        axios
+            .put("/api/animal/application", { animal_id, user_id })
+            .then(() => this.setState({ refresh: true }));
+    };
+
+    denyAnimalApp = (animal_id, user_id) => {
+        axios
+            .delete(`/api/animal/application/${animal_id}`, { user_id })
+            .then(() => this.setState({ refresh: true }));
     };
 
     render() {
@@ -67,13 +103,20 @@ export default class ApplicationDash extends Component {
             );
         });
 
-        const animalApps = this.state.applications.map(app => {
+        const animalApps = this.state.animalApplications.map(app => {
             return (
                 <AnimalApplication
                     key={app.animal_id}
                     animal_id={app.animal_id}
+                    img={app.img}
+                    animal_img={app.animal_img}
                     org_id={app.org_id}
                     user_id={app.user_id}
+                    username={app.username}
+                    name={app.name}
+                    org_accept={app.org_accept}
+                    acceptAnimalApp={this.acceptAnimalApp}
+                    denyAnimalApp={this.denyAnimalApp}
                 />
             );
         });
@@ -83,9 +126,11 @@ export default class ApplicationDash extends Component {
                 <Link to="/org/applications/create">
                     <button>Create Application</button>
                 </Link>
-                {!this.state.applications[0] && (
-                    <h1>No Applications To Review</h1>
-                )}
+                {!this.state.applications[0] &&
+                    !this.state.animalApplications[0] && (
+                        <h1>No Applications To Review</h1>
+                    )}
+                {animalApps}
                 {apps}
             </div>
         );

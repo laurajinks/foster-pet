@@ -11,6 +11,7 @@ export default class UserAnimals extends Component {
             id: "",
             showEligible: false,
             currentAnimals: [],
+            pendingAnimals: [],
             eligibleAnimals: []
         };
 
@@ -34,6 +35,10 @@ export default class UserAnimals extends Component {
             .then(response => this.setState({ currentAnimals: response.data }));
 
         axios
+            .get("/api/animals/user/pending")
+            .then(response => this.setState({ pendingAnimals: response.data }));
+
+        axios
             .get("/api/animals/user/eligible")
             .then(response =>
                 this.setState({ eligibleAnimals: response.data })
@@ -44,14 +49,30 @@ export default class UserAnimals extends Component {
         this.setState({ showEligible: !this.state.showEligible });
     };
 
-    fosterAnimal = animal_id => {
-        axios.put("/api/animals/fosterparent", { animal_id }).then(
+    applyToFosterAnimal = (animal_id, org_id) => {
+        axios.post("/api/animal/application", { animal_id, org_id }).then(
             axios.post("/api/animals/user").then(
                 response => this.setState({ currentAnimals: response.data }),
                 axios.get("/api/animals/user/eligible").then(response =>
                     this.setState({
                         eligibleAnimals: response.data
                     })
+                )
+            )
+        );
+    };
+
+    fosterAnimal = animal_id => {
+        axios.put("/api/animals/fosterparent", { animal_id }).then(
+            axios.delete(`/api/animal/application/${animal_id}`).then(
+                axios.post("/api/animals/user").then(
+                    response =>
+                        this.setState({ currentAnimals: response.data }),
+                    axios.get("/api/animals/user/eligible").then(response =>
+                        this.setState({
+                            eligibleAnimals: response.data
+                        })
+                    )
                 )
             )
         );
@@ -78,6 +99,28 @@ export default class UserAnimals extends Component {
             );
         });
 
+        const pending = this.state.pendingAnimals.map(animal => {
+            return (
+                <Animal
+                    key={animal.animal_id}
+                    id={animal.animal_id}
+                    org_id={animal.org_id}
+                    org_display_name={animal.org_display_name}
+                    user_id={animal.user_id}
+                    name={animal.name}
+                    age={animal.age}
+                    animalType={animal.animal_type}
+                    breed={animal.breed}
+                    img={animal.animal_img}
+                    sex={animal.sex}
+                    size={animal.size}
+                    description={animal.description}
+                    org_accept={animal.org_accept}
+                    fosterAnimal={this.fosterAnimal}
+                />
+            );
+        });
+
         const eligible = this.state.eligibleAnimals.map(animal => {
             return (
                 <Animal
@@ -93,7 +136,7 @@ export default class UserAnimals extends Component {
                     sex={animal.sex}
                     size={animal.size}
                     description={animal.description}
-                    fosterAnimal={this.fosterAnimal}
+                    applyToFosterAnimal={this.applyToFosterAnimal}
                 />
             );
         });
@@ -102,6 +145,7 @@ export default class UserAnimals extends Component {
             <div>
                 <h1>Current Foster Animals</h1>
                 {current}
+                {pending}
                 {!this.state.showEligible && (
                     <button onClick={this.toggleFosterView}>
                         Show Animals In Your Organizations

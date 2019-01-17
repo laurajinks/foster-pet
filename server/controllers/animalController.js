@@ -82,5 +82,13 @@ module.exports = {
             .animal.remove_foster_parent(id)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+
+    getUserPending: (req, res) => {
+        req.app
+            .get("db")
+            .animal.get_user_pending(req.session.user.id)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

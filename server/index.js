@@ -29,7 +29,8 @@ const {
     addAnimalApp,
     animalAppPending,
     removeAnimalApp,
-    acceptAnimal
+    acceptAnimal,
+    getOrgAnimalApps
 } = require("./controllers/applicationController");
 const {
     getMemberStatus,
@@ -50,7 +51,8 @@ const {
     removeAnimal,
     getEligibleAnimals,
     addFosterParent,
-    removeFosterParent
+    removeFosterParent,
+    getUserPending
 } = require("./controllers/animalController");
 const {
     writePost,
@@ -112,11 +114,13 @@ app.delete("/api/animal/application/:id", removeAnimalApp);
 app.post("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
 app.delete("/api/applications/:id", deleteApp);
+app.get("/api/animal/applications", getOrgAnimalApps);
 
 //ANIMAL ENDPOINTS
 app.get("/api/animals/org", getOrgAnimals);
 app.post("/api/animals/user", getUserAnimals);
 app.get("/api/animals/user/eligible", getEligibleAnimals);
+app.get("/api/animals/user/pending", getUserPending);
 app.post("/api/animals", addAnimal);
 app.put("/api/animals/fosterparent", addFosterParent);
 app.put("/api/animals/org/fosterparent", removeFosterParent);
