@@ -54,5 +54,46 @@ module.exports = {
                 res.status(200).json(response);
             })
             .catch(err => console.log(err));
+    },
+    addAnimalApp: (req, res) => {
+        const { animal_id, user_id, org_id } = req.body;
+        req.app
+            .get("db")
+            .application.submit_animal_application(animal_id, user_id, org_id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+    animalAppPending: (req, res) => {
+        const { animal_id, user_id } = req.body;
+        req.app
+            .get("db")
+            .application.org_accept_animal_application(animal_id, user_id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+    removeAnimalApp: (req, res) => {
+        const { animal_id, user_id } = req.body;
+        req.app
+            .get("db")
+            .application.remove_animal_application(animal_id, user_id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+
+    acceptAnimal: (req, res) => {
+        const { animal_id, user_id } = req.body;
+        req.app
+            .get("db")
+            .application.user_accept_animal(animal_id, user_id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
     }
 };

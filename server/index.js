@@ -25,7 +25,11 @@ const {
     getApp,
     getApps,
     submitApp,
-    deleteApp
+    deleteApp,
+    addAnimalApp,
+    animalAppPending,
+    removeAnimalApp,
+    acceptAnimal
 } = require("./controllers/applicationController");
 const {
     getMemberStatus,
@@ -101,6 +105,10 @@ app.post("/api/org", getOrgData);
 app.get("/api/orgapp", getApp);
 app.post("/api/applications/org", getApps);
 app.post("/api/appstatus", getAppStatus);
+app.post("/api/animal/application", addAnimalApp);
+app.post("/api/animal/application/accept", acceptAnimal);
+app.put("/api/animal/application", animalAppPending);
+app.delete("/api/animal/application/:id", removeAnimalApp);
 app.post("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
 app.delete("/api/applications/:id", deleteApp);
