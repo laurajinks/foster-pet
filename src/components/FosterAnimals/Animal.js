@@ -43,13 +43,18 @@ export default class Animal extends Component {
                     )}
                 {this.props.removeAnimal &&
                     this.state.showConfirmation === true && (
-                        <button
-                            onClick={() =>
-                                this.props.removeAnimal(this.props.id)
-                            }
-                        >
-                            Confirm Delete Animal
-                        </button>
+                        <div>
+                            <button onClick={this.toggleConfirmation}>
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() =>
+                                    this.props.removeAnimal(this.props.id)
+                                }
+                            >
+                                Confirm Delete Animal
+                            </button>
+                        </div>
                     )}
                 {this.props.applyToFosterAnimal && (
                     <button
