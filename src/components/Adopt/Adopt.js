@@ -60,19 +60,21 @@ export default class Adopt extends Component {
                     </select>
                     <input type="submit" value="Submit" />
                 </form>
-                {this.state.results.map(result => (
-                    <AdoptableAnimal
-                        key={result.id}
-                        id={result.id}
-                        name={result.name}
-                        img={result.img}
-                        size={result.size}
-                        description={result.description}
-                        breed={result.breed}
-                        age={result.age}
-                        shelterId={result.shelterId}
-                    />
-                ))}
+                {!this.state.results[0] && <h1>No Animals To Display</h1>}
+                {this.state.results[0] &&
+                    this.state.results.map(result => (
+                        <AdoptableAnimal
+                            key={result.id}
+                            id={result.id}
+                            name={result.name}
+                            img={result.img}
+                            size={result.size}
+                            description={result.description}
+                            breed={result.breed}
+                            age={result.age}
+                            shelterId={result.shelterId}
+                        />
+                    ))}
             </div>
         );
     }

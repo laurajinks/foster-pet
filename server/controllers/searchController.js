@@ -20,7 +20,7 @@ module.exports = {
                     let animal = {
                         name: result.name.$t,
                         id: result.id.$t,
-                        img: result.media.photos,
+                        img: result.media.photos.photo[2].$t,
                         size: result.size.$t,
                         age: result.age.$t,
                         breed: result.breeds.breed.$t,
