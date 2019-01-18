@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Foster from "./Foster";
 
@@ -10,9 +11,11 @@ export default class CurrentFosters extends Component {
             currentFosters: []
         };
 
-        axios.get(`/auth/org`).catch(err => {
-            console.log(err);
-            this.props.history.push("/login");
+        axios.get(`/auth/org`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
+            });
         });
     }
 
@@ -38,6 +41,9 @@ export default class CurrentFosters extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const fosters = this.state.currentFosters.map(person => {
             return (
                 <Foster

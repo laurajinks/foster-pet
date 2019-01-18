@@ -15,12 +15,17 @@ class UserDash extends Component {
             currentAnimals: []
         };
 
-        axios.get(`/auth/user`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
+        axios
+            .get(`/auth/user`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => {
+                return this.props.history.push("/login");
             });
-        });
     }
 
     componentDidMount = () => {
@@ -30,9 +35,6 @@ class UserDash extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const animals = this.state.currentAnimals.map(animal => {
             return (
                 <AnimalSmall
@@ -50,13 +52,13 @@ class UserDash extends Component {
         return (
             <div>
                 <h1>Hello, {this.state.username}</h1>
-                <div>
+                {/* <div>
                     <h1>Current Animals</h1>
                     {animals}
                 </div>
                 <div>
                     <UserNewsFeed />
-                </div>
+                </div> */}
             </div>
         );
     }

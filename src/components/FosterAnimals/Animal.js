@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./animal.css";
 
 export default class Animal extends Component {
@@ -7,12 +8,53 @@ export default class Animal extends Component {
         super();
 
         this.state = {
-            showConfirmation: false
+            showConfirmation: false,
+            showEdit: false
         };
     }
 
     toggleConfirmation = () => {
         this.setState({ showConfirmation: !this.state.showConfirmation });
+    };
+
+    toggleEdit = () => {
+        this.setState({ showEdit: !this.state.showEdit });
+    };
+
+    submitEdit = event => {
+        event.preventDefault();
+        const {
+            name,
+            animalType,
+            age,
+            sex,
+            breed,
+            size,
+            description
+        } = this.state;
+        axios
+            .put(`/api/animals/${this.props.id}`, {
+                name,
+                animalType,
+                age,
+                sex,
+                breed,
+                size,
+                description
+            })
+            .then(response => {
+                this.setState({
+                    name: "",
+                    animalType: "",
+                    age: "",
+                    sex: "",
+                    breed: "",
+                    size: "",
+                    description: ""
+                });
+                this.props.history.push("/org/animals");
+            })
+            .catch(err => alert(err));
     };
 
     render() {
@@ -33,6 +75,82 @@ export default class Animal extends Component {
                     <Link to={`/profile/user/${this.props.user_id}`}>
                         <p>Foster: {this.props.user_username}</p>
                     </Link>
+                )}
+                {this.props.submitEdit && (
+                    <div>
+                        {!this.state.showEdit && (
+                            <button onClick={this.toggleEdit}>Edit</button>
+                        )}
+                        {this.state.showEdit && (
+                            <div>
+                                <button onClick={this.toggleEdit}>
+                                    Cancel
+                                </button>
+                                <form onSubmit={this.props.submitEdit}>
+                                    Name:
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    Animal Type:
+                                    <select
+                                        name="animalType"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="Cat">Cat</option>
+                                        <option value="Dog">Dog</option>
+                                    </select>
+                                    Age:
+                                    <select
+                                        name="age"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="Baby">Baby</option>
+                                        <option value="Young">Young</option>
+                                        <option value="Adult">Adult</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
+                                    Sex:
+                                    <select
+                                        name="sex"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                    </select>
+                                    Breed:
+                                    <input
+                                        type="text"
+                                        name="breed"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    Size:
+                                    <select
+                                        name="size"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="Extra Small">
+                                            Extra Small
+                                        </option>
+                                        <option value="Small">Small</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Large">Large</option>
+                                        <option value="Extra Large">
+                                            Extra Large
+                                        </option>
+                                    </select>
+                                    Description:
+                                    <input
+                                        type="text"
+                                        name="description"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="submit" value="Submit" />
+                                </form>
+                            </div>
+                        )}
+                    </div>
                 )}
                 {this.props.org_accept === false && <p>Pending Approval</p>}
                 {this.props.removeAnimal &&

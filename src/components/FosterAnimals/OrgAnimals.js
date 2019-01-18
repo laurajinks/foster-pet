@@ -12,12 +12,15 @@ class OrgAnimals extends Component {
             id: "",
             animalList: []
         };
-        axios.get(`/auth/org`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
-        });
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .then(err => this.props.history.push("/login"));
     }
 
     componentDidMount = () => {
@@ -45,12 +48,9 @@ class OrgAnimals extends Component {
         );
     };
 
-    showConfirmation = () => {};
+    submitEdit = () => {};
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const animals = this.state.animalList.map(animal => {
             return (
                 <Animal
@@ -70,6 +70,7 @@ class OrgAnimals extends Component {
                     description={animal.description}
                     removeAnimal={this.removeAnimal}
                     removeFosterParent={this.removeFosterParent}
+                    submitEdit={this.submitEdit}
                 />
             );
         });

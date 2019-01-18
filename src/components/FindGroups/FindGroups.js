@@ -10,12 +10,6 @@ export default class FindGroups extends Component {
             user_id: "",
             organizations: []
         };
-        axios.get(`/auth/user`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
-        });
     }
 
     componentDidMount = () => {
@@ -25,9 +19,17 @@ export default class FindGroups extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
+        axios
+            .get(`/auth/user`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => {
+                return this.props.history.push("/login");
+            });
         const list = this.state.organizations.map(org => {
             return (
                 <Organization

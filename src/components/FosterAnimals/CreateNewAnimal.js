@@ -19,12 +19,15 @@ export default class CreateNewAnimal extends Component {
             image: null,
             url: ""
         };
-        axios.get(`/auth/org`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
-        });
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => this.props.history.push("/login"));
     }
 
     handleInputChange = e => {
@@ -106,9 +109,6 @@ export default class CreateNewAnimal extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         return (
             <>
                 <form onSubmit={this.addAnimal}>

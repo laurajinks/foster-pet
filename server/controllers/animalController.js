@@ -90,5 +90,31 @@ module.exports = {
             .animal.get_user_pending(req.session.user.id)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+
+    updateAnimal: (req, res) => {
+        const {
+            name,
+            animalType,
+            age,
+            sex,
+            breed,
+            size,
+            description
+        } = req.body;
+        req.app
+            .get("db")
+            .animal.edit_animal(
+                req.params.id,
+                name,
+                animalType,
+                age,
+                sex,
+                breed,
+                size,
+                description
+            )
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

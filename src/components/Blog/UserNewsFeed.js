@@ -10,13 +10,17 @@ export default class UserNewsFeed extends Component {
         this.state = {
             posts: []
         };
-
-        axios.get(`/auth/user`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
+        axios
+            .get(`/auth/user`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => {
+                return this.props.history.push("/login");
             });
-        });
     }
 
     componentDidMount = () => {
@@ -27,9 +31,6 @@ export default class UserNewsFeed extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const prevPosts = this.state.posts.map(post => {
             return (
                 <Post

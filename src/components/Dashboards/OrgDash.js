@@ -13,12 +13,15 @@ class OrgDash extends Component {
             animalList: [],
             appCount: 0
         };
-        axios.get(`/auth/org`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
-        });
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => this.props.history.push("/login"));
     }
 
     componentDidMount = () => {
@@ -30,20 +33,17 @@ class OrgDash extends Component {
         axios.get("/api/applications/org/count").then(response => {
             console.log(response.data);
             const results = response.data[0].count;
-            this.setState({ appCount: (this.state.appCount += +results) });
+            this.setState({ appCount: this.state.appCount + +results });
         });
 
         axios.get("/api/applications/org/animalcount").then(response => {
             console.log(response.data);
             const results = response.data[0].count;
-            this.setState({ appCount: (this.state.appCount += +results) });
+            this.setState({ appCount: this.state.appCount + +results });
         });
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         return (
             <div>
                 <div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Post from "./Post";
 
@@ -11,12 +11,15 @@ export default class BlogHome extends Component {
             posts: [],
             allowEdit: true
         };
-        axios.get(`/auth/org`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
-        });
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => this.props.history.push("/login"));
     }
 
     componentDidMount = () => {
@@ -34,9 +37,6 @@ export default class BlogHome extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const prevPosts = this.state.posts.map(post => {
             return (
                 <Post

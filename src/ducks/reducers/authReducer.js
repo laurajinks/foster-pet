@@ -1,16 +1,20 @@
 import axios from "axios";
 
 const initialState = {
-    user: {}
+    username: "",
+    id: "",
+    isOrg: false
 };
 
 const UPDATE_USER = "UPDATE_USER";
 const LOGOUT = "LOGOUT";
 
-export const updateUser = user => {
+export const updateUser = (username, id, isOrg) => {
     return {
         type: UPDATE_USER,
-        payload: user
+        payload: username,
+        id,
+        isOrg
     };
 };
 

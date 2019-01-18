@@ -16,12 +16,17 @@ export default class UserAnimals extends Component {
             eligibleAnimals: []
         };
 
-        axios.get(`/auth/user`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
+        axios
+            .get(`/auth/user`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => {
+                return this.props.history.push("/login");
             });
-        });
     }
 
     componentDidMount = () => {
@@ -76,9 +81,6 @@ export default class UserAnimals extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const current = this.state.currentAnimals.map(animal => {
             return (
                 <Animal
