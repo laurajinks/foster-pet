@@ -40,6 +40,7 @@ class UserDash extends Component {
             return (
                 <AnimalSmall
                     key={animal.animal_id}
+                    img={animal.animal_img}
                     id={animal.animal_id}
                     org_id={animal.org_id}
                     org_display_name={animal.org_display_name}

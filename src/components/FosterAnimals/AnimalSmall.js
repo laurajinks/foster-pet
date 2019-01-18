@@ -10,12 +10,6 @@ const AnimalSmall = props => {
             <Link to={`/profile/org/${props.org_id}`}>
                 <p>Organization: {props.org_display_name}</p>
             </Link>
-            {props.user_username && (
-                <Link to={`/profile/user/${props.user_id}`}>
-                    <p>Foster: {props.user_username}</p>
-                </Link>
-            )}
-            {this.props.org_accept === false && <p>Pending Approval</p>}
         </div>
     );
 };
