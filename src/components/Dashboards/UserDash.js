@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import axios from "axios";
 import UserNewsFeed from "../Blog/UserNewsFeed";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";
@@ -15,18 +15,12 @@ class UserDash extends Component {
             currentAnimals: []
         };
 
-        axios
-            .get(`/auth/user`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/user`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -36,6 +30,9 @@ class UserDash extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const animals = this.state.currentAnimals.map(animal => {
             return (
                 <AnimalSmall

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Organization from "./Organization";
 
@@ -9,17 +10,12 @@ export default class FindGroups extends Component {
             user_id: "",
             organizations: []
         };
-        axios
-            .get(`/auth/user`)
-            .then(response => {
-                this.setState({
-                    user_id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/user`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -29,6 +25,9 @@ export default class FindGroups extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const list = this.state.organizations.map(org => {
             return (
                 <Organization

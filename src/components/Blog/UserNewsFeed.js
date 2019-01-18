@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Post from "./Post";
 
@@ -10,9 +11,11 @@ export default class UserNewsFeed extends Component {
             posts: []
         };
 
-        axios.get(`/auth/user`).catch(err => {
-            console.log(err);
-            this.props.history.push("/login");
+        axios.get(`/auth/user`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
+            });
         });
     }
 
@@ -24,6 +27,9 @@ export default class UserNewsFeed extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const prevPosts = this.state.posts.map(post => {
             return (
                 <Post

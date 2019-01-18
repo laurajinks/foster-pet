@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Animal from "./Animal";
 
@@ -15,18 +16,12 @@ export default class UserAnimals extends Component {
             eligibleAnimals: []
         };
 
-        axios
-            .get(`/auth/user`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/user`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -63,7 +58,6 @@ export default class UserAnimals extends Component {
     };
 
     fosterAnimal = (animal_id, user_id) => {
-        console.log(user_id);
         axios.put("/api/animals/fosterparent", { animal_id }).then(
             axios
                 .post("/api/animal/application/delete", { animal_id, user_id })
@@ -82,6 +76,9 @@ export default class UserAnimals extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const current = this.state.currentAnimals.map(animal => {
             return (
                 <Animal

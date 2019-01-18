@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 export default class CreatePost extends Component {
@@ -9,9 +10,11 @@ export default class CreatePost extends Component {
             title: "",
             content: ""
         };
-        axios.get(`/auth/org`).catch(err => {
-            console.log(err);
-            this.props.history.push("/login");
+        axios.get(`/auth/org`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
+            });
         });
     }
 
@@ -35,6 +38,9 @@ export default class CreatePost extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div>
                 <form onSubmit={this.submitPost}>

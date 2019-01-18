@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 
@@ -13,18 +13,12 @@ class OrgDash extends Component {
             animalList: [],
             appCount: 0
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/org`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -47,6 +41,9 @@ class OrgDash extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         return (
             <div>
                 <div>

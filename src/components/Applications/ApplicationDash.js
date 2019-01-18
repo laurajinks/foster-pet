@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Application from "./Application";
 import AnimalApplication from "./AnimalApplication";
 
@@ -13,17 +13,12 @@ export default class ApplicationDash extends Component {
             animalApplications: [],
             refresh: false
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
-                this.setState({
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/org`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -91,6 +86,9 @@ export default class ApplicationDash extends Component {
     };
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const apps = this.state.applications.map(app => {
             return (
                 <Application

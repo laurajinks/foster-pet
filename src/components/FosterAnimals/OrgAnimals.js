@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Animal from "./Animal";
 
@@ -12,18 +12,12 @@ class OrgAnimals extends Component {
             id: "",
             animalList: []
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
+        axios.get(`/auth/org`).then(response => {
+            this.setState({
+                username: response.data.username,
+                id: response.data.id
             });
+        });
     }
 
     componentDidMount = () => {
@@ -54,6 +48,9 @@ class OrgAnimals extends Component {
     showConfirmation = () => {};
 
     render() {
+        if (!this.state.username) {
+            return <Redirect to="/login" />;
+        }
         const animals = this.state.animalList.map(animal => {
             return (
                 <Animal
