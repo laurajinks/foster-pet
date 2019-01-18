@@ -68,17 +68,20 @@ export default class Animal extends Component {
                 description
             })
             .then(response => {
-                this.setState({
-                    name: "",
-                    animalType: "Cat",
-                    age: "",
-                    sex: "",
-                    breed: "",
-                    size: "",
-                    description: "",
-                    showEdit: false,
-                    reload: true
-                });
+                this.setState(
+                    {
+                        name: "",
+                        animalType: "Cat",
+                        age: "",
+                        sex: "",
+                        breed: "",
+                        size: "",
+                        description: "",
+                        showEdit: false,
+                        reload: true
+                    },
+                    this.props.toggleRefresh()
+                );
             })
             .catch(err => alert(err));
     };

@@ -11,7 +11,8 @@ class OrgAnimals extends Component {
             username: "",
             id: "",
             animalList: [],
-            allowEdit: true
+            allowEdit: true,
+            refresh: false
         };
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {
@@ -32,6 +33,15 @@ class OrgAnimals extends Component {
         });
     };
 
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            axios.get(`/api/animals/org`).then(response => {
+                const results = response.data;
+                this.setState({ animalList: results, refresh: false });
+            });
+        }
+    };
+
     removeAnimal = id => {
         axios.delete(`/api/animals/${id}`).then(
             axios.get(`/api/animals/org`).then(response => {
@@ -39,6 +49,10 @@ class OrgAnimals extends Component {
                 this.setState({ animalList: results });
             })
         );
+    };
+
+    toggleRefresh = () => {
+        this.setState({ refresh: !this.state.refresh });
     };
 
     removeFosterParent = id => {
@@ -71,6 +85,7 @@ class OrgAnimals extends Component {
                     removeAnimal={this.removeAnimal}
                     removeFosterParent={this.removeFosterParent}
                     allowEdit={this.state.allowEdit}
+                    toggleRefresh={this.toggleRefresh}
                 />
             );
         });
