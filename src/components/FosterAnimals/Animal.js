@@ -11,7 +11,7 @@ export default class Animal extends Component {
             showConfirmation: false,
             showEdit: false,
             name: "",
-            animalType: "",
+            animalType: "Cat",
             age: "",
             sex: "",
             breed: "",

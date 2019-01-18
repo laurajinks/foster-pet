@@ -17,7 +17,6 @@ export default class UserProfile extends Component {
     componentDidMount = () => {
         const { id } = this.props.match.params;
         axios.post("/api/user", { id }).then(response => {
-            console.log(response.data);
             const {
                 email,
                 img,

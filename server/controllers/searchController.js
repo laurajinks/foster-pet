@@ -44,7 +44,6 @@ module.exports = {
     },
 
     getUser: (req, res) => {
-        // console.log(req.body);
         req.app
             .get("db")
             .search.get_user(req.body.id)
@@ -53,7 +52,6 @@ module.exports = {
     },
 
     getOrgData: (req, res) => {
-        console.log(req.body);
         req.app
             .get("db")
             .search.get_org_data(req.body.id)

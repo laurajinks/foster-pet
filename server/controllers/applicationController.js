@@ -70,7 +70,6 @@ module.exports = {
             .catch(err => console.log(err));
     },
     animalAppPending: (req, res) => {
-        console.log(req.body);
         const { animal_id, user_id } = req.body;
         req.app
             .get("db")
@@ -81,7 +80,6 @@ module.exports = {
             .catch(err => console.log(err));
     },
     removeAnimalApp: (req, res) => {
-        console.log(req.body);
         const { animal_id, user_id } = req.body;
         req.app
             .get("db")
