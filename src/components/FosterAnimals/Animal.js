@@ -9,9 +9,29 @@ export default class Animal extends Component {
 
         this.state = {
             showConfirmation: false,
-            showEdit: false
+            showEdit: false,
+            name: "",
+            animalType: "",
+            age: "",
+            sex: "",
+            breed: "",
+            size: "",
+            description: "",
+            roload: false
         };
     }
+
+    componentDidMount = () => {
+        this.setState({
+            name: this.props.name,
+            animalType: this.props.animalType,
+            age: this.props.age,
+            sex: this.props.sex,
+            breed: this.props.breed,
+            size: this.props.size,
+            descrption: this.props.description
+        });
+    };
 
     toggleConfirmation = () => {
         this.setState({ showConfirmation: !this.state.showConfirmation });
@@ -19,6 +39,10 @@ export default class Animal extends Component {
 
     toggleEdit = () => {
         this.setState({ showEdit: !this.state.showEdit });
+    };
+
+    handleInputChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
     };
 
     submitEdit = event => {
@@ -32,8 +56,10 @@ export default class Animal extends Component {
             size,
             description
         } = this.state;
+        const { id } = this.props;
         axios
-            .put(`/api/animals/${this.props.id}`, {
+            .put(`/api/animals`, {
+                id,
                 name,
                 animalType,
                 age,
@@ -45,16 +71,23 @@ export default class Animal extends Component {
             .then(response => {
                 this.setState({
                     name: "",
-                    animalType: "",
+                    animalType: "Cat",
                     age: "",
                     sex: "",
                     breed: "",
                     size: "",
-                    description: ""
+                    description: "",
+                    showEdit: false,
+                    reload: true
                 });
-                this.props.history.push("/org/animals");
             })
             .catch(err => alert(err));
+    };
+
+    componentDidUpdate = prevState => {
+        if (this.state.reload === true) {
+            this.setState({ reload: false });
+        }
     };
 
     render() {
@@ -76,7 +109,7 @@ export default class Animal extends Component {
                         <p>Foster: {this.props.user_username}</p>
                     </Link>
                 )}
-                {this.props.submitEdit && (
+                {this.props.allowEdit && (
                     <div>
                         {!this.state.showEdit && (
                             <button onClick={this.toggleEdit}>Edit</button>
@@ -86,11 +119,12 @@ export default class Animal extends Component {
                                 <button onClick={this.toggleEdit}>
                                     Cancel
                                 </button>
-                                <form onSubmit={this.props.submitEdit}>
+                                <form onSubmit={this.submitEdit}>
                                     Name:
                                     <input
                                         type="text"
                                         name="name"
+                                        defaultValue={this.props.name}
                                         onChange={this.handleInputChange}
                                     />
                                     Animal Type:
@@ -123,6 +157,7 @@ export default class Animal extends Component {
                                     <input
                                         type="text"
                                         name="breed"
+                                        defaultValue={this.props.breed}
                                         onChange={this.handleInputChange}
                                     />
                                     Size:
@@ -144,6 +179,7 @@ export default class Animal extends Component {
                                     <input
                                         type="text"
                                         name="description"
+                                        defaultValue={this.props.description}
                                         onChange={this.handleInputChange}
                                     />
                                     <input type="submit" value="Submit" />

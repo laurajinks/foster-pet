@@ -10,7 +10,8 @@ class OrgAnimals extends Component {
         this.state = {
             username: "",
             id: "",
-            animalList: []
+            animalList: [],
+            allowEdit: true
         };
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {
@@ -49,8 +50,6 @@ class OrgAnimals extends Component {
         );
     };
 
-    submitEdit = () => {};
-
     render() {
         const animals = this.state.animalList.map(animal => {
             return (
@@ -71,7 +70,7 @@ class OrgAnimals extends Component {
                     description={animal.description}
                     removeAnimal={this.removeAnimal}
                     removeFosterParent={this.removeFosterParent}
-                    submitEdit={this.submitEdit}
+                    allowEdit={this.state.allowEdit}
                 />
             );
         });

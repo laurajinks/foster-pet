@@ -93,7 +93,9 @@ module.exports = {
     },
 
     updateAnimal: (req, res) => {
+        console.log(req.body);
         const {
+            id,
             name,
             animalType,
             age,
@@ -105,7 +107,7 @@ module.exports = {
         req.app
             .get("db")
             .animal.edit_animal(
-                req.params.id,
+                id,
                 name,
                 animalType,
                 age,

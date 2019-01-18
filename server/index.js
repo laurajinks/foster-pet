@@ -127,7 +127,7 @@ app.post("/api/animals/user", getUserAnimals);
 app.get("/api/animals/user/eligible", getEligibleAnimals);
 app.get("/api/animals/user/pending", getUserPending);
 app.post("/api/animals", addAnimal);
-app.put("/api/animals/:id", updateAnimal);
+app.put("/api/animals", updateAnimal);
 app.put("/api/animals/fosterparent", addFosterParent);
 app.put("/api/animals/org/fosterparent", removeFosterParent);
 app.delete("/api/animals/:id", removeAnimal);
