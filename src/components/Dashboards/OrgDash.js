@@ -13,15 +13,17 @@ class OrgDash extends Component {
             animalList: [],
             appCount: 0
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
+
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .catch(err => this.props.history.push("/login"));
+            }
+        });
     }
 
     componentDidMount = () => {
@@ -37,7 +39,6 @@ class OrgDash extends Component {
         });
 
         axios.get("/api/applications/org/animalcount").then(response => {
-            console.log(response.data);
             const results = response.data[0].count;
             this.setState({ appCount: this.state.appCount + +results });
         });

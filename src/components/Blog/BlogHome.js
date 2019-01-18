@@ -11,15 +11,16 @@ export default class BlogHome extends Component {
             posts: [],
             allowEdit: true
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .catch(err => this.props.history.push("/login"));
+            }
+        });
     }
 
     componentDidMount = () => {

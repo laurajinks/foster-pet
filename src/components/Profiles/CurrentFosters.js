@@ -11,11 +11,15 @@ export default class CurrentFosters extends Component {
             currentFosters: []
         };
 
-        axios.get(`/auth/org`).then(response => {
-            this.setState({
-                username: response.data.username,
-                id: response.data.id
-            });
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            }
         });
     }
 
@@ -41,9 +45,6 @@ export default class CurrentFosters extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const fosters = this.state.currentFosters.map(person => {
             return (
                 <Foster

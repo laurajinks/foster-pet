@@ -14,18 +14,16 @@ class UserDash extends Component {
             id: "",
             currentAnimals: []
         };
-
-        axios
-            .get(`/auth/user`)
-            .then(response => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === true || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .catch(err => {
-                return this.props.history.push("/login");
-            });
+            }
+        });
     }
 
     componentDidMount = () => {
@@ -52,13 +50,13 @@ class UserDash extends Component {
         return (
             <div>
                 <h1>Hello, {this.state.username}</h1>
-                {/* <div>
+                <div>
                     <h1>Current Animals</h1>
                     {animals}
                 </div>
                 <div>
                     <UserNewsFeed />
-                </div> */}
+                </div>
             </div>
         );
     }

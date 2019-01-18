@@ -11,11 +11,16 @@ export default class UserNewsFeed extends Component {
             posts: []
         };
         axios
-            .get(`/auth/user`)
+            .get("/auth/getcurrentuser")
             .then(response => {
                 this.setState({
                     username: response.data.username,
-                    id: response.data.id
+                    id: response.data.id,
+                    isOrg: response.data.isOrg
+                }).then(() => {
+                    if (this.state.isOrg) {
+                        return this.props.history.push("/login");
+                    }
                 });
             })
             .catch(err => {

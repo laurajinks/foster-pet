@@ -12,15 +12,16 @@ class OrgAnimals extends Component {
             id: "",
             animalList: []
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .then(err => this.props.history.push("/login"));
+            }
+        });
     }
 
     componentDidMount = () => {

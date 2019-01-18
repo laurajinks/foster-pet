@@ -30,7 +30,7 @@ module.exports = {
                     img: user.img,
                     email: user.email,
                     displayName: user.user_display_name,
-                    isOrg: user.isOrg
+                    isOrg: false
                 };
                 res.status(201).json(req.session.user);
             })
@@ -62,7 +62,7 @@ module.exports = {
                     displayName: user.org_display_name,
                     zipcode: user.zipcode,
                     img: user.img,
-                    isOrg: user.isOrg
+                    isOrg: true
                 };
                 res.status(201).json(req.session.user);
             });
@@ -95,7 +95,7 @@ module.exports = {
                                 img: user.img,
                                 email: user.email,
                                 displayName: user.user_display_name,
-                                isOrg: user.isOrg
+                                isOrg: false
                             };
                             res.status(200).json(req.session.user);
                         }
@@ -131,7 +131,7 @@ module.exports = {
                                 displayName: user.org_display_name,
                                 zipcode: user.zipcode,
                                 img: user.img,
-                                isOrg: user.isOrg
+                                isOrg: true
                             };
                             res.status(200).json(req.session.user);
                         }

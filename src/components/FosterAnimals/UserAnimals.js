@@ -16,17 +16,16 @@ export default class UserAnimals extends Component {
             eligibleAnimals: []
         };
 
-        axios
-            .get(`/auth/user`)
-            .then(response => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === true || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .catch(err => {
-                return this.props.history.push("/login");
-            });
+            }
+        });
     }
 
     componentDidMount = () => {
