@@ -93,7 +93,6 @@ module.exports = {
     },
 
     updateAnimal: (req, res) => {
-        console.log(req.body);
         const {
             id,
             name,

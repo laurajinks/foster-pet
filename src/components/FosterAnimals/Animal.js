@@ -16,8 +16,7 @@ export default class Animal extends Component {
             sex: "",
             breed: "",
             size: "",
-            description: "",
-            roload: false
+            description: ""
         };
     }
 
@@ -29,7 +28,7 @@ export default class Animal extends Component {
             sex: this.props.sex,
             breed: this.props.breed,
             size: this.props.size,
-            descrption: this.props.description
+            description: this.props.description
         });
     };
 
@@ -82,12 +81,6 @@ export default class Animal extends Component {
                 });
             })
             .catch(err => alert(err));
-    };
-
-    componentDidUpdate = prevState => {
-        if (this.state.reload === true) {
-            this.setState({ reload: false });
-        }
     };
 
     render() {
