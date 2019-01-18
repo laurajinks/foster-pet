@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import UserNewsFeed from "../Blog/UserNewsFeed";
-import Animal from "../FosterAnimals/Animal";
+import AnimalSmall from "../FosterAnimals/AnimalSmall";
 
 class UserDash extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class UserDash extends Component {
     render() {
         const animals = this.state.currentAnimals.map(animal => {
             return (
-                <Animal
+                <AnimalSmall
                     key={animal.animal_id}
                     id={animal.animal_id}
                     org_id={animal.org_id}
@@ -45,12 +46,6 @@ class UserDash extends Component {
                     user_id={animal.user_id}
                     name={animal.name}
                     age={animal.age}
-                    animalType={animal.animal_type}
-                    breed={animal.breed}
-                    img={animal.animal_img}
-                    sex={animal.sex}
-                    size={animal.size}
-                    description={animal.description}
                 />
             );
         });
@@ -78,4 +73,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(UserDash);
+export default connect(mapStateToProps)(withRouter(UserDash));

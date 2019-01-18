@@ -13,18 +13,10 @@ class CreateApplication extends Component {
             application: []
         };
 
-        axios
-            .get(`/auth/org`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.props.history.push("/login");
-            });
+        axios.get(`/auth/org`).catch(err => {
+            console.log(err);
+            this.props.history.push("/login");
+        });
     }
 
     handleInputChange = e => {

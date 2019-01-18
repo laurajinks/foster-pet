@@ -34,7 +34,7 @@ export default class Animal extends Component {
                         <p>Foster: {this.props.user_username}</p>
                     </Link>
                 )}
-                {this.props.org_accept === false && <p>Pending...</p>}
+                {this.props.org_accept === false && <p>Pending Approval</p>}
                 {this.props.removeAnimal &&
                     this.state.showConfirmation === false && (
                         <button onClick={this.toggleConfirmation}>

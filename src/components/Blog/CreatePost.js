@@ -9,6 +9,10 @@ export default class CreatePost extends Component {
             title: "",
             content: ""
         };
+        axios.get(`/auth/org`).catch(err => {
+            console.log(err);
+            this.props.history.push("/login");
+        });
     }
 
     handleInputChange = e => {

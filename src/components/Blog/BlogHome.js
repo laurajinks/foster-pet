@@ -11,6 +11,10 @@ export default class BlogHome extends Component {
             posts: [],
             allowEdit: true
         };
+        axios.get(`/auth/org`).catch(err => {
+            console.log(err);
+            this.props.history.push("/login");
+        });
     }
 
     componentDidMount = () => {

@@ -111,5 +111,25 @@ module.exports = {
                 res.status(200).json(response);
             })
             .catch(err => console.log(err));
+    },
+
+    getAppCount: (req, res) => {
+        req.app
+            .get("db")
+            .application.get_application_count(req.session.user_id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+    },
+
+    getAnimalAppCount: (req, res) => {
+        req.app
+            .get("db")
+            .application.get_animal_application_count(req.session.user.id)
+            .then(response => {
+                res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
     }
 };

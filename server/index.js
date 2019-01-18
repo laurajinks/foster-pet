@@ -30,7 +30,9 @@ const {
     animalAppPending,
     removeAnimalApp,
     acceptAnimal,
-    getOrgAnimalApps
+    getOrgAnimalApps,
+    getAppCount,
+    getAnimalAppCount
 } = require("./controllers/applicationController");
 const {
     getMemberStatus,
@@ -105,6 +107,8 @@ app.post("/api/org", getOrgData);
 
 //APPLICATION ENDPOINTS
 app.get("/api/orgapp", getApp);
+app.get("/api/applications/org/count", getAppCount);
+app.get("/api/applications/org/animalcount", getAnimalAppCount);
 app.post("/api/applications/org", getApps);
 app.post("/api/appstatus", getAppStatus);
 app.post("/api/animal/application", addAnimalApp);

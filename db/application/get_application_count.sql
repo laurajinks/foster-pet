@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM application WHERE org_id = $1

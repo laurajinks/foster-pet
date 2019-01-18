@@ -9,6 +9,11 @@ export default class CurrentFosters extends Component {
         this.state = {
             currentFosters: []
         };
+
+        axios.get(`/auth/org`).catch(err => {
+            console.log(err);
+            this.props.history.push("/login");
+        });
     }
 
     componentDidMount = () => {

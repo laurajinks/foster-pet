@@ -9,6 +9,11 @@ export default class UserNewsFeed extends Component {
         this.state = {
             posts: []
         };
+
+        axios.get(`/auth/user`).catch(err => {
+            console.log(err);
+            this.props.history.push("/login");
+        });
     }
 
     componentDidMount = () => {

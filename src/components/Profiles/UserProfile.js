@@ -9,7 +9,8 @@ export default class UserProfile extends Component {
             img: "",
             displayName: "",
             user_id: "",
-            username: ""
+            username: "",
+            displayEdits: false
         };
     }
 
