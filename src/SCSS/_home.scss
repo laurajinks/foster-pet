@@ -38,6 +38,7 @@ $buttonBackground: rgba(255, 255, 255, 0.2);
         background: rgba(255, 255, 255, 0.15);
         width: 30vw;
         height: 50vh;
+        animation: fadeIn 1s;
 
         button {
             font-size: 20px;
@@ -47,15 +48,18 @@ $buttonBackground: rgba(255, 255, 255, 0.2);
     h1 {
         font-size: 60px;
         margin: 20px auto;
+        animation: fadeIn 2s;
     }
 
     h3 {
         font-size: 40px;
         margin: 20px auto;
+        animation: fadeIn 3s;
     }
 
     .loginSignUpBtns {
         display: flex;
+        animation: fadeIn 4s;
     }
 
     button {
@@ -103,5 +107,14 @@ $buttonBackground: rgba(255, 255, 255, 0.2);
                 font-size: 24px;
             }
         }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

@@ -186,6 +186,8 @@ table {
   background: rgba(255, 255, 255, 0.15);
   width: 30vw;
   height: 50vh;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
 }
 
 .homepage .loginSignUp button {
@@ -195,17 +197,23 @@ table {
 .homepage h1 {
   font-size: 60px;
   margin: 20px auto;
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
 }
 
 .homepage h3 {
   font-size: 40px;
   margin: 20px auto;
+  -webkit-animation: fadeIn 3s;
+          animation: fadeIn 3s;
 }
 
 .homepage .loginSignUpBtns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-animation: fadeIn 4s;
+          animation: fadeIn 4s;
 }
 
 .homepage button {
@@ -256,6 +264,24 @@ table {
   }
   .homepage .loginSignUpContainer h3 {
     font-size: 24px;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
