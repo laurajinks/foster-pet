@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import "./header.css";
 
 class Header extends Component {
     constructor(props) {

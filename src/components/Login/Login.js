@@ -62,45 +62,60 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.showFoster}>Foster Sign In</button>
-                <button onClick={this.showOrganization}>
-                    Organization Log In
-                </button>
-                {this.state.fosterLogIn && (
-                    <form onSubmit={this.signInFoster}>
-                        Foster Username{" "}
-                        <input
-                            type="text"
-                            name="username"
-                            onChange={this.handleInputChange}
-                        />
-                        Password{" "}
-                        <input
-                            type="text"
-                            name="password"
-                            onChange={this.handleInputChange}
-                        />
-                        <input type="submit" value="Submit" />
-                    </form>
-                )}
-                {!this.state.fosterLogIn && (
-                    <form onSubmit={this.signInOrg}>
-                        Organization Username
-                        <input
-                            type="text"
-                            name="username"
-                            onChange={this.handleInputChange}
-                        />
-                        Password
-                        <input
-                            type="text"
-                            name="password"
-                            onChange={this.handleInputChange}
-                        />
-                        <input type="submit" value="Submit" />
-                    </form>
-                )}
+            <div className="homepage">
+                <div className="loginSignUpContainer">
+                    <div className="loginSignUp">
+                        <div className="loginSignUpBtns">
+                            <button onClick={this.showFoster}>
+                                Foster Sign In
+                            </button>
+                            <button onClick={this.showOrganization}>
+                                Organization Log In
+                            </button>
+                        </div>
+                        {this.state.fosterLogIn && (
+                            <form onSubmit={this.signInFoster}>
+                                Foster Username{" "}
+                                <input
+                                    type="text"
+                                    name="username"
+                                    onChange={this.handleInputChange}
+                                />
+                                <br />
+                                Password{" "}
+                                <input
+                                    type="text"
+                                    name="password"
+                                    onChange={this.handleInputChange}
+                                />{" "}
+                                <br />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        )}
+                        {!this.state.fosterLogIn && (
+                            <form
+                                className="loginSignUpForms"
+                                onSubmit={this.signInOrg}
+                            >
+                                Organization Username
+                                <input
+                                    type="text"
+                                    name="username"
+                                    onChange={this.handleInputChange}
+                                />
+                                <br />
+                                Password
+                                <input
+                                    type="text"
+                                    name="password"
+                                    onChange={this.handleInputChange}
+                                />{" "}
+                                <br />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        )}
+                    </div>
+                </div>
             </div>
         );
     }
