@@ -63,7 +63,7 @@
 
     .loginSignUpBtns {
         display: flex;
-        animation: fadeIn 4s;
+        animation: fadeIn 3s;
     }
 
     button {
@@ -74,6 +74,11 @@
         padding: 10px;
         border-radius: 5px;
         color: $mainText;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        transition: 0.2s;
     }
 
     .loginSignUpForms {

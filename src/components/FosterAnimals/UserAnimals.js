@@ -142,10 +142,12 @@ export default class UserAnimals extends Component {
         });
 
         return (
-            <div className="animalListContainer">
-                <h1 className="bold">Current Foster Animals</h1>
-                {current}
-                {pending}
+            <div>
+                <div className="animalListContainer">
+                    <h1 className="bold">Current Foster Animals</h1>
+                    {current}
+                    {pending}
+                </div>
                 {!this.state.showEligible && (
                     <button onClick={this.toggleFosterView}>
                         Show Animals In Your Organizations
@@ -156,7 +158,9 @@ export default class UserAnimals extends Component {
                         Close Results
                     </button>
                 )}
-                {this.state.showEligible && eligible}
+                {this.state.showEligible && (
+                    <div className="animalListContainer">{eligible}</div>
+                )}
             </div>
         );
     }

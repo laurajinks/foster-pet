@@ -1,13 +1,19 @@
+.search {
+    width: 90vw;
+    margin: 20px auto 0px auto;
+    background: $lightSilver;
+    display: flex;
+    justify-content: center;
+}
 .groupListContainer {
-    @include flexBoxColumnCenter;
-
     width: 90vw;
     min-height: 90vh;
     display: flex;
-    margin: 80px auto 0px auto;
+    margin: 0px auto 0px auto;
     flex-wrap: wrap;
     justify-content: center;
     background: $lightSilver;
+
     h1 {
         margin-top: 20px;
         width: 100%;
@@ -19,9 +25,9 @@
         @include flexBoxColumnCenter;
         background: #ffffff;
         height: 30vh;
-        width: 40%;
+        width: 20vw;
         border: 0.5px solid $mediumSilver;
-        margin: 20px auto;
+        margin: 20px;
         color: #000000;
         h2 {
             margin: 10px auto;
