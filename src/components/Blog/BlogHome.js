@@ -55,7 +55,7 @@ export default class BlogHome extends Component {
             );
         });
         return (
-            <div>
+            <div className="orgBlog">
                 <Link to="/org/blog/create">Create New Post</Link>
                 {prevPosts}
             </div>

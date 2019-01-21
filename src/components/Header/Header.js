@@ -139,7 +139,7 @@ class Header extends Component {
                                 </>
                             )}
                             {this.state.isOrg === false && (
-                                <>
+                                <div className="dropDownLinks">
                                     <Link to="/user/newsfeed">
                                         <p>Newsfeed</p>
                                     </Link>
@@ -152,10 +152,10 @@ class Header extends Component {
                                     <Link to="/adopt">
                                         <p>Adopt</p>
                                     </Link>
-                                </>
+                                </div>
                             )}
                             {this.state.isOrg === true && (
-                                <>
+                                <div className="dropDownLinks">
                                     <Link to="/org/blog">
                                         <p>Blog</p>
                                     </Link>
@@ -168,7 +168,7 @@ class Header extends Component {
                                     <Link to="/org/currentfosters">
                                         <p>Fosters</p>
                                     </Link>
-                                </>
+                                </div>
                             )}
                             <Link to="/">
                                 <button onClick={() => this.logout()}>

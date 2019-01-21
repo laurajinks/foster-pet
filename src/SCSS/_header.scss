@@ -71,7 +71,7 @@
             z-index: 12;
             align-self: flex-end;
             justify-self: flex-end;
-            margin: 7px;
+            margin: 10px 30px;
             width: 30px;
             height: 30px;
             display: flex;
@@ -109,15 +109,24 @@
             margin-top: 50px;
         }
 
+        .dropDownLinks {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
         button {
+            padding: 0;
             justify-self: flex-end;
-            margin-top: 10px;
+            margin-top: 50px;
             color: $mainText;
         }
 
         p {
             margin-top: 50px;
             color: $mainText;
+            width: 100%;
+            text-align: right;
         }
     }
 }

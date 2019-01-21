@@ -74,7 +74,9 @@ class UserDash extends Component {
                     {animals}
                 </div>{" "}
                 <div className="newsFeedPreview">
-                    <h1>Recent Posts From Your Groups:</h1>
+                    <h1 className="bold title">
+                        Recent Posts From Your Groups:
+                    </h1>
                     <br />
                     {!this.state.currentPosts[0] && <h2>No Posts To Show</h2>}
                     {posts}

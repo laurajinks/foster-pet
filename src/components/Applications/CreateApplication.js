@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import AppField from "./AppField";
 
@@ -14,15 +13,16 @@ class CreateApplication extends Component {
             application: []
         };
 
-        axios
-            .get(`/auth/org`)
-            .then(response => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
                 this.setState({
                     username: response.data.username,
                     id: response.data.id
                 });
-            })
-            .catch(err => this.props.history.push("/login"));
+            }
+        });
     }
 
     handleInputChange = e => {
@@ -56,9 +56,6 @@ class CreateApplication extends Component {
     };
 
     render() {
-        if (!this.state.username) {
-            return <Redirect to="/login" />;
-        }
         const fields = this.state.application.map(field => {
             return <AppField field={field} removeField={this.removeField} />;
         });
