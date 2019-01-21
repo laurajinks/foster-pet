@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Animal from "./Animal";
 
@@ -93,6 +93,7 @@ class OrgAnimals extends Component {
             <div className="animalListContainer">
                 <Link to="/org/animals/create">
                     <button>Create New Animal Listing</button>
+                    <br />
                 </Link>
                 {animals}
             </div>

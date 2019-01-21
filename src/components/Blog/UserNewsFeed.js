@@ -11,7 +11,7 @@ export default class UserNewsFeed extends Component {
         };
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === true || !response.data) {
-                return this.props.history.push("/login");
+                return this.props.history.push("/");
             } else {
                 this.setState({
                     username: response.data.username,

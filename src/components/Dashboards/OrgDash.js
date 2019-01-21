@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";
@@ -60,7 +60,7 @@ class OrgDash extends Component {
             );
         });
         return (
-            <div>
+            <div className="dashboard">
                 <div>
                     {this.state.appCount > 0 && (
                         <div>

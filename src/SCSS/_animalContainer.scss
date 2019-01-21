@@ -47,7 +47,14 @@
 
 .animalContainer {
     @extend %animal;
-    margin: 0px 10px;
+    margin: 10px 10px;
+    width: 300px;
+    height: 500px;
+    overflow: scroll;
+
+    img {
+        max-width: 200px;
+    }
 }
 
 .smallAnimalContainer {
@@ -56,6 +63,20 @@
     margin: 20px;
     img {
         max-width: 150px;
+    }
+}
+
+.adoptDash {
+    min-height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
     }
 }
 

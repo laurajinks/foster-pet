@@ -2,7 +2,7 @@
     width: 100vw;
     height: 50vh;
     background: $darkSilver;
-    margin-top: 20px;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,8 +10,21 @@
     color: #ffffff;
 }
 
+.socialMedia {
+    img {
+        width: 50px;
+        height: 50px;
+        color: #ffffff;
+        margin: 30px 40px;
+    }
+}
+
 @media (max-width: 500px) {
     .footer {
         height: 30vh;
+    }
+
+    img {
+        margin: 30px 20px;
     }
 }

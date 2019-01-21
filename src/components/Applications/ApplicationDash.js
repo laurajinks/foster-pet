@@ -120,7 +120,7 @@ export default class ApplicationDash extends Component {
         });
 
         return (
-            <div>
+            <div className="applicationDash">
                 <Link to="/org/applications/create">
                     <button>Create Application</button>
                 </Link>

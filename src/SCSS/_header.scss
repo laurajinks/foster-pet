@@ -26,6 +26,7 @@
         img {
             width: 50px;
             height: 50px;
+            margin: 0 10px;
         }
 
         button {
@@ -99,9 +100,9 @@
         animation: menuLower 0.7s;
         background: $transparentMedGray;
         color: $mainText;
-        width: 100%;
+        width: 30vw;
         height: 100vh;
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         z-index: 10;

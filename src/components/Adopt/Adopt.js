@@ -33,7 +33,7 @@ export default class Adopt extends Component {
 
     render() {
         return (
-            <div>
+            <div className="adoptDash">
                 <form onSubmit={this.searchAdoptable}>
                     Zip Code
                     <input
