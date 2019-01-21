@@ -160,7 +160,7 @@ table {
           align-items: center;
 }
 
-.homepage .loginSignUp {
+.homepage .homeMain, .homepage .loginSignUp {
   width: 40vw;
   height: 30vh;
   color: #ffffff;
@@ -253,6 +253,20 @@ table {
 
 .bold {
   font-weight: 800;
+}
+
+@media (max-width: 967px) {
+  .loginSignUpContainer {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .loginSignUpContainer .loginSignUp {
+    width: 40vw;
+  }
+  .loginSignUpContainer .loginSignUp button {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -373,7 +387,7 @@ table {
   display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .regularHeader {
     display: none;
   }
@@ -382,23 +396,24 @@ table {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 50vh;
-    width: 70vw;
+    height: 70vh;
+    width: 30vw;
     position: absolute;
     top: 0;
     right: 0;
-    justify-self: flex-end;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     background-color: none;
   }
   .hamburgerHeader .burger {
-    -ms-flex-item-align: start;
-        align-self: flex-start;
+    z-index: 12;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     justify-self: flex-end;
     margin: 7px;
     width: 30px;
@@ -427,48 +442,65 @@ table {
   .hamburgerHeader p {
     margin: 15px 15px 0px auto;
   }
-  .hamburgerHeader .dropDownMenu {
+  .dropDown {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    padding: 20px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-animation: menuLower 0.5s;
-            animation: menuLower 0.5s;
-    background: #ffffff;
-    width: 50vw;
-    height: 50vh;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-animation: menuLower 0.7s;
+            animation: menuLower 0.7s;
+    background: rgba(166, 162, 162, 0.8);
+    color: #ffffff;
+    width: 100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 5;
+    z-index: 10;
+  }
+  .dropDown img {
+    margin-top: 50px;
+  }
+  .dropDown button {
+    justify-self: flex-end;
+    margin-top: 10px;
+    color: #ffffff;
+  }
+  .dropDown p {
+    margin-top: 50px;
+    color: #ffffff;
   }
 }
 
 @-webkit-keyframes menuLower {
   from {
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px);
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
     opacity: 0;
   }
   to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
 }
 
 @keyframes menuLower {
   from {
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px);
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
     opacity: 0;
   }
   to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
   }
 }
@@ -531,7 +563,7 @@ table {
           align-items: center;
   background: #e5e6e4;
   width: 40vw;
-  margin-top: 80px;
+  margin-top: 20px;
   height: 80vh;
   overflow: scroll;
   color: #000000;
@@ -547,7 +579,7 @@ table {
 
 @media (max-width: 1000px) {
   .newsFeedPreview {
-    margin-top: 50px;
+    margin-top: 10px;
   }
 }
 
@@ -576,12 +608,13 @@ table {
   display: flex;
   width: 40vw;
   height: 80vh;
-  margin-top: 80px;
+  margin-top: 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: scroll;
   background: #e5e6e4;
 }
 
@@ -598,7 +631,7 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 80px auto 0px auto;
+  margin: 20px auto 0px auto;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;

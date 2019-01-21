@@ -136,11 +136,6 @@ class Header extends Component {
                                         width="50"
                                     />
                                     <p>{this.state.username}</p>
-                                    <Link to="/">
-                                        <button onClick={() => this.logout()}>
-                                            Logout
-                                        </button>
-                                    </Link>
                                 </>
                             )}
                             {this.state.isOrg === false && (
@@ -175,6 +170,11 @@ class Header extends Component {
                                     </Link>
                                 </>
                             )}
+                            <Link to="/">
+                                <button onClick={() => this.logout()}>
+                                    Logout
+                                </button>
+                            </Link>
                         </div>
                     )}
                 </div>
