@@ -143,7 +143,7 @@ export default class UserAnimals extends Component {
         });
 
         return (
-            <div>
+            <div className="animalListContainer">
                 <h1>Current Foster Animals</h1>
                 {current}
                 {pending}

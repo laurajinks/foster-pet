@@ -4,7 +4,7 @@ import "./animal.css";
 
 const AnimalSmall = props => {
     return (
-        <div className="animalContainer">
+        <div className="smallAnimalContainer">
             <img src={props.img} alt="animal" />
             <h2>Name: {props.name}</h2>
             <Link to={`/profile/org/${props.org_id}`}>

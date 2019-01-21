@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
-import UserNewsFeed from "../Blog/UserNewsFeed";
+import NewsFeedPreview from "../Blog/NewsFeedPreview";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";
 
 class UserDash extends Component {
@@ -12,7 +12,8 @@ class UserDash extends Component {
         this.state = {
             username: "",
             id: "",
-            currentAnimals: []
+            currentAnimals: [],
+            currentPosts: []
         };
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === true || !response.data) {
@@ -30,6 +31,10 @@ class UserDash extends Component {
         axios
             .post("/api/animals/user")
             .then(response => this.setState({ currentAnimals: response.data }));
+        axios
+            .post("/api/blog/member")
+            .then(response => this.setState({ currentPosts: response.data }))
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -47,16 +52,28 @@ class UserDash extends Component {
                 />
             );
         });
+        const recentPosts = this.state.currentPosts.slice(0, 5);
+        const posts = recentPosts.map(post => {
+            return (
+                <NewsFeedPreview
+                    key={post.post_id}
+                    date={post.date}
+                    time={post.time}
+                    username={post.username}
+                    img={post.img}
+                    title={post.title}
+                    content={post.content}
+                />
+            );
+        });
         return (
-            <div>
-                <h1>Hello, {this.state.username}</h1>
-                <div>
+            <div className="dashboard">
+                <div className="animalListContainer">
                     <h1>Current Animals</h1>
+                    <br />
                     {animals}
                 </div>
-                <div>
-                    <UserNewsFeed />
-                </div>
+                <div className="newsFeedPreview">{posts}</div>
             </div>
         );
     }

@@ -184,7 +184,11 @@ class SignUp extends Component {
                                     url={this.state.url}
                                 />
                                 <br />
-                                <input type="submit" value="Submit" />
+                                <input
+                                    className="submit"
+                                    type="submit"
+                                    value="Submit"
+                                />
                             </form>
                         )}
                         {!this.state.fosterSignUp && (
@@ -219,6 +223,7 @@ class SignUp extends Component {
                                 <br />
                                 Password{" "}
                                 <input
+                                    className="submit"
                                     type="text"
                                     name="password"
                                     onChange={this.handleInputChange}

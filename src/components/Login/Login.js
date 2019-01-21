@@ -89,14 +89,15 @@ class Login extends Component {
                                     onChange={this.handleInputChange}
                                 />{" "}
                                 <br />
-                                <input type="submit" value="Submit" />
+                                <input
+                                    className="submit"
+                                    type="submit"
+                                    value="Submit"
+                                />
                             </form>
                         )}
                         {!this.state.fosterLogIn && (
-                            <form
-                                className="loginSignUpForms"
-                                onSubmit={this.signInOrg}
-                            >
+                            <form onSubmit={this.signInOrg}>
                                 Organization Username
                                 <input
                                     type="text"
@@ -111,7 +112,11 @@ class Login extends Component {
                                     onChange={this.handleInputChange}
                                 />{" "}
                                 <br />
-                                <input type="submit" value="Submit" />
+                                <input
+                                    className="submit"
+                                    type="submit"
+                                    value="Submit"
+                                />
                             </form>
                         )}
                     </div>

@@ -194,6 +194,10 @@ table {
   font-size: 20px;
 }
 
+.homepage .loginSignUp .submit {
+  color: #ffffff;
+}
+
 .homepage h1 {
   font-size: 60px;
   margin: 20px auto;
@@ -256,8 +260,16 @@ table {
             justify-content: center;
   }
   .homepage .loginSignUpContainer .loginSignUp {
-    width: 60vw;
+    width: 80vw;
     height: 70vh;
+  }
+  .homepage .loginSignUpContainer .loginSignUp button {
+    font-size: 12px;
+  }
+  .homepage .loginSignUpContainer .loginSignUp form {
+    font-size: 14px;
+    width: 90%;
+    margin: 0px auto;
   }
   .homepage .loginSignUpContainer h1 {
     font-size: 45px;
@@ -295,9 +307,158 @@ table {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   z-index: 4;
+  color: #ffffff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer {
+  width: 100vw;
+  height: 50vh;
+  background: #847577;
+  margin-top: 20px;
+}
+
+.dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  top: 7vh;
+  width: 100vw;
+  height: 90vh;
+}
+
+.dashboard .newsFeedPreview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40vw;
+  margin-top: 80px;
+  height: 70vh;
+  overflow: scroll;
+}
+
+@media (max-width: 1000px) {
+  .newsFeedPreview {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  .newsFeedPreview {
+    margin-top: 30px;
+    font-size: 14px;
+  }
+}
+
+.animalListContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 40vw;
+  margin-top: 80px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #e5e6e4;
+}
+
+.animalListContainer h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.animalContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.smallAnimalContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  margin: 20px;
+}
+
+.smallAnimalContainer img {
+  max-width: 150px;
+}
+
+@media (max-width: 1000px) {
+  .animalListContainer {
+    margin-top: 50px;
+  }
+  .smallAnimalContainer {
+    width: 35%;
+  }
+  .smallAnimalContainer img {
+    max-width: 75px;
+  }
+}
+
+@media (max-width: 500px) {
+  .animalListContainer {
+    margin-top: 20px;
+  }
+  .smallAnimalContainer {
+    width: 50vw;
+  }
+  .smallAnimalContainer img {
+    max-width: 75px;
+  }
 }
 
 button {
   cursor: pointer;
+}
+
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 /*# sourceMappingURL=index.css.map */

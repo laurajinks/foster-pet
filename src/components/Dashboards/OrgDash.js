@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
+import AnimalSmall from "../FosterAnimals/AnimalSmall";
 
 class OrgDash extends Component {
     constructor(props) {
@@ -44,6 +45,20 @@ class OrgDash extends Component {
     };
 
     render() {
+        const animals = this.state.animalList.map(animal => {
+            return (
+                <AnimalSmall
+                    key={animal.animal_id}
+                    img={animal.animal_img}
+                    id={animal.animal_id}
+                    org_id={animal.org_id}
+                    org_display_name={animal.org_display_name}
+                    user_id={animal.user_id}
+                    name={animal.name}
+                    age={animal.age}
+                />
+            );
+        });
         return (
             <div>
                 <div>
@@ -58,8 +73,11 @@ class OrgDash extends Component {
                     {this.state.appCount === 0 && (
                         <h1>No Applications To Review</h1>
                     )}
+                    <div className="animalListContainer">
+                        {!this.state.animalList && <h1>No Current Animals</h1>}
+                        {animals}
+                    </div>
                 </div>
-                <h1>Hello, {this.state.username}</h1>
             </div>
         );
     }

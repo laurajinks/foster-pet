@@ -1,0 +1,29 @@
+.dashboard {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    top: 7vh;
+    width: 100vw;
+    height: 90vh;
+
+    .newsFeedPreview {
+        @include flexBoxColumnCenter;
+        width: 40vw;
+        margin-top: 80px;
+        height: 70vh;
+        overflow: scroll;
+    }
+}
+
+@media (max-width: 1000px) {
+    .newsFeedPreview {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    .newsFeedPreview {
+        margin-top: 30px;
+        font-size: 14px;
+    }
+}

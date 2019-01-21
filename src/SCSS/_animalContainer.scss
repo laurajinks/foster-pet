@@ -1,0 +1,53 @@
+.animalListContainer {
+    display: flex;
+    width: 40vw;
+    margin-top: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: $lightSilver;
+    h1 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.animalContainer {
+    @include flexBoxColumnCenter;
+}
+
+.smallAnimalContainer {
+    @include flexBoxColumnCenter;
+    width: 40%;
+    margin: 20px;
+    img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .animalListContainer {
+        margin-top: 50px;
+    }
+
+    .smallAnimalContainer {
+        width: 35%;
+
+        img {
+            max-width: 75px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .animalListContainer {
+        margin-top: 20px;
+    }
+
+    .smallAnimalContainer {
+        width: 50vw;
+
+        img {
+            max-width: 75px;
+        }
+    }
+}
