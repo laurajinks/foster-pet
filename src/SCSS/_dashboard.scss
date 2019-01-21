@@ -40,21 +40,23 @@
 }
 
 @media (max-width: 1000px) {
-    .newsFeedPreview {
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 500px) {
     .dashboard {
         flex-direction: column;
         align-items: center;
         min-height: 200vh;
         .newsFeedPreview {
-            margin-top: 5px;
-            font-size: 14px;
+            margin-top: 10px;
             width: 90vw;
             min-height: 100vh;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard {
+        .newsFeedPreview {
+            margin-top: 5px;
+            font-size: 14px;
         }
     }
 }

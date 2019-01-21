@@ -1,7 +1,8 @@
 .headerContainer {
     width: 100vw;
     height: 7vh;
-    background-color: rgba(255, 255, 255, 0.1);
+    // background-color: rgba(255, 255, 255, 0.1);
+    background: $mediumSilver;
     display: flex;
     z-index: 4;
     color: $darkSilver;
@@ -18,9 +19,11 @@
     display: flex;
 
     .avatar {
+        width: 15vw;
         justify-self: flex-end;
-        align-items: center;
         display: flex;
+        align-items: center;
+        justify-content: center;
         margin-right: 10px;
 
         img {
@@ -29,10 +32,13 @@
             margin: 0 10px;
         }
 
-        button {
-            background: none;
-            border: none;
+        p {
+            font-size: 12px;
         }
+    }
+
+    p:hover {
+        color: $offWhite;
     }
 }
 
@@ -128,6 +134,10 @@
             color: $mainText;
             width: 100%;
             text-align: right;
+        }
+
+        p:hover {
+            color: $darkSilver;
         }
     }
 }

@@ -64,10 +64,12 @@ class Header extends Component {
         return (
             <div>
                 <div className="headerContainer">
-                    <h1 className="logo">
-                        <span className="italic">foster</span>
-                        <span className="bold">PET</span>
-                    </h1>
+                    <Link to="">
+                        <h1 className="logo">
+                            <span className="italic">foster</span>
+                            <span className="bold">PET</span>
+                        </h1>
+                    </Link>
                     <div className="regularHeader">
                         {this.state.isOrg === false && (
                             <div className="regularHeaderLinks">
@@ -109,12 +111,14 @@ class Header extends Component {
                                     alt="avatar"
                                     width="50"
                                 />
-                                <p>{this.state.username}</p>
-                                <Link to="/">
-                                    <button onClick={() => this.logout()}>
-                                        Logout
-                                    </button>
-                                </Link>
+                                <div>
+                                    <p>{this.state.username}</p>
+                                    <Link to="/">
+                                        <p onClick={() => this.logout()}>
+                                            Logout
+                                        </p>
+                                    </Link>
+                                </div>
                             </div>
                         )}
                     </div>

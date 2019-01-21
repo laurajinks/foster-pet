@@ -321,7 +321,7 @@ table {
 .headerContainer {
   width: 100vw;
   height: 7vh;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: #a6a2a2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -347,13 +347,17 @@ table {
 }
 
 .regularHeader .avatar {
+  width: 15vw;
   justify-self: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-right: 10px;
 }
 
@@ -363,9 +367,12 @@ table {
   margin: 0 10px;
 }
 
-.regularHeader .avatar button {
-  background: none;
-  border: none;
+.regularHeader .avatar p {
+  font-size: 12px;
+}
+
+.regularHeader p:hover {
+  color: #fbfbf2;
 }
 
 .regularHeaderLinks {
@@ -493,6 +500,9 @@ table {
     width: 100%;
     text-align: right;
   }
+  .dropDown p:hover {
+    color: #847577;
+  }
 }
 
 @-webkit-keyframes menuLower {
@@ -611,12 +621,6 @@ table {
 }
 
 @media (max-width: 1000px) {
-  .newsFeedPreview {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 500px) {
   .dashboard {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -628,10 +632,16 @@ table {
     min-height: 200vh;
   }
   .dashboard .newsFeedPreview {
-    margin-top: 5px;
-    font-size: 14px;
+    margin-top: 10px;
     width: 90vw;
     min-height: 100vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard .newsFeedPreview {
+    margin-top: 5px;
+    font-size: 14px;
   }
 }
 
@@ -740,6 +750,8 @@ table {
 
 .adoptDash {
   min-height: 90vh;
+  width: 90vw;
+  background: #e5e6e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -748,10 +760,12 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 10px auto 0px auto;
 }
 
 .adoptDash form {
   width: 100%;
+  height: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -761,15 +775,51 @@ table {
   margin: 20px auto;
 }
 
+.adoptDash form input,
+.adoptDash form select {
+  margin: 0 10px;
+}
+
 @media (max-width: 1100px) {
   .animalListContainer {
     margin-top: 50px;
   }
+  .smallAnimalListContainer {
+    width: 90vw;
+  }
   .smallAnimalContainer {
-    width: 80%;
+    width: 40%;
   }
   .smallAnimalContainer img {
-    max-width: 75px;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 700px) {
+  .adoptDash {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  form {
+    margin-top: 20px;
+    position: relative;
+    top: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 450px;
   }
 }
 
@@ -780,7 +830,6 @@ table {
   }
   .smallAnimalListContainer {
     margin-top: 20px;
-    width: 90vw;
     font-size: 14px;
     text-align: center;
   }
