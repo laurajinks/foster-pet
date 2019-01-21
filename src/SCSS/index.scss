@@ -6,6 +6,8 @@
 @import "footer";
 @import "dashboard";
 @import "animalContainer";
+@import "newsFeed";
+@import "groupContainer";
 
 button {
     cursor: pointer;
@@ -14,6 +16,15 @@ button {
 .App {
     display: flex;
     flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited {
+    text-decoration: none;
 }
 
 // $darkSilver: #847577;

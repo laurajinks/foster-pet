@@ -1,0 +1,33 @@
+.groupListContainer {
+    @include flexBoxColumnCenter;
+
+    width: 90vw;
+    min-height: 90vh;
+    display: flex;
+    margin: 80px auto 0px auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: $lightSilver;
+    h1 {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .organization {
+        @include flexBoxColumnCenter;
+        background: #ffffff;
+        height: 30vh;
+        width: 40%;
+        border: 0.5px solid $mediumSilver;
+        margin: 20px auto;
+        color: #000000;
+        h2 {
+            margin: 10px auto;
+        }
+        img {
+            border: 0.5px solid $mediumSilver;
+        }
+    }
+}

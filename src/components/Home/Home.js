@@ -12,7 +12,10 @@ const Home = () => {
             </div> */}
             <div className="loginSignUpContainer">
                 <div className="homeMain">
-                    <h1>Page Title</h1>
+                    <h1>
+                        <span className="italic">foster</span>
+                        <span className="bold">PET</span>
+                    </h1>
                     <h3>Page subheader</h3>
                     <div className="loginSignUpBtns">
                         <Link to="/login">

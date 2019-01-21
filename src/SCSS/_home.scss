@@ -2,13 +2,12 @@
     width: 100vw;
     height: 100vh;
     top: 0;
-    position: fixed;
+    // position: absolute;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/animal-foster-project.appspot.com/o/images%2Fadorable-animal-canine-1346086.jpg?alt=media&token=65a31dbb-f506-4d0e-951d-9426c62c40ba");
     background-size: cover;
     color: $mainText;
 
     .loginSignUpContainer {
-        position: absolute;
         width: 80%;
         height: 100%;
         top: 0;
@@ -53,7 +52,7 @@
     }
 
     h3 {
-        font-size: 40px;
+        font-size: 36px;
         margin: 20px auto;
         animation: fadeIn 3s;
     }
@@ -65,7 +64,7 @@
 
     button {
         border: none;
-        font-size: 20px;
+        font-size: 16px;
         background: $buttonBackground;
         margin: 0px 20px;
         padding: 10px;
@@ -85,6 +84,15 @@
         border: 0.1px solid $buttonBackground;
         margin: 10px;
     }
+}
+
+.italic {
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.bold {
+    font-weight: 800;
 }
 
 @media (max-width: 500px) {

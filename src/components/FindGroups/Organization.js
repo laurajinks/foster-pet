@@ -65,7 +65,7 @@ export default class Organization extends Component {
 
     render() {
         return (
-            <div className="resultBox">
+            <div className="organization">
                 <div className="result">
                     <img
                         className="resultThumb"

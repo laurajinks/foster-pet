@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import NewsFeedPreview from "../Blog/NewsFeedPreview";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";
@@ -68,12 +68,18 @@ class UserDash extends Component {
         });
         return (
             <div className="dashboard">
-                <div className="animalListContainer">
-                    <h1>Current Animals</h1>
+                <div className="smallAnimalListContainer">
+                    <h1 className="bold">Current Animals</h1>
                     <br />
                     {animals}
+                </div>{" "}
+                <div className="newsFeedPreview">
+                    <h1>Recent Posts From Your Groups:</h1>
+                    <br />
+                    {!this.state.currentPosts[0] && <h2>No Posts To Show</h2>}
+                    {posts}
+                    <Link to="user/newsfeed">See More...</Link>
                 </div>
-                <div className="newsFeedPreview">{posts}</div>
             </div>
         );
     }

@@ -1,0 +1,30 @@
+%newsFeed {
+    width: 90vw;
+    min-height: 90vh;
+    background: $lightSilver;
+    margin: 20px auto 0px auto;
+    padding: 20px;
+}
+
+.userNewsFeed {
+    @extend %newsFeed;
+}
+
+.orgBlog {
+    @extend %newsFeed;
+}
+
+.blogPost {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+    background: #ffffff;
+    border: 0.5px solid $mediumSilver;
+    color: #000000;
+    h2 {
+        margin: 10px auto;
+    }
+    img {
+        border: 0.5px solid $mediumSilver;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 const NewsFeedPreview = props => {
     return (
-        <div>
+        <div className="previewPost">
             <img src={props.img} alt="avatar" />
             <p>{props.username}</p>
             <p>{props.date}</p>

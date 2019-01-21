@@ -36,7 +36,7 @@ export default class Post extends Component {
 
     render() {
         return (
-            <div>
+            <div className="blogPost">
                 <img src={this.props.img} alt="avatar" />
                 <p>{this.props.username}</p>
                 <p>{this.props.date}</p>

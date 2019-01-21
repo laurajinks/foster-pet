@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Organization from "./Organization";
 
@@ -44,6 +43,6 @@ export default class FindGroups extends Component {
                 />
             );
         });
-        return <div>{list}</div>;
+        return <div className="groupListContainer">{list}</div>;
     }
 }

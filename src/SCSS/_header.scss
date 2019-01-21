@@ -3,11 +3,116 @@
     height: 7vh;
     background-color: rgba(255, 255, 255, 0.1);
     display: flex;
-    justify-content: space-around;
     z-index: 4;
-    color: #ffffff;
+    color: $darkSilver;
     align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        justify-self: flex-start;
+        margin-left: 40px;
+    }
+}
+
+.regularHeader {
+    display: flex;
+
+    .avatar {
+        justify-self: flex-end;
+        align-items: center;
+        display: flex;
+        margin-right: 10px;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        button {
+            background: none;
+            border: none;
+        }
+    }
+}
+
+.regularHeaderLinks {
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hamburgerHeader {
+    display: none;
+}
+
+.dropDownMenu {
+    display: none;
 }
 
 @media (max-width: 500px) {
+    .regularHeader {
+        display: none;
+    }
+
+    .hamburgerHeader {
+        z-index: 4;
+        display: flex;
+        height: 50vh;
+        width: 70vw;
+        position: absolute;
+        top: 0;
+        right: 0;
+        justify-self: flex-end;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: none;
+
+        .burger {
+            align-self: flex-start;
+            justify-self: flex-end;
+            margin: 7px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .line {
+            width: 24px;
+            height: 3px;
+            background: $darkSilver;
+            border-radius: 20px;
+            margin: 2px auto;
+        }
+
+        p {
+            margin: 15px 15px 0px auto;
+        }
+
+        .dropDownMenu {
+            display: flex;
+            flex-direction: column;
+            animation: menuLower 0.5s;
+            background: #ffffff;
+            width: 50vw;
+            height: 50vh;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 5;
+        }
+    }
+}
+
+@keyframes menuLower {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

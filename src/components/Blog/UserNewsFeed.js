@@ -42,6 +42,6 @@ export default class UserNewsFeed extends Component {
                 />
             );
         });
-        return <div>{prevPosts}</div>;
+        return <div className="userNewsFeed">{prevPosts}</div>;
     }
 }

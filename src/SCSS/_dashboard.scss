@@ -5,13 +5,24 @@
     top: 7vh;
     width: 100vw;
     height: 90vh;
+    color: $darkSilver;
 
     .newsFeedPreview {
         @include flexBoxColumnCenter;
+        background: $lightSilver;
         width: 40vw;
         margin-top: 80px;
-        height: 70vh;
+        height: 80vh;
         overflow: scroll;
+        color: #000000;
+
+        .previewPost {
+            background: #ffffff;
+            padding: 10px;
+            border: 0.5px solid $mediumSilver;
+            width: 80%;
+            margin: 10px auto;
+        }
     }
 }
 
@@ -22,8 +33,15 @@
 }
 
 @media (max-width: 500px) {
-    .newsFeedPreview {
-        margin-top: 30px;
-        font-size: 14px;
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
+        min-height: 200vh;
+        .newsFeedPreview {
+            margin-top: 5px;
+            font-size: 14px;
+            width: 90vw;
+            min-height: 100vh;
+        }
     }
 }
