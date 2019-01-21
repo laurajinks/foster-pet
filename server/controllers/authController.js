@@ -38,7 +38,15 @@ module.exports = {
     },
 
     addOrg: async (req, res) => {
-        const { username, orgName, password, email, zipcode, url } = req.body;
+        const {
+            username,
+            orgName,
+            password,
+            email,
+            zipcode,
+            usState,
+            url
+        } = req.body;
         if (
             username === "animal" ||
             username === "users" ||
@@ -53,7 +61,15 @@ module.exports = {
         const hash = await bcrypt.hash(password, 10);
         req.app
             .get("db")
-            .auth.add_organization(username, orgName, hash, email, zipcode, url)
+            .auth.add_organization(
+                username,
+                orgName,
+                hash,
+                email,
+                zipcode,
+                usState,
+                url
+            )
             .then(response => {
                 const user = response[0];
                 req.session.user = {
@@ -61,6 +77,7 @@ module.exports = {
                     username: user.username,
                     displayName: user.org_display_name,
                     zipcode: user.zipcode,
+                    usState: user.usState,
                     img: user.img,
                     isOrg: true
                 };
@@ -130,6 +147,7 @@ module.exports = {
                                 username: user.username,
                                 displayName: user.org_display_name,
                                 zipcode: user.zipcode,
+                                usState: user.usState,
                                 img: user.img,
                                 isOrg: true
                             };

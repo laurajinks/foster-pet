@@ -102,7 +102,7 @@ app.delete("/api/org/members/:id", deleteFoster);
 
 //SEARCH ENDPOINTS
 app.get("/api/search/adoptable", searchAdoptable);
-app.get("/api/organizations", getOrgs);
+app.post("/api/organizations", getOrgs);
 app.post("/api/user", getUser);
 app.post("/api/org", getOrgData);
 

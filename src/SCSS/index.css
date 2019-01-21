@@ -573,14 +573,6 @@ table {
   color: #847577;
 }
 
-.dashboard .title {
-  margin-top: 20px;
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  color: #847577;
-}
-
 .dashboard .newsFeedPreview {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,12 +581,6 @@ table {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background: #e5e6e4;
   width: 40vw;
   margin-top: 20px;
@@ -603,12 +589,25 @@ table {
   color: #000000;
 }
 
+.dashboard .newsFeedPreview .title {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #847577;
+}
+
 .dashboard .newsFeedPreview .previewPost {
   background: #ffffff;
   padding: 10px;
-  border: 0.5px solid #a6a2a2;
+  border: 0.5px solid #cfd2cd;
   width: 80%;
   margin: 10px auto;
+}
+
+.dashboard .newsFeedPreview a {
+  text-align: center;
+  margin: 10px;
 }
 
 @media (max-width: 1000px) {
@@ -689,15 +688,11 @@ table {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background: #ffffff;
-  border: 0.5px solid #a6a2a2;
-  border-radius: 5px;
+  border: 0.5px solid #cfd2cd;
   color: #000000;
 }
 
@@ -705,8 +700,22 @@ table {
   margin: 10px auto;
 }
 
+.animalContainer p, .smallAnimalContainer p {
+  margin: 7px 15px;
+}
+
 .animalContainer img, .smallAnimalContainer img {
-  border: 0.5px solid #a6a2a2;
+  border: 0.5px solid #cfd2cd;
+  margin: 20px;
+}
+
+.animalContainer button, .smallAnimalContainer button {
+  width: 100%;
+  border: none;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 15px;
 }
 
 .animalContainer {
