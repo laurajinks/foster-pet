@@ -7,6 +7,21 @@
     background-size: cover;
     color: $mainText;
 
+    button {
+        border: none;
+        font-size: 16px;
+        background: $buttonBackground;
+        margin: 0px 20px;
+        padding: 10px;
+        border-radius: 5px;
+        color: $mainText;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        transition: 0.2s;
+    }
+
     .loginSignUpContainer {
         width: 80%;
         height: 100%;
@@ -64,21 +79,6 @@
     .loginSignUpBtns {
         display: flex;
         animation: fadeIn 3s;
-    }
-
-    button {
-        border: none;
-        font-size: 16px;
-        background: $buttonBackground;
-        margin: 0px 20px;
-        padding: 10px;
-        border-radius: 5px;
-        color: $mainText;
-    }
-
-    button:hover {
-        background: $mediumSilver;
-        transition: 0.2s;
     }
 
     .loginSignUpForms {

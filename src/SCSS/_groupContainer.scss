@@ -34,6 +34,22 @@
         }
         img {
             border: 0.5px solid $mediumSilver;
+            max-width: 100px;
+        }
+
+        .orgApp {
+            @include flexBoxColumnCenter;
+            width: 20vw;
+            height: 30vh;
+            position: absolute;
+            background: $darkSilver;
+            color: #ffffff;
+            z-index: 15;
+            overflow: scroll;
+
+            form {
+                @include flexBoxColumnCenter;
+            }
         }
     }
 }

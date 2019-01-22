@@ -61,8 +61,9 @@ export default class UserProfile extends Component {
         this.setState({ showEdit: !this.state.showEdit });
     };
 
-    submitEdit = e => {
+    submitEdit = (e, displayName, email, bio) => {
         e.preventDefault();
+        axios.put("/auth/update/user", { displayName, email, bio });
     };
 
     render() {
@@ -92,17 +93,16 @@ export default class UserProfile extends Component {
                             <p>{this.state.user_bio}</p>
                         </div>
                         {this.state.allowEdits && (
-                            <div>
-                                <button onClick={this.toggleEdit}>Edit</button>
-                                {this.state.showEdit && (
-                                    <EditUserProfile
-                                        displayName={this.state.displayName}
-                                        email={this.state.email}
-                                        bio={this.state.bio}
-                                        submitEdit={this.submitEdit}
-                                    />
-                                )}
-                            </div>
+                            <button onClick={this.toggleEdit}>Edit</button>
+                        )}
+                        {this.state.showEdit && (
+                            <EditUserProfile
+                                displayName={this.state.displayName}
+                                email={this.state.email}
+                                bio={this.state.user_bio}
+                                submitEdit={this.submitEdit}
+                                toggleEdit={this.toggleEdit}
+                            />
                         )}
                     </div>
                 )}

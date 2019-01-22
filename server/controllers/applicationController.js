@@ -1,9 +1,10 @@
 module.exports = {
     createApp: (req, res) => {
-        const { id, app } = req.body;
+        console.log(req.body);
+        const { app } = req.body;
         req.app
             .get("db")
-            .application.create_application(id, app)
+            .application.create_application(req.session.user.id, app)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     },

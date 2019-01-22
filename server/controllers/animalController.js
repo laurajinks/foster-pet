@@ -1,7 +1,6 @@
 module.exports = {
     addAnimal: (req, res) => {
         const {
-            org_id,
             name,
             animalType,
             age,
@@ -14,7 +13,7 @@ module.exports = {
         req.app
             .get("db")
             .animal.add_animal(
-                org_id,
+                req.session.user.id,
                 name,
                 animalType,
                 age,

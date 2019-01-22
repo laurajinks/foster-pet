@@ -43,7 +43,7 @@ export default class OrgApp extends Component {
             });
         }
         return (
-            <div className="">
+            <div className="orgApp">
                 {!this.props.application && (
                     <h1>No Application Currently on File</h1>
                 )}

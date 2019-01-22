@@ -20,6 +20,23 @@
         background: $mediumSilver;
         color: $lightSilver;
     }
+
+    h1 {
+        margin: 10px;
+        color: $darkSilver;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    form {
+        margin: 20px;
+
+        input {
+            background: #ffffff;
+            border: none;
+            margin: 5px;
+        }
+    }
 }
 
 .applicationContainer {
@@ -27,8 +44,14 @@
     background: #ffffff;
     width: 300px;
     height: 400px;
+    padding: 10px;
+    line-height: 25px;
     overflow: scroll;
     border: 0.5px solid $lightGray;
+
+    img {
+        margin-top: 10px;
+    }
 
     button {
         background: $lightSilver;

@@ -48,10 +48,9 @@ class CreateApplication extends Component {
 
     submitApplication = () => {
         const app = this.state.application.join("/0");
-        const { id } = this.state;
         axios
-            .put(`/api/createapplication`, { id, app })
-            .then(this.props.history.push("/org/applications"))
+            .put(`/api/createapplication`, { app })
+            .then(() => this.props.history.push("/org/applications"))
             .catch(err => console.log(err));
     };
 
@@ -60,7 +59,7 @@ class CreateApplication extends Component {
             return <AppField field={field} removeField={this.removeField} />;
         });
         return (
-            <div>
+            <div className="applicationDash">
                 {fields}
                 <form onSubmit={this.addField}>
                     Add New Input Field{" "}

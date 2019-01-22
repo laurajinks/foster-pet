@@ -10,14 +10,31 @@ export default class EditUserProfile extends Component {
         };
     }
 
+    componentDidMount = () => {
+        this.setState({
+            displayName: this.props.displayName,
+            email: this.props.email,
+            bio: this.props.bio
+        });
+    };
+
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.props.submitEdit}>
+            <div className="editProfile">
+                <form
+                    onSubmit={e =>
+                        this.props.submitEdit(
+                            e,
+                            this.state.displayName,
+                            this.state.email,
+                            this.state.bio
+                        )
+                    }
+                >
                     Display Name:
                     <input
                         type="text"
@@ -41,6 +58,7 @@ export default class EditUserProfile extends Component {
                     />
                     <input type="submit" name="Submit Edits" />
                 </form>
+                <button onClick={this.props.toggleEdit}>Cancel</button>
             </div>
         );
     }

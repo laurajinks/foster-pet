@@ -19,12 +19,30 @@
     margin: 20px auto;
     padding: 15px;
     background: #ffffff;
-    border: 0.5px solid $mediumSilver;
+    border: 0.5px solid $lightGray;
     color: #000000;
+
+    h1 {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 10px auto;
+    }
     h2 {
         margin: 10px auto;
     }
     img {
         border: 0.5px solid $mediumSilver;
+    }
+
+    button {
+        margin: 10px;
+        background: $lightSilver;
+        border: none;
+        padding: 10px;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        color: $lightSilver;
     }
 }

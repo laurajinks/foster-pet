@@ -161,5 +161,23 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy();
         return res.status(200).json("okay");
+    },
+
+    updateUser: (req, res) => {
+        const { displayName, email, bio } = req.body;
+        req.app
+            .get("db")
+            .auth.edit_user(req.session.user.id, displayName, email, bio)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
+    },
+
+    updateOrg: (req, res) => {
+        const { displayName, email, bio } = req.body;
+        req.app
+            .get("db")
+            .auth.edit_org(req.session.user.id, displayName, email, bio)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

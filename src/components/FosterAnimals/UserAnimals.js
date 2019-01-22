@@ -149,14 +149,18 @@ export default class UserAnimals extends Component {
                     {pending}
                 </div>
                 {!this.state.showEligible && (
-                    <button onClick={this.toggleFosterView}>
-                        Show Animals In Your Organizations
-                    </button>
+                    <div className="buttonContainer">
+                        <button onClick={this.toggleFosterView}>
+                            Show Animals In Your Organizations
+                        </button>
+                    </div>
                 )}
                 {this.state.showEligible && (
-                    <button onClick={this.toggleFosterView}>
-                        Close Results
-                    </button>
+                    <div className="buttonContainer">
+                        <button onClick={this.toggleFosterView}>
+                            Close Results
+                        </button>
+                    </div>
                 )}
                 {this.state.showEligible && (
                     <div className="animalListContainer">{eligible}</div>

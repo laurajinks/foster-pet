@@ -143,6 +143,22 @@ table {
   color: #ffffff;
 }
 
+.homepage button {
+  border: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0px 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.homepage button:hover {
+  background: #a6a2a2;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
 .homepage .loginSignUpContainer {
   width: 80%;
   height: 100%;
@@ -216,22 +232,6 @@ table {
   display: flex;
   -webkit-animation: fadeIn 3s;
           animation: fadeIn 3s;
-}
-
-.homepage button {
-  border: none;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 0px 20px;
-  padding: 10px;
-  border-radius: 5px;
-  color: #ffffff;
-}
-
-.homepage button:hover {
-  background: #a6a2a2;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
 }
 
 .homepage .loginSignUpForms {
@@ -344,6 +344,8 @@ table {
 .headerContainer .logo {
   justify-self: flex-start;
   margin-left: 40px;
+  font-size: 24px;
+  color: #fbfbf2;
 }
 
 .regularHeader {
@@ -769,18 +771,24 @@ table {
 }
 
 .animalContainer button, .smallAnimalContainer button {
-  width: 100%;
   border: none;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  margin-top: 15px;
+  margin: 15px auto;
+  padding: 10px;
+  background: #e5e6e4;
+  color: #847577;
+}
+
+.animalContainer button:hover, .smallAnimalContainer button:hover {
+  background: #a6a2a2;
+  color: #fbfbf2;
 }
 
 .animalContainer {
   margin: 10px 10px;
   width: 300px;
-  height: 500px;
   overflow: scroll;
 }
 
@@ -790,7 +798,6 @@ table {
 
 .smallAnimalContainer {
   width: 200px;
-  height: 300px;
   margin: 20px;
 }
 
@@ -845,6 +852,35 @@ table {
   .smallAnimalContainer img {
     max-width: 150px;
   }
+}
+
+.buttonContainer {
+  width: 90vw;
+  height: 10vh;
+  margin: 20px auto 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #e5e6e4;
+}
+
+.buttonContainer button {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border: none;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.buttonContainer button:hover {
+  background: #a6a2a2;
+  color: #e5e6e4;
 }
 
 @media (max-width: 700px) {
@@ -907,8 +943,14 @@ table {
   margin: 20px auto;
   padding: 15px;
   background: #ffffff;
-  border: 0.5px solid #a6a2a2;
+  border: 0.5px solid #cfd2cd;
   color: #000000;
+}
+
+.blogPost h1 {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px auto;
 }
 
 .blogPost h2 {
@@ -917,6 +959,18 @@ table {
 
 .blogPost img {
   border: 0.5px solid #a6a2a2;
+}
+
+.blogPost button {
+  margin: 10px;
+  background: #e5e6e4;
+  border: none;
+  padding: 10px;
+}
+
+.blogPost button:hover {
+  background: #a6a2a2;
+  color: #e5e6e4;
 }
 
 .search {
@@ -981,6 +1035,46 @@ table {
 
 .groupListContainer .organization img {
   border: 0.5px solid #a6a2a2;
+  max-width: 100px;
+}
+
+.groupListContainer .organization .orgApp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20vw;
+  height: 30vh;
+  position: absolute;
+  background: #847577;
+  color: #ffffff;
+  z-index: 15;
+  overflow: scroll;
+}
+
+.groupListContainer .organization .orgApp form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .applicationDash {
@@ -1016,6 +1110,23 @@ table {
   color: #e5e6e4;
 }
 
+.applicationDash h1 {
+  margin: 10px;
+  color: #847577;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.applicationDash form {
+  margin: 20px;
+}
+
+.applicationDash form input {
+  background: #ffffff;
+  border: none;
+  margin: 5px;
+}
+
 .applicationContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1033,8 +1144,14 @@ table {
   background: #ffffff;
   width: 300px;
   height: 400px;
+  padding: 10px;
+  line-height: 25px;
   overflow: scroll;
   border: 0.5px solid #cfd2cd;
+}
+
+.applicationContainer img {
+  margin-top: 10px;
 }
 
 .applicationContainer button {
@@ -1043,6 +1160,7 @@ table {
 
 .profileContainer {
   width: 90vw;
+  min-height: 40vh;
   background: #e5e6e4;
   margin: 10px auto;
   display: -webkit-box;
@@ -1053,6 +1171,38 @@ table {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.profileContainer button {
+  border: none;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 15px auto;
+  padding: 10px;
+  background: #cfd2cd;
+  color: #847577;
+}
+
+.profileContainer button:hover {
+  background: #a6a2a2;
+  color: #fbfbf2;
+}
+
+.profileContainer form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .profileContent {
@@ -1091,6 +1241,36 @@ table {
   margin: 15px 0;
 }
 
+.editProfile {
+  -webkit-animation: menuLower 1s;
+          animation: menuLower 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(166, 162, 162, 0.8);
+  width: 40vw;
+  height: 40vh;
+  z-index: 15;
+  position: absolute;
+  right: 0;
+}
+
+.editProfile input {
+  background: #e5e6e4;
+  border: none;
+  margin: 10px;
+}
+
 @media (max-width: 600px) {
   .profileContainer {
     -webkit-box-pack: center;
@@ -1101,10 +1281,31 @@ table {
   .bio {
     width: 80%;
   }
+  .editProfile {
+    width: 90vw;
+  }
+}
+
+@keyframes menuLower {
+  from {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 button {
   cursor: pointer;
+}
+
+button:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .App {

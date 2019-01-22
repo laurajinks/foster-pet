@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class AnimalApplication extends Component {
     render() {
@@ -12,7 +13,7 @@ export default class AnimalApplication extends Component {
                 />
                 <h1>{this.props.name}</h1>
                 <img src={this.props.img} alt="foster avatar" width="100" />
-                <h2>{this.props.username}</h2>
+                <Link to={`/profile/user/${this.props.user_id}`} />
                 {!this.props.org_accept && (
                     <button
                         onClick={() =>

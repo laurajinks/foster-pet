@@ -16,9 +16,6 @@
     }
 }
 
-.buttonContainer {
-}
-
 .animalListContainer {
     width: 90vw;
     display: flex;
@@ -57,10 +54,17 @@
     }
 
     button {
-        width: 100%;
         border: none;
         align-self: center;
-        margin-top: 15px;
+        margin: 15px auto;
+        padding: 10px;
+        background: $lightSilver;
+        color: $darkSilver;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        color: $offWhite;
     }
 }
 
@@ -68,7 +72,7 @@
     @extend %animal;
     margin: 10px 10px;
     width: 300px;
-    height: 500px;
+    // height: 500px;
     overflow: scroll;
 
     img {
@@ -79,7 +83,7 @@
 .smallAnimalContainer {
     @extend %animal;
     width: 200px;
-    height: 300px;
+    // height: 300px;
     margin: 20px;
     img {
         max-width: 100px;
@@ -125,6 +129,29 @@
         img {
             max-width: 150px;
         }
+    }
+}
+
+.buttonContainer {
+    width: 90vw;
+    height: 10vh;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $lightSilver;
+
+    button {
+        background: $buttonBackground;
+        padding: 20px;
+        border: none;
+        margin: 10px;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        color: $lightSilver;
     }
 }
 

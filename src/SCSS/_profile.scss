@@ -1,10 +1,29 @@
 .profileContainer {
     width: 90vw;
+    min-height: 40vh;
     background: $lightSilver;
     margin: 10px auto;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
+    button {
+        border: none;
+        align-self: center;
+        margin: 15px auto;
+        padding: 10px;
+        background: $lightGray;
+        color: $darkSilver;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        color: $offWhite;
+    }
+
+    form {
+        @include flexBoxColumnCenter;
+    }
 }
 
 .profileContent {
@@ -19,6 +38,22 @@
     margin: 15px 0;
 }
 
+.editProfile {
+    animation: menuLower 1s;
+    @include flexBoxColumnCenter;
+    background: $transparentMedGray;
+    width: 40vw;
+    height: 40vh;
+    z-index: 15;
+    position: absolute;
+    right: 0;
+    input {
+        background: $lightSilver;
+        border: none;
+        margin: 10px;
+    }
+}
+
 @media (max-width: 600px) {
     .profileContainer {
         justify-content: center;
@@ -26,5 +61,20 @@
     .profileContent,
     .bio {
         width: 80%;
+    }
+
+    .editProfile {
+        width: 90vw;
+    }
+}
+
+@keyframes menuLower {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

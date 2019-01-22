@@ -17,7 +17,9 @@ const {
     addOrg,
     logInUser,
     logInOrg,
-    logout
+    logout,
+    updateUser,
+    updateOrg
 } = require("./controllers/authController");
 const {
     createApp,
@@ -93,6 +95,8 @@ app.post("/auth/register/org", addOrg);
 app.post("/auth/login/user", logInUser);
 app.post("/auth/login/org", logInOrg);
 app.post("/auth/logout", logout);
+app.put("/auth/update/user", updateUser);
+app.put("/auth/update/org", updateOrg);
 
 //MEMBERSHIP ENDPOINTS
 app.post("/api/memberstatus", getMemberStatus);
@@ -116,7 +120,7 @@ app.post("/api/animal/application", addAnimalApp);
 app.post("/api/animal/application/accept", acceptAnimal);
 app.put("/api/animal/application", animalAppPending);
 app.post("/api/animal/application/delete", removeAnimalApp);
-app.post("/api/createapplication", createApp);
+app.put("/api/createapplication", createApp);
 app.post("/api/application", submitApp);
 app.delete("/api/applications/:id", deleteApp);
 app.get("/api/animal/applications", getOrgAnimalApps);
