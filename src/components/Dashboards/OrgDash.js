@@ -34,11 +34,13 @@ class OrgDash extends Component {
         });
 
         axios.get("/api/applications/org/count").then(response => {
+            console.log("appCount:", response.data);
             const results = response.data[0].count;
             this.setState({ appCount: this.state.appCount + +results });
         });
 
         axios.get("/api/applications/org/animalcount").then(response => {
+            console.log("animalCount:", response.data);
             const results = response.data[0].count;
             this.setState({ appCount: this.state.appCount + +results });
         });
@@ -62,18 +64,22 @@ class OrgDash extends Component {
         return (
             <div className="dashboard">
                 <div>
-                    {this.state.appCount > 0 && (
-                        <div>
-                            <h1>Applications Needing Review:</h1>{" "}
-                            <Link to="/org/applications">
-                                {this.state.appCount}
-                            </Link>
-                        </div>
-                    )}
-                    {this.state.appCount === 0 && (
-                        <h1>No Applications To Review</h1>
-                    )}
-                    <div className="animalListContainer">
+                    <div className="appPreview">
+                        {this.state.appCount > 0 && (
+                            <div>
+                                <div className="appCount">
+                                    <h1>Applications Needing Review:</h1>
+                                    <Link to="/org/applications">
+                                        {this.state.appCount}
+                                    </Link>
+                                </div>
+                            </div>
+                        )}
+                        {this.state.appCount === 0 && (
+                            <h1>No Applications To Review</h1>
+                        )}
+                    </div>
+                    <div className="smallAnimalListContainer">
                         {!this.state.animalList && <h1>No Current Animals</h1>}
                         {animals}
                     </div>

@@ -1,1 +1,1 @@
-SELECT COUNT(*) FROM application WHERE org_id = $1
+SELECT COUNT(org_id) FROM application WHERE org_id = $1;

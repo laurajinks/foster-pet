@@ -14,9 +14,10 @@ export default class FindGroups extends Component {
             if (response.data.isOrg === true || !response.data) {
                 return this.props.history.push("/login");
             } else {
+                console.log(response.data);
                 this.setState({
                     username: response.data.username,
-                    id: response.data.id
+                    user_id: response.data.id
                 });
             }
         });

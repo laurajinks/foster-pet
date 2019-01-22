@@ -39,6 +39,33 @@
     }
 }
 
+.appPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $lightSilver;
+    width: 40vw;
+    margin-top: 20px;
+    height: 7vh;
+    overflow: scroll;
+    color: $darkSilver;
+
+    .appCount {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        background: #e60000;
+        color: #ffffff;
+        margin: 0px 10px;
+        font-size: 12px;
+        padding: 5px 7px;
+        border-radius: 50%;
+    }
+}
+
 @media (max-width: 1000px) {
     .dashboard {
         flex-direction: column;
