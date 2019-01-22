@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import EditUserProfile from "./EditUserProfile";
 
 export default class UserProfile extends Component {
     constructor() {
@@ -11,7 +12,8 @@ export default class UserProfile extends Component {
             user_id: "",
             username: "",
             user_bio: "",
-            displayEdits: false,
+            allowEdits: false,
+            showEdit: false,
             noUser: false
         };
     }
@@ -30,17 +32,39 @@ export default class UserProfile extends Component {
                     username,
                     user_bio
                 } = response.data[0];
-                this.setState({
-                    email,
-                    img,
-                    displayName: user_display_name,
-                    user_id,
-                    username,
-                    user_bio
-                });
+                this.setState(
+                    {
+                        email,
+                        img,
+                        displayName: user_display_name,
+                        user_id,
+                        username,
+                        user_bio
+                    },
+                    () => {
+                        axios.get("/auth/getcurrentuser").then(response => {
+                            if (
+                                response.data.id === this.state.user_id &&
+                                response.data.isOrg === false
+                            ) {
+                                this.setState({ allowEdits: true });
+                            }
+                        });
+                    }
+                );
             })
+
             .catch(err => this.setState({ noUser: true }));
     };
+
+    toggleEdit = () => {
+        this.setState({ showEdit: !this.state.showEdit });
+    };
+
+    submitEdit = e => {
+        e.preventDefault();
+    };
+
     render() {
         return (
             <div>
@@ -67,6 +91,19 @@ export default class UserProfile extends Component {
                             <h2>Bio:</h2>
                             <p>{this.state.user_bio}</p>
                         </div>
+                        {this.state.allowEdits && (
+                            <div>
+                                <button onClick={this.toggleEdit}>Edit</button>
+                                {this.state.showEdit && (
+                                    <EditUserProfile
+                                        displayName={this.state.displayName}
+                                        email={this.state.email}
+                                        bio={this.state.bio}
+                                        submitEdit={this.submitEdit}
+                                    />
+                                )}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

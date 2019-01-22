@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import EditOrgProfile from "./EditOrgProfile";
 
 export default class OrgProfile extends Component {
     constructor() {
@@ -11,7 +12,9 @@ export default class OrgProfile extends Component {
             displayName: "",
             org_id: "",
             username: "",
-            zipcode: ""
+            zipcode: "",
+            allowEdits: false,
+            showEdit: false
         };
     }
 
@@ -43,6 +46,11 @@ export default class OrgProfile extends Component {
             });
         });
     };
+
+    toggleEdit = () => {
+        this.setState({ showEdits: !this.state.showEdits });
+    };
+
     render() {
         return (
             <div className="profileContainer">
@@ -58,6 +66,18 @@ export default class OrgProfile extends Component {
                     <h2>About Us:</h2>
                     <p>{this.state.org_bio}</p>
                 </div>
+                {this.state.allowEdits && (
+                    <div>
+                        <button onClick={this.toggleEdit}>Edit</button>
+                        {this.state.showEdit && (
+                            <EditOrgProfile
+                                displayName={this.state.displayName}
+                                email={this.state.email}
+                                bio={this.state.bio}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
         );
     }
