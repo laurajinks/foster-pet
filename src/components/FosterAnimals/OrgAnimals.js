@@ -90,12 +90,14 @@ class OrgAnimals extends Component {
             );
         });
         return (
-            <div className="animalListContainer">
-                <Link to="/org/animals/create">
-                    <button>Create New Animal Listing</button>
-                    <br />
-                </Link>
-                {animals}
+            <div>
+                <div className="buttonContainer">
+                    <Link to="/org/animals/create">
+                        <button>Create New Animal Listing</button>
+                        <br />
+                    </Link>
+                </div>
+                <div className="animalListContainer">{animals}</div>
             </div>
         );
     }

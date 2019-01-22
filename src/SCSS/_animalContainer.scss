@@ -16,10 +16,13 @@
     }
 }
 
+.buttonContainer {
+}
+
 .animalListContainer {
     width: 90vw;
-    min-height: 90vh;
     display: flex;
+    overflow: scroll;
     margin: 20px auto 0px auto;
     flex-wrap: wrap;
     justify-content: center;
@@ -75,10 +78,11 @@
 
 .smallAnimalContainer {
     @extend %animal;
-    width: 40%;
+    width: 200px;
+    height: 300px;
     margin: 20px;
     img {
-        max-width: 150px;
+        max-width: 100px;
     }
 }
 
@@ -101,6 +105,8 @@
         input,
         select {
             margin: 0 10px;
+            background: $lightSilver;
+            border: 0.5px solid $offWhite;
         }
     }
 }

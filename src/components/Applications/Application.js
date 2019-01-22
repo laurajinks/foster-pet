@@ -57,15 +57,17 @@ export default class Application extends Component {
             return <p>{item}</p>;
         });
         return (
-            <div>
+            <div className="applicationContainer">
                 <img src={this.state.img} alt="avatar" width="100" />
                 <Link to={`/profile/user/${this.props.user_id}`}>
                     <h1>{this.state.username}</h1>
                 </Link>
                 <h2>{this.state.email}</h2>
                 {answers}
-                <button onClick={this.acceptApplication}>Accept</button>
-                <button onClick={this.denyApplication}>Deny</button>
+                <div>
+                    <button onClick={this.acceptApplication}>Accept</button>
+                    <button onClick={this.denyApplication}>Deny</button>
+                </div>
             </div>
         );
     }

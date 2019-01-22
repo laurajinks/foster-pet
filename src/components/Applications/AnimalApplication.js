@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class AnimalApplication extends Component {
     render() {
         return (
-            <div>
+            <div className="applicationContainer">
                 <p>Application</p>
                 <img
                     src={this.props.animal_img}

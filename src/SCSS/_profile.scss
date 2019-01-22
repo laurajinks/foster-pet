@@ -1,0 +1,30 @@
+.profileContainer {
+    width: 90vw;
+    background: $lightSilver;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profileContent {
+    @include flexBoxColumnCenter;
+    margin: 15px;
+    width: 40%;
+}
+
+.bio {
+    @include flexBoxColumnCenter;
+    width: 40%;
+    margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+    .profileContainer {
+        justify-content: center;
+    }
+    .profileContent,
+    .bio {
+        width: 80%;
+    }
+}

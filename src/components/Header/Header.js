@@ -64,7 +64,7 @@ class Header extends Component {
         return (
             <div>
                 <div className="headerContainer">
-                    <Link to="">
+                    <Link to="/">
                         <h1 className="logo">
                             <span className="italic">foster</span>
                             <span className="bold">PET</span>
@@ -112,7 +112,22 @@ class Header extends Component {
                                     width="50"
                                 />
                                 <div>
-                                    <p>{this.state.username}</p>
+                                    {!this.state.isOrg && (
+                                        <Link
+                                            to={`/profile/user/${
+                                                this.state.id
+                                            }`}
+                                        >
+                                            <p>{this.state.username}</p>
+                                        </Link>
+                                    )}
+                                    {this.state.isOrg && (
+                                        <Link
+                                            to={`/profile/org/${this.state.id}`}
+                                        >
+                                            <p>{this.state.username}</p>
+                                        </Link>
+                                    )}
                                     <Link to="/">
                                         <p onClick={() => this.logout()}>
                                             Logout
@@ -139,7 +154,22 @@ class Header extends Component {
                                         alt="avatar"
                                         width="50"
                                     />
-                                    <p>{this.state.username}</p>
+                                    {!this.state.isOrg && (
+                                        <Link
+                                            to={`/profile/user/${
+                                                this.state.id
+                                            }`}
+                                        >
+                                            <p>{this.state.username}</p>
+                                        </Link>
+                                    )}
+                                    {this.state.isOrg && (
+                                        <Link
+                                            to={`/profile/org/${this.state.id}`}
+                                        >
+                                            <p>{this.state.username}</p>
+                                        </Link>
+                                    )}
                                 </>
                             )}
                             {this.state.isOrg === false && (

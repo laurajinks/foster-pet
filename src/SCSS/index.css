@@ -332,7 +332,7 @@ table {
   display: -ms-flexbox;
   display: flex;
   z-index: 4;
-  color: #847577;
+  color: #000000;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -569,7 +569,7 @@ table {
   .footer {
     height: 30vh;
   }
-  img {
+  .socialMedia img {
     margin: 30px 20px;
   }
 }
@@ -578,11 +578,16 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: 7vh;
   width: 100vw;
   height: 90vh;
@@ -630,10 +635,6 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -641,7 +642,7 @@ table {
       -ms-flex-pack: center;
           justify-content: center;
   background: #e5e6e4;
-  width: 40vw;
+  width: 90vw;
   margin-top: 20px;
   height: 7vh;
   overflow: scroll;
@@ -658,7 +659,7 @@ table {
 }
 
 .appPreview a {
-  background: #e60000;
+  background: rgba(230, 0, 0, 0.7);
   color: #ffffff;
   margin: 0px 10px;
   font-size: 12px;
@@ -717,10 +718,10 @@ table {
 
 .animalListContainer {
   width: 90vw;
-  min-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: scroll;
   margin: 20px auto 0px auto;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -788,12 +789,13 @@ table {
 }
 
 .smallAnimalContainer {
-  width: 40%;
+  width: 200px;
+  height: 300px;
   margin: 20px;
 }
 
 .smallAnimalContainer img {
-  max-width: 150px;
+  max-width: 100px;
 }
 
 .adoptDash {
@@ -826,6 +828,8 @@ table {
 .adoptDash form input,
 .adoptDash form select {
   margin: 0 10px;
+  background: #e5e6e4;
+  border: 0.5px solid #fbfbf2;
 }
 
 @media (max-width: 1100px) {
@@ -980,7 +984,123 @@ table {
 }
 
 .applicationDash {
+  width: 90vw;
   min-height: 90vh;
+  margin: 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #e5e6e4;
+}
+
+.applicationDash button {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border: none;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.applicationDash button:hover {
+  background: #a6a2a2;
+  color: #e5e6e4;
+}
+
+.applicationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+  width: 300px;
+  height: 400px;
+  overflow: scroll;
+  border: 0.5px solid #cfd2cd;
+}
+
+.applicationContainer button {
+  background: #e5e6e4;
+}
+
+.profileContainer {
+  width: 90vw;
+  background: #e5e6e4;
+  margin: 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.profileContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px;
+  width: 40%;
+}
+
+.bio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+  .profileContainer {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .profileContent,
+  .bio {
+    width: 80%;
+  }
 }
 
 button {

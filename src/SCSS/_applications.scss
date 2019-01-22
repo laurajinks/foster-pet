@@ -1,3 +1,36 @@
 .applicationDash {
+    width: 90vw;
     min-height: 90vh;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: $lightSilver;
+
+    button {
+        background: $buttonBackground;
+        padding: 20px;
+        border: none;
+        margin: 10px;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background: $mediumSilver;
+        color: $lightSilver;
+    }
+}
+
+.applicationContainer {
+    @include flexBoxColumnCenter;
+    background: #ffffff;
+    width: 300px;
+    height: 400px;
+    overflow: scroll;
+    border: 0.5px solid $lightGray;
+
+    button {
+        background: $lightSilver;
+    }
 }

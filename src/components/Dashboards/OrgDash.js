@@ -79,7 +79,7 @@ class OrgDash extends Component {
                             <h1>No Applications To Review</h1>
                         )}
                     </div>
-                    <div className="smallAnimalListContainer">
+                    <div className="animalListContainer">
                         {!this.state.animalList && <h1>No Current Animals</h1>}
                         {animals}
                     </div>

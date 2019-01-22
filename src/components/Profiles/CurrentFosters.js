@@ -57,6 +57,6 @@ export default class CurrentFosters extends Component {
                 />
             );
         });
-        return <div>{fosters}</div>;
+        return <div className="animalListContainer">{fosters}</div>;
     }
 }
