@@ -21,7 +21,6 @@ export default class OrgProfile extends Component {
     componentDidMount = () => {
         const { id } = this.props.match.params;
         axios.post("/api/org", { id }).then(response => {
-            console.log(response.data);
             const {
                 application,
                 email,
@@ -33,22 +32,34 @@ export default class OrgProfile extends Component {
                 us_state,
                 org_bio
             } = response.data[0];
-            this.setState({
-                application,
-                email,
-                img,
-                displayName: org_display_name,
-                org_id,
-                username,
-                zipcode,
-                usState: us_state,
-                org_bio
-            });
+            this.setState(
+                {
+                    application,
+                    email,
+                    img,
+                    displayName: org_display_name,
+                    org_id,
+                    username,
+                    zipcode,
+                    usState: us_state,
+                    org_bio
+                },
+                () => {
+                    axios.get("/auth/getcurrentuser").then(response => {
+                        if (
+                            response.data.id === this.state.org_id &&
+                            response.data.isOrg === true
+                        ) {
+                            this.setState({ allowEdits: true });
+                        }
+                    });
+                }
+            );
         });
     };
 
     toggleEdit = () => {
-        this.setState({ showEdits: !this.state.showEdits });
+        this.setState({ showEdit: !this.state.showEdit });
     };
 
     render() {
