@@ -21,23 +21,32 @@ import CurrentFosters from "./components/Profiles/CurrentFosters";
 
 export default (
     <Switch>
+        {/* user routes */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/profile/user/:id" component={UserProfile} />
         <Route path="/profile/org/:id" component={OrgProfile} />
+        <Route exact path="/" component={Home} />
+
+        {/* dashboards */}
         <Route path="/dashboard/user" component={UserDash} />
-        <Route path="/user/newsfeed" component={UserNewsFeed} />
         <Route path="/dashboard/org" component={OrgDash} />
-        <Route path="/org/blog/create" component={CreatePost} />
-        <Route path="/org/blog" component={BlogHome} />
+
+        {/* animals */}
         <Route path="/org/animals/create" component={CreateNewAnimal} />
         <Route path="/org/animals" component={OrgAnimals} />
-        <Route path="/org/currentfosters" component={CurrentFosters} />
         <Route path="/user/animals" component={UserAnimals} />
         <Route path="/adopt" component={Adopt} />
-        <Route path="/organizations" component={FindGroups} />
+
+        {/* applications/memberships */}
         <Route path="/org/applications/create" component={CreateApplication} />
         <Route path="/org/applications" component={ApplicationDash} />
-        <Route exact path="/" component={Home} />
+        <Route path="/org/currentfosters" component={CurrentFosters} />
+        <Route path="/organizations" component={FindGroups} />
+
+        {/* blog */}
+        <Route path="/user/newsfeed" component={UserNewsFeed} />
+        <Route path="/org/blog/create" component={CreatePost} />
+        <Route path="/org/blog" component={BlogHome} />
     </Switch>
 );

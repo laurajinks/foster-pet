@@ -3,6 +3,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import AppField from "./AppField";
 
+//Organization Create Membership Application Fields
+
 class CreateApplication extends Component {
     constructor() {
         super();

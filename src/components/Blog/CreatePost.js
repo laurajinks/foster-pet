@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+//Page for organization to create new blog post
+
 export default class CreatePost extends Component {
     constructor() {
         super();

@@ -14,6 +14,8 @@ class Login extends Component {
         };
     }
 
+    //Toggle between Foster and Organization Log In forms
+
     showFoster = () => {
         this.setState({ fosterLogIn: true });
     };
@@ -21,6 +23,8 @@ class Login extends Component {
     showOrganization = () => {
         this.setState({ fosterLogIn: false });
     };
+
+    //
 
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Post from "./Post";
 
+// Organization view of blog
+
 export default class BlogHome extends Component {
     constructor() {
         super();

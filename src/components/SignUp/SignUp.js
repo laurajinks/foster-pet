@@ -4,7 +4,6 @@ import { storage } from "../../firebase";
 import { connect } from "react-redux";
 import { updateUser } from "../../ducks/reducers/authReducer";
 import ImageUpload from "../ImageUpload/ImageUpload";
-// const apiurl = "http://localhost:3001";
 
 class SignUp extends Component {
     constructor() {
@@ -23,6 +22,8 @@ class SignUp extends Component {
         };
     }
 
+    //Toggle between Foster and Organization Sign Ups
+
     showFoster = () => {
         this.setState({ fosterSignUp: true });
     };
@@ -30,6 +31,8 @@ class SignUp extends Component {
     showOrganization = () => {
         this.setState({ fosterSignUp: false });
     };
+
+    //
 
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });

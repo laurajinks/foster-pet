@@ -47,6 +47,7 @@ export default class UserAnimals extends Component {
         this.setState({ showEligible: !this.state.showEligible });
     };
 
+    //submit Application for Organization to approve
     applyToFosterAnimal = (animal_id, org_id) => {
         axios.post("/api/animal/application", { animal_id, org_id }).then(
             axios.post("/api/animals/user").then(
@@ -60,6 +61,7 @@ export default class UserAnimals extends Component {
         );
     };
 
+    //Accept foster animal after Organization has submitted approval
     fosterAnimal = (animal_id, user_id) => {
         axios.put("/api/animals/fosterparent", { animal_id }).then(
             axios
