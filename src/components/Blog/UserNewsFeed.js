@@ -42,6 +42,11 @@ export default class UserNewsFeed extends Component {
                 />
             );
         });
-        return <div className="userNewsFeed">{prevPosts}</div>;
+        return (
+            <div className="userNewsFeed">
+                <h1 className="title">Recent Posts From Your Groups</h1>
+                {prevPosts}
+            </div>
+        );
     }
 }

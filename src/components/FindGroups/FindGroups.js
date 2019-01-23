@@ -53,7 +53,9 @@ export default class FindGroups extends Component {
         return (
             <div>
                 <div className="search">
-                    Search By State
+                    <h1 className="title">Foster Groups</h1>
+                    <p> Search By State</p>
+
                     <select name="usState" onChange={this.handleInputChange}>
                         <option value="Alabama">Alabama</option>
                         <option value="Alaska">Alaska</option>

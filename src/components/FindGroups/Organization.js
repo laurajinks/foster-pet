@@ -66,30 +66,26 @@ export default class Organization extends Component {
     render() {
         return (
             <div className="organization">
-                <div className="result">
-                    <img
-                        className="resultThumb"
-                        src={this.props.img}
-                        alt={this.props.org_username}
-                    />
-                    <p>{this.props.displayName}</p>
-                    <Link to={`profile/org/${this.props.org_id}`}>
-                        <p className="resultName">{this.props.org_username}</p>
-                    </Link>
+                <img
+                    className="resultThumb"
+                    src={this.props.img}
+                    alt={this.props.org_username}
+                />
+                <h1 className="title">{this.props.displayName}</h1>
+                <Link to={`profile/org/${this.props.org_id}`}>
+                    <p className="resultName">{this.props.org_username}</p>
+                </Link>
 
-                    <p>Zip Code:{this.props.zipcode}</p>
-                    <p>Email: {this.props.email}</p>
-                    {!this.state.pendingApp && !this.state.isMember && (
-                        <button
-                            className="applyBtn"
-                            onClick={() => this.showApp()}
-                        >
-                            Apply
-                        </button>
-                    )}
-                    {this.state.pendingApp && <p>Status: Pending</p>}
-                    {this.state.isMember && <p>Status: Member</p>}
-                </div>
+                <p>Zip Code:{this.props.zipcode}</p>
+                <p>Email: {this.props.email}</p>
+                {!this.state.pendingApp && !this.state.isMember && (
+                    <button className="applyBtn" onClick={() => this.showApp()}>
+                        Apply
+                    </button>
+                )}
+                {this.state.pendingApp && <p>Status: Pending</p>}
+                {this.state.isMember && <p>Status: Member</p>}
+
                 {this.state.showApp && (
                     <OrgApp
                         user_id={this.props.user_id}

@@ -164,6 +164,12 @@ class SignUp extends Component {
                         </div>
                         {this.state.fosterSignUp && (
                             <form onSubmit={this.addUser}>
+                                <ImageUpload
+                                    handleFileChange={this.handleFileChange}
+                                    handleUpload={this.handleUpload}
+                                    url={this.state.url}
+                                />
+                                <br />
                                 Username{" "}
                                 <input
                                     type="text"
@@ -192,12 +198,6 @@ class SignUp extends Component {
                                     onChange={this.handleInputChange}
                                 />
                                 <br />
-                                <ImageUpload
-                                    handleFileChange={this.handleFileChange}
-                                    handleUpload={this.handleUpload}
-                                    url={this.state.url}
-                                />
-                                <br />
                                 <input
                                     className="submit"
                                     type="submit"
@@ -207,6 +207,12 @@ class SignUp extends Component {
                         )}
                         {!this.state.fosterSignUp && (
                             <form onSubmit={this.addOrg}>
+                                <ImageUpload
+                                    handleFileChange={this.handleFileChange}
+                                    handleUpload={this.handleUpload}
+                                    url={this.state.url}
+                                />
+                                <br />
                                 Username{" "}
                                 <input
                                     type="text"
@@ -329,12 +335,6 @@ class SignUp extends Component {
                                     name="password"
                                     onChange={this.handleInputChange}
                                 />
-                                <ImageUpload
-                                    handleFileChange={this.handleFileChange}
-                                    handleUpload={this.handleUpload}
-                                    url={this.state.url}
-                                />
-                                <br />
                                 <input type="submit" value="Submit" />
                             </form>
                         )}

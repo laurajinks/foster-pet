@@ -5,7 +5,12 @@
     margin: 10px auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    img {
+        width: 200px;
+        height: 200px;
+    }
 
     button {
         border: none;
@@ -29,13 +34,24 @@
 .profileContent {
     @include flexBoxColumnCenter;
     margin: 15px;
-    width: 40%;
+    width: 30vw;
+
+    h2,
+    h1,
+    h3 {
+        margin-top: 10px;
+    }
 }
 
 .bio {
     @include flexBoxColumnCenter;
-    width: 40%;
+    width: 30vw;
     margin: 15px 0;
+    h2,
+    h1,
+    h3 {
+        margin-top: 10px;
+    }
 }
 
 .editProfile {
@@ -56,15 +72,23 @@
 
 @media (max-width: 600px) {
     .profileContainer {
-        justify-content: center;
+        @include flexBoxColumnCenter;
+        line-height: 20px;
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
     }
     .profileContent,
     .bio {
-        width: 80%;
+        width: 80vw;
     }
 
     .editProfile {
         width: 90vw;
+        height: 70vh;
+        top: 7vh;
     }
 }
 

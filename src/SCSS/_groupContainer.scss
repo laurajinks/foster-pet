@@ -4,12 +4,17 @@
     padding: 20px 0;
     background: $lightSilver;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    h1 {
+        margin-bottom: 20px;
+    }
+
     select,
     button {
-        margin: 0 10px;
+        margin: 10px 10px;
         padding: 5px;
         background: $offWhite;
         border: none;
@@ -41,15 +46,29 @@
         background: #ffffff;
         height: 30vh;
         width: 20vw;
-        border: 0.5px solid $mediumSilver;
+        border: 0.5px solid $lightGray;
         margin: 20px;
         color: #000000;
-        h2 {
+        line-height: 20px;
+        overflow: scroll;
+        h2,
+        h1 {
             margin: 10px auto;
         }
         img {
             border: 0.5px solid $mediumSilver;
             max-width: 100px;
+        }
+
+        button {
+            border: none;
+            padding: 10px;
+            background: $lightSilver;
+        }
+
+        button:hover {
+            background: $darkSilver;
+            color: $offWhite;
         }
 
         .orgApp {
@@ -64,6 +83,32 @@
 
             form {
                 @include flexBoxColumnCenter;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .groupListContainer {
+        .organization {
+            width: 40vw;
+            height: 40vh;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .groupListContainer {
+        .organization {
+            width: 80vw;
+            height: 60vh;
+
+            .title {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
             }
         }
     }

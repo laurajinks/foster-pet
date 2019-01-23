@@ -12,6 +12,8 @@ export default class UserProfile extends Component {
             user_id: "",
             username: "",
             user_bio: "",
+            orgs: [],
+            animalCount: 0,
             allowEdits: false,
             showEdit: false,
             noUser: false
@@ -20,10 +22,11 @@ export default class UserProfile extends Component {
 
     componentDidMount = () => {
         const { id } = this.props.match.params;
+
+        //get user data from param id, check to see if user is the same as user on session
         axios
             .post("/api/user", { id })
             .then(response => {
-                console.log(response);
                 const {
                     email,
                     img,
@@ -53,8 +56,20 @@ export default class UserProfile extends Component {
                     }
                 );
             })
-
             .catch(err => this.setState({ noUser: true }));
+
+        //Get organization display names from groups user is a member of
+        axios.post("/api/memberships", { id }).then(response => {
+            const organizationList = response.data.map(
+                obj => obj.org_display_name
+            );
+            this.setState({ orgs: organizationList.join(",") });
+        });
+
+        axios.post("/api/animalcount", { id }).then(response => {
+            const num = response.data[0].count;
+            this.setState({ animalCount: +num });
+        });
     };
 
     toggleEdit = () => {
@@ -82,15 +97,22 @@ export default class UserProfile extends Component {
                                 alt="avatar"
                                 width="100"
                             />
-                            <h1>{this.state.displayName}</h1>
+                            <h1 className="title">{this.state.displayName}</h1>
                             <h3>{this.state.username}</h3>
-                            <h2>Email: {this.state.email}</h2>
+                            <h2>
+                                <span className="bold">Email:</span>{" "}
+                                {this.state.email}
+                            </h2>
                         </div>
                         <div className="bio">
-                            <h2> Current Organizations:</h2>
-                            <h2>Current Animals:</h2>
-                            <h2>Bio:</h2>
-                            <p>{this.state.user_bio}</p>
+                            <h2 className="bold">Current Organizations:</h2>
+                            <h2>{this.state.orgs}</h2>
+
+                            <h2 className="bold">Current Animals:</h2>
+
+                            <h2>{this.state.animalCount}</h2>
+                            <h2 className="bold">Bio:</h2>
+                            <h2>{this.state.user_bio}</h2>
                         </div>
                         {this.state.allowEdits && (
                             <button onClick={this.toggleEdit}>Edit</button>

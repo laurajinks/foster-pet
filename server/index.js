@@ -40,7 +40,8 @@ const {
     getMemberStatus,
     addMembership,
     getCurrentFosters,
-    deleteFoster
+    deleteFoster,
+    getOrgMemberships
 } = require("./controllers/memberController");
 const {
     searchAdoptable,
@@ -57,7 +58,8 @@ const {
     addFosterParent,
     removeFosterParent,
     getUserPending,
-    updateAnimal
+    updateAnimal,
+    getUserAnimalCount
 } = require("./controllers/animalController");
 const {
     writePost,
@@ -100,6 +102,7 @@ app.put("/auth/update/org", updateOrg);
 
 //MEMBERSHIP ENDPOINTS
 app.post("/api/memberstatus", getMemberStatus);
+app.post("/api/memberships", getOrgMemberships);
 app.post("/api/members", addMembership);
 app.post("/api/org/members", getCurrentFosters);
 app.delete("/api/org/members/:id", deleteFoster);
@@ -128,6 +131,7 @@ app.get("/api/animal/applications", getOrgAnimalApps);
 //ANIMAL ENDPOINTS
 app.get("/api/animals/org", getOrgAnimals);
 app.post("/api/animals/user", getUserAnimals);
+app.post("/api/animalcount", getUserAnimalCount);
 app.get("/api/animals/user/eligible", getEligibleAnimals);
 app.get("/api/animals/user/pending", getUserPending);
 app.post("/api/animals", addAnimal);

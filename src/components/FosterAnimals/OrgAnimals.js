@@ -97,7 +97,10 @@ class OrgAnimals extends Component {
                         <br />
                     </Link>
                 </div>
-                <div className="animalListContainer">{animals}</div>
+                <div className="animalListContainer">
+                    <h1 className="title">Current Animals</h1>
+                    {animals}
+                </div>
             </div>
         );
     }

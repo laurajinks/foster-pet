@@ -146,7 +146,7 @@ export default class UserAnimals extends Component {
         return (
             <div>
                 <div className="animalListContainer">
-                    <h1 className="bold">Current Foster Animals</h1>
+                    <h1 className="bold title">Current Foster Animals</h1>
                     {current}
                     {pending}
                 </div>

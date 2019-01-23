@@ -143,6 +143,11 @@ table {
   color: #ffffff;
 }
 
+.homepage .imageUpload input,
+.homepage .imageUpload button {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .homepage button {
   border: none;
   font-size: 16px;
@@ -199,7 +204,7 @@ table {
 .homepage .loginSignUp {
   background: rgba(255, 255, 255, 0.15);
   width: 30vw;
-  height: 50vh;
+  height: 60vh;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
 }
@@ -246,7 +251,8 @@ table {
   height: 100%;
 }
 
-.homepage input {
+.homepage input,
+.homepage select {
   background: rgba(255, 255, 255, 0.2);
   border: 0.1px solid rgba(255, 255, 255, 0.2);
   margin: 10px;
@@ -319,8 +325,8 @@ table {
             justify-content: center;
   }
   .homepage .loginSignUpContainer .loginSignUp {
-    width: 80vw;
-    height: 70vh;
+    width: 90vw;
+    height: 90vh;
   }
   .homepage .loginSignUpContainer .loginSignUp button {
     font-size: 12px;
@@ -364,7 +370,7 @@ table {
   display: -ms-flexbox;
   display: flex;
   z-index: 4;
-  color: #000000;
+  color: #847577;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -425,6 +431,7 @@ table {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  font-weight: bold;
 }
 
 .hamburgerHeader {
@@ -644,6 +651,7 @@ table {
   height: 80vh;
   overflow: scroll;
   color: #000000;
+  white-space: pre-wrap;
 }
 
 .dashboard .newsFeedPreview .title {
@@ -665,6 +673,11 @@ table {
 .dashboard .newsFeedPreview a {
   text-align: center;
   margin: 10px;
+}
+
+.dashboard .newsFeedPreview h1 {
+  font-size: 20px;
+  margin: 10px 0;
 }
 
 .dashboard .newsFeedPreview p,
@@ -761,6 +774,7 @@ table {
 
 .animalListContainer {
   width: 90vw;
+  min-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -930,7 +944,7 @@ table {
 }
 
 @media (max-width: 700px) {
-  .adoptDash {
+  .adoptDash form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -938,22 +952,11 @@ table {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    height: 200px;
   }
-  form {
-    margin-top: 20px;
-    position: relative;
-    top: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    height: 450px;
+  .adoptDash form input,
+  .adoptDash form select {
+    margin-top: 5px;
   }
 }
 
@@ -968,7 +971,8 @@ table {
     text-align: center;
   }
   .smallAnimalContainer {
-    width: 40%;
+    width: 80vw;
+    height: 225px;
     margin: 5px auto;
   }
   .smallAnimalContainer img {
@@ -982,6 +986,15 @@ table {
   background: #e5e6e4;
   margin: 20px auto 0px auto;
   padding: 20px;
+}
+
+.userNewsFeed .title {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #847577;
+  font-weight: bold;
 }
 
 .blogPost {
@@ -1032,6 +1045,10 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1040,9 +1057,13 @@ table {
           align-items: center;
 }
 
+.search h1 {
+  margin-bottom: 20px;
+}
+
 .search select,
 .search button {
-  margin: 0 10px;
+  margin: 10px 10px;
   padding: 5px;
   background: #fbfbf2;
   border: none;
@@ -1092,18 +1113,32 @@ table {
   background: #ffffff;
   height: 30vh;
   width: 20vw;
-  border: 0.5px solid #a6a2a2;
+  border: 0.5px solid #cfd2cd;
   margin: 20px;
   color: #000000;
+  line-height: 20px;
+  overflow: scroll;
 }
 
-.groupListContainer .organization h2 {
+.groupListContainer .organization h2,
+.groupListContainer .organization h1 {
   margin: 10px auto;
 }
 
 .groupListContainer .organization img {
   border: 0.5px solid #a6a2a2;
   max-width: 100px;
+}
+
+.groupListContainer .organization button {
+  border: none;
+  padding: 10px;
+  background: #e5e6e4;
+}
+
+.groupListContainer .organization button:hover {
+  background: #847577;
+  color: #fbfbf2;
 }
 
 .groupListContainer .organization .orgApp {
@@ -1143,6 +1178,26 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .groupListContainer .organization {
+    width: 40vw;
+    height: 40vh;
+  }
+}
+
+@media (max-width: 650px) {
+  .groupListContainer .organization {
+    width: 80vw;
+    height: 60vh;
+  }
+  .groupListContainer .organization .title {
+    font-size: 18px;
+  }
+  .groupListContainer .organization p {
+    font-size: 14px;
+  }
 }
 
 .applicationDash {
@@ -1226,6 +1281,23 @@ table {
   background: #e5e6e4;
 }
 
+@media (max-width: 500px) {
+  .applicationDash {
+    min-height: 200vh;
+  }
+  .applicationContainer {
+    width: 250px;
+    height: 300px;
+  }
+  .applicationContainer p {
+    font-size: 14px;
+  }
+  .applicationContainer img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .profileContainer {
   width: 90vw;
   min-height: 40vh;
@@ -1237,8 +1309,16 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.profileContainer img {
+  width: 200px;
+  height: 200px;
 }
 
 .profileContainer button {
@@ -1288,7 +1368,13 @@ table {
       -ms-flex-align: center;
           align-items: center;
   margin: 15px;
-  width: 40%;
+  width: 30vw;
+}
+
+.profileContent h2,
+.profileContent h1,
+.profileContent h3 {
+  margin-top: 10px;
 }
 
 .bio {
@@ -1305,8 +1391,14 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 40%;
+  width: 30vw;
   margin: 15px 0;
+}
+
+.bio h2,
+.bio h1,
+.bio h3 {
+  margin-top: 10px;
 }
 
 .editProfile {
@@ -1341,16 +1433,33 @@ table {
 
 @media (max-width: 600px) {
   .profileContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    line-height: 20px;
+  }
+  .profileContainer img {
+    width: 150px;
+    height: 150px;
   }
   .profileContent,
   .bio {
-    width: 80%;
+    width: 80vw;
   }
   .editProfile {
     width: 90vw;
+    height: 70vh;
+    top: 7vh;
   }
 }
 
@@ -1519,5 +1628,14 @@ a {
 
 a:visited {
   text-decoration: none;
+}
+
+.title {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #847577;
+  font-weight: bold;
 }
 /*# sourceMappingURL=index.css.map */

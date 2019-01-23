@@ -57,3 +57,20 @@
         background: $lightSilver;
     }
 }
+
+@media (max-width: 500px) {
+    .applicationDash {
+        min-height: 200vh;
+    }
+    .applicationContainer {
+        width: 250px;
+        height: 300px;
+        p {
+            font-size: 14px;
+        }
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+}

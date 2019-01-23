@@ -35,5 +35,14 @@ module.exports = {
             .member.remove_foster(req.session.user.id, req.params.id)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+
+    getOrgMemberships: (req, res) => {
+        const { id } = req.body;
+        req.app
+            .get("db")
+            .member.get_org_memberships(id)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };
