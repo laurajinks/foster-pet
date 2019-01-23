@@ -120,22 +120,6 @@
     }
 }
 
-.createNewAnimal {
-    @include flexBoxColumnCenter;
-    margin: 10px auto 0px auto;
-    width: 90vw;
-    height: 60vh;
-    background: $lightSilver;
-    color: $darkSilver;
-
-    input,
-    select {
-        margin: 5px;
-        background: #ffffff;
-        border: none;
-    }
-}
-
 @media (max-width: 1100px) {
     .animalListContainer {
         margin-top: 50px;
@@ -211,9 +195,5 @@
         img {
             max-width: 75px;
         }
-    }
-
-    .createNewAnimal {
-        height: 90vh;
     }
 }

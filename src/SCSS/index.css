@@ -885,34 +885,6 @@ table {
   border: none;
 }
 
-.createNewAnimal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 10px auto 0px auto;
-  width: 90vw;
-  height: 60vh;
-  background: #e5e6e4;
-  color: #847577;
-}
-
-.createNewAnimal input,
-.createNewAnimal select {
-  margin: 5px;
-  background: #ffffff;
-  border: none;
-}
-
 @media (max-width: 1100px) {
   .animalListContainer {
     margin-top: 50px;
@@ -1002,9 +974,6 @@ table {
   .smallAnimalContainer img {
     max-width: 75px;
   }
-  .createNewAnimal {
-    height: 90vh;
-  }
 }
 
 .userNewsFeed, .orgBlog {
@@ -1016,12 +985,13 @@ table {
 }
 
 .blogPost {
-  width: 90%;
+  width: 80vw;
   margin: 20px auto;
   padding: 15px;
   background: #ffffff;
   border: 0.5px solid #cfd2cd;
   color: #000000;
+  white-space: pre-wrap;
 }
 
 .blogPost h1 {
@@ -1394,6 +1364,132 @@ table {
     -webkit-transform: translateX(0);
             transform: translateX(0);
     opacity: 1;
+  }
+}
+
+.createNewAnimal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px auto 0px auto;
+  width: 90vw;
+  height: 60vh;
+  background: #e5e6e4;
+  color: #847577;
+}
+
+.createNewAnimal input,
+.createNewAnimal select {
+  margin: 5px;
+  background: #ffffff;
+  border: none;
+}
+
+.createBlogPost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90vw;
+  height: 90vh;
+  background: #e5e6e4;
+  color: #847577;
+}
+
+.createBlogPost textarea {
+  width: 70vw;
+  padding: 10px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  line-height: 20px;
+}
+
+.createBlogPost .titleContentInput {
+  font-size: 18px;
+}
+
+.createBlogPost .blogContentInput {
+  height: 60vh;
+  overflow: scroll;
+}
+
+.editBlogPost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80vw;
+  position: relative;
+  z-index: 5;
+  color: #fbfbf2;
+  background: #a6a2a2;
+}
+
+.editBlogPost button {
+  color: #847577;
+}
+
+.editBlogPost form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editBlogPost h3 {
+  margin: 10px;
+}
+
+.editBlogPost textarea {
+  width: 70vw;
+  margin: 0px auto;
+  border: none;
+}
+
+.editBlogPost .blogField {
+  height: 200px;
+}
+
+@media (max-width: 500px) {
+  .createNewAnimal {
+    height: 90vh;
   }
 }
 

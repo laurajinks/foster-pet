@@ -43,10 +43,10 @@ export default class CreatePost extends Component {
 
     render() {
         return (
-            <div>
+            <div className="createBlogPost">
                 <form onSubmit={this.submitPost}>
                     <div className="blogTitle">
-                        Post Title:
+                        <h1>Post Title:</h1>
                         <textarea
                             className="blogTitleInput"
                             name="title"
@@ -54,7 +54,7 @@ export default class CreatePost extends Component {
                         />
                     </div>
                     <div className="blogField">
-                        Write Post:
+                        <h1>Write Post:</h1>
                         <textarea
                             className="blogContentInput"
                             name="content"

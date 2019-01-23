@@ -1,0 +1,76 @@
+.createNewAnimal {
+    @include flexBoxColumnCenter;
+    margin: 10px auto 0px auto;
+    width: 90vw;
+    height: 60vh;
+    background: $lightSilver;
+    color: $darkSilver;
+
+    input,
+    select {
+        margin: 5px;
+        background: #ffffff;
+        border: none;
+    }
+}
+
+.createBlogPost {
+    @include flexBoxColumnCenter;
+    width: 90vw;
+    height: 90vh;
+    background: $lightSilver;
+    color: $darkSilver;
+    textarea {
+        width: 70vw;
+        padding: 10px;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        line-height: 20px;
+    }
+
+    .titleContentInput {
+        font-size: 18px;
+    }
+
+    .blogContentInput {
+        height: 60vh;
+        overflow: scroll;
+    }
+}
+
+.editBlogPost {
+    @include flexBoxColumnCenter;
+    width: 80vw;
+    position: relative;
+    z-index: 5;
+    color: $offWhite;
+    background: $mediumSilver;
+
+    button {
+        color: $darkSilver;
+    }
+
+    form {
+        @include flexBoxColumnCenter;
+    }
+
+    h3 {
+        margin: 10px;
+    }
+
+    textarea {
+        width: 70vw;
+        margin: 0px auto;
+        border: none;
+    }
+
+    .blogField {
+        height: 200px;
+    }
+}
+
+@media (max-width: 500px) {
+    .createNewAnimal {
+        height: 90vh;
+    }
+}

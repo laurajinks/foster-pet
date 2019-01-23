@@ -47,22 +47,26 @@ export default class Post extends Component {
                     <button onClick={this.showEdit}>Edit Post</button>
                 )}
                 {this.state.showEdit && (
-                    <div>
+                    <div className="editBlogPost">
                         <form onSubmit={this.submitEdit}>
-                            Title:
+                            <h3>Title:</h3>
                             <textarea
                                 name="title"
                                 type="text"
                                 defaultValue={this.props.title}
                                 onChange={this.handleInputChange}
                             />
-                            Blog Post:
+                            <h3>Blog Post:</h3>
                             <textarea
+                                className="blogField"
                                 name="content"
                                 defaultValue={this.props.content}
                                 onChange={this.handleInputChange}
                             />
-                            <input type="submit" value="Submit" />
+                            <br />
+                            <button onClick={this.submitEdit}>
+                                Submit Edit
+                            </button>
                         </form>
                         <button onClick={this.hideEdit}>Cancel</button>
                     </div>

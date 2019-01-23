@@ -15,12 +15,13 @@
 }
 
 .blogPost {
-    width: 90%;
+    width: 80vw;
     margin: 20px auto;
     padding: 15px;
     background: #ffffff;
     border: 0.5px solid $lightGray;
     color: #000000;
+    white-space: pre-wrap;
 
     h1 {
         font-weight: bold;
