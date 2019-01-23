@@ -7,9 +7,11 @@ const AnimalSmall = props => {
         <div className="smallAnimalContainer">
             <img src={props.img} alt="animal" />
             <h2>Name: {props.name}</h2>
-            <Link to={`/profile/org/${props.org_id}`}>
-                <p>Organization: {props.org_display_name}</p>
-            </Link>
+            {props.org_display_name && (
+                <Link to={`/profile/org/${props.org_id}`}>
+                    <p>Organization: {props.org_display_name}</p>
+                </Link>
+            )}
         </div>
     );
 };

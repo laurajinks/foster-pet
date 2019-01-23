@@ -110,8 +110,13 @@ export default class CreateNewAnimal extends Component {
 
     render() {
         return (
-            <>
-                <form onSubmit={this.addAnimal}>
+            <div className="createNewAnimal">
+                <form className="createNewAnimal" onSubmit={this.addAnimal}>
+                    <ImageUpload
+                        handleFileChange={this.handleFileChange}
+                        handleUpload={this.handleUpload}
+                        url={this.state.url}
+                    />
                     Name:
                     <input
                         type="text"
@@ -155,14 +160,9 @@ export default class CreateNewAnimal extends Component {
                         name="description"
                         onChange={this.handleInputChange}
                     />
-                    <ImageUpload
-                        handleFileChange={this.handleFileChange}
-                        handleUpload={this.handleUpload}
-                        url={this.state.url}
-                    />
                     <input type="submit" value="Submit" />
                 </form>
-            </>
+            </div>
         );
     }
 }

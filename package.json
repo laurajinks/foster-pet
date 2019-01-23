@@ -11,6 +11,7 @@
         "express": "^4.16.4",
         "express-session": "^1.15.6",
         "firebase": "^5.7.3",
+        "firebase-messaging": "^1.0.6",
         "massive": "^5.7.2",
         "promise-middleware": "^1.0.7",
         "react": "^16.7.0",

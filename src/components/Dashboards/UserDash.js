@@ -70,14 +70,12 @@ class UserDash extends Component {
             <div className="dashboard">
                 <div className="smallAnimalListContainer">
                     <h1 className="bold">Current Animals</h1>
-                    <br />
                     {animals}
                 </div>{" "}
                 <div className="newsFeedPreview">
                     <h1 className="bold title">
                         Recent Posts From Your Groups:
                     </h1>
-                    <br />
                     {!this.state.currentPosts[0] && <h2>No Posts To Show</h2>}
                     {posts}
                     <Link to="user/newsfeed">See More...</Link>

@@ -70,7 +70,7 @@ class CreateApplication extends Component {
                         value={this.state.input}
                         onChange={this.handleInputChange}
                     />
-                    <input type="submit" value="+" />
+                    <button onClick={this.addField}>+</button>
                 </form>
                 <button onClick={this.submitApplication}>
                     Submit Application
