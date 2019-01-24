@@ -33,6 +33,7 @@ export default class UserNewsFeed extends Component {
             return (
                 <Post
                     key={post.post_id}
+                    org_id={post.org_id}
                     date={post.date}
                     time={post.time}
                     username={post.username}

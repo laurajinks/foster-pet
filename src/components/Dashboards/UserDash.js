@@ -57,6 +57,7 @@ class UserDash extends Component {
             return (
                 <NewsFeedPreview
                     key={post.post_id}
+                    org_id={post.org_id}
                     date={post.date}
                     time={post.time}
                     username={post.username}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Post extends Component {
@@ -37,8 +38,10 @@ export default class Post extends Component {
     render() {
         return (
             <div className="blogPost">
-                <img src={this.props.img} alt="avatar" />
-                <p>{this.props.username}</p>
+                <Link to={`/profile/org/${this.props.org_id}`}>
+                    <img src={this.props.img} alt="avatar" />
+                    <p>{this.props.username}</p>
+                </Link>
                 <p>{this.props.date}</p>
                 <p>{this.props.time}</p>
                 <h1>{this.props.title}</h1>
