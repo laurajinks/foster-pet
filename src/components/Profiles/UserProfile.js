@@ -14,6 +14,7 @@ export default class UserProfile extends Component {
             user_bio: "",
             orgs: [],
             animalCount: 0,
+            pastAnimalCount: 0,
             allowEdits: false,
             showEdit: false,
             noUser: false,
@@ -71,6 +72,11 @@ export default class UserProfile extends Component {
             const num = response.data[0].count;
             this.setState({ animalCount: +num });
         });
+
+        axios.post("/api/pastanimalcount", { id }).then(response => {
+            const num = response.data[0].count;
+            this.setState({ pastAnimalCount: +num });
+        });
     };
 
     componentDidMount = () => {
@@ -125,6 +131,9 @@ export default class UserProfile extends Component {
                             <h2 className="bold">Current Animals:</h2>
 
                             <h2>{this.state.animalCount}</h2>
+                            <h2 className="bold">Past Animals:</h2>
+
+                            <h2>{this.state.pastAnimalCount}</h2>
                             <h2 className="bold">Bio:</h2>
                             <h2>{this.state.user_bio}</h2>
                         </div>

@@ -125,5 +125,13 @@ module.exports = {
             .animal.get_user_animal_count(id)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
+    },
+    getUserPastAnimalCount: (req, res) => {
+        const { id } = req.body;
+        req.app
+            .get("db")
+            .animal.get_user_past_animal_count(id)
+            .then(response => res.status(200).json(response))
+            .catch(err => console.log(err));
     }
 };

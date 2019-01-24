@@ -1,2 +1,3 @@
-DELETE FROM animal
+UPDATE animal
+SET active = false
 WHERE animal_id = $1;

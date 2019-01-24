@@ -59,7 +59,8 @@ const {
     removeFosterParent,
     getUserPending,
     updateAnimal,
-    getUserAnimalCount
+    getUserAnimalCount,
+    getUserPastAnimalCount
 } = require("./controllers/animalController");
 const {
     writePost,
@@ -132,6 +133,7 @@ app.get("/api/animal/applications", getOrgAnimalApps);
 app.get("/api/animals/org", getOrgAnimals);
 app.post("/api/animals/user", getUserAnimals);
 app.post("/api/animalcount", getUserAnimalCount);
+app.post("/api/pastanimalcount", getUserPastAnimalCount);
 app.get("/api/animals/user/eligible", getEligibleAnimals);
 app.get("/api/animals/user/pending", getUserPending);
 app.post("/api/animals", addAnimal);
