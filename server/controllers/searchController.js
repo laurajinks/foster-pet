@@ -25,13 +25,30 @@ module.exports = {
                         age: result.age.$t,
                         breed: result.breeds.breed.$t,
                         description: result.description.$t,
-                        shelterId: result.shelterId.$t
+                        animalType: result.animal.$t,
+                        shelterId: result.shelterId.$t,
+                        usState: result.contact.state.$t,
+                        city: result.contact.city.$t
                     };
                     searchResults.push(animal);
                 });
                 res.status(200).json(searchResults);
             })
             .then((searchResults = []))
+            .catch(err => console.log(err));
+    },
+
+    getShelterInfo: (req, res) => {
+        const { shelterId } = req.body;
+        axios
+            .get(
+                `http://api.petfinder.com/shelter.get?format=json&key=${apiKey}&id=${shelterId}`
+            )
+            .then(response => {
+                console.log(response.data);
+                let shelterName = response.data.petfinder.shelter.name.$t;
+                res.status(200).json(shelterName);
+            })
             .catch(err => console.log(err));
     },
 

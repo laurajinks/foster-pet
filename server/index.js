@@ -45,6 +45,7 @@ const {
 } = require("./controllers/memberController");
 const {
     searchAdoptable,
+    getShelterInfo,
     getOrgs,
     getUser,
     getOrgData
@@ -110,6 +111,7 @@ app.delete("/api/org/members/:id", deleteFoster);
 
 //SEARCH ENDPOINTS
 app.get("/api/search/adoptable", searchAdoptable);
+app.post("/api/search/shelter", getShelterInfo);
 app.post("/api/organizations", getOrgs);
 app.post("/api/user", getUser);
 app.post("/api/org", getOrgData);

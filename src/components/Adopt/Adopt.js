@@ -67,12 +67,15 @@ export default class Adopt extends Component {
                             key={result.id}
                             id={result.id}
                             name={result.name}
+                            animalType={result.animalType}
                             img={result.img}
                             size={result.size}
                             description={result.description}
                             breed={result.breed}
                             age={result.age}
                             shelterId={result.shelterId}
+                            usState={result.usState}
+                            city={result.city}
                         />
                     ))}
             </div>

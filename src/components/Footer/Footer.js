@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
         <div className="footer">
-            <h1>
-                <span className="italic">foster</span>
-                <span className="bold">PET</span>
-            </h1>
+            <Link to="/">
+                <h1>
+                    <span className="italic">foster</span>
+                    <span className="bold">PET</span>
+                </h1>
+            </Link>
             <div className="socialMedia">
                 <a href="http://facebook.com">
                     <img
