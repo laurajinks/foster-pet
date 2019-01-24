@@ -40,8 +40,12 @@
 
 .editBlogPost {
     @include flexBoxColumnCenter;
-    width: 80vw;
-    position: relative;
+    animation: fadeIn 0.5s;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     z-index: 5;
     color: $offWhite;
     background: $mediumSilver;
@@ -69,8 +73,41 @@
     }
 }
 
+.editAnimal {
+    @include flexBoxColumnCenter;
+    animation: fadeIn 0.5s;
+    background: $transparentDarkSilver;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100%;
+    z-index: 5;
+
+    form {
+        @include flexBoxColumnCenter;
+
+        input,
+        select {
+            height: 20px;
+            font-size: 14px;
+            background: $offWhite;
+            border: none;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .createNewAnimal {
         height: 90vh;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

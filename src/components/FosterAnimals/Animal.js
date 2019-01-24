@@ -111,7 +111,7 @@ export default class Animal extends Component {
                             <button onClick={this.toggleEdit}>Edit</button>
                         )}
                         {this.state.showEdit && (
-                            <div>
+                            <div className="editAnimal">
                                 <button onClick={this.toggleEdit}>
                                     Cancel
                                 </button>
@@ -178,7 +178,9 @@ export default class Animal extends Component {
                                         defaultValue={this.props.description}
                                         onChange={this.handleInputChange}
                                     />
-                                    <input type="submit" value="Submit" />
+                                    <button onClick={this.submitEdit}>
+                                        Submit Edit
+                                    </button>
                                 </form>
                             </div>
                         )}

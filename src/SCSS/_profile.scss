@@ -64,10 +64,19 @@
     z-index: 15;
     position: absolute;
     right: 0;
-    input {
+    form {
+        width: 80%;
+    }
+    input,
+    textarea {
         background: $lightSilver;
         border: none;
         margin: 10px;
+        width: 200px;
+    }
+    .bioEdit {
+        text-overflow: ellipsis;
+        height: 80px;
     }
 }
 

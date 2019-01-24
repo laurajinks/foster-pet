@@ -50,7 +50,8 @@ export default class EditOrgProfile extends Component {
                         onChange={this.handleInputChange}
                     />
                     Bio:
-                    <input
+                    <textarea
+                        className="bioEdit"
                         type="text"
                         name="bio"
                         defaultValue={this.props.bio}

@@ -45,7 +45,6 @@ module.exports = {
                 `http://api.petfinder.com/shelter.get?format=json&key=${apiKey}&id=${shelterId}`
             )
             .then(response => {
-                console.log(response.data);
                 let shelterName = response.data.petfinder.shelter.name.$t;
                 res.status(200).json(shelterName);
             })

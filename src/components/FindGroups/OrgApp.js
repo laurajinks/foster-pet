@@ -50,7 +50,7 @@ export default class OrgApp extends Component {
                 {this.props.application && (
                     <form onSubmit={this.submitApp}>
                         {inputs}
-                        <input type="submit" value="Submit" />
+                        <button onClick={this.submitApp}>Submit</button>
                     </form>
                 )}
                 <button onClick={() => this.props.hideApp()}>X</button>

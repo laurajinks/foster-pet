@@ -61,7 +61,7 @@
         background: rgba(255, 255, 255, 0.15);
         width: 30vw;
         height: 60vh;
-        animation: fadeIn 1s;
+        animation: fadeIn 0.5s;
 
         button {
             font-size: 20px;
@@ -75,18 +75,18 @@
     h1 {
         font-size: 60px;
         margin: 20px auto;
-        animation: fadeIn 2s;
+        animation: fadeIn 1s;
     }
 
     h3 {
         font-size: 36px;
         margin: 20px auto;
-        animation: fadeIn 3s;
+        animation: fadeIn 1.5s;
     }
 
     .loginSignUpBtns {
         display: flex;
-        animation: fadeIn 3s;
+        animation: fadeIn 2s;
     }
 
     .loginSignUpForms {

@@ -50,13 +50,25 @@ export default class EditUserProfile extends Component {
                         onChange={this.handleInputChange}
                     />
                     Bio:
-                    <input
+                    <textarea
+                        className="bioEdit"
                         type="text"
                         name="bio"
                         defaultValue={this.props.bio}
                         onChange={this.handleInputChange}
                     />
-                    <input type="submit" name="Submit Edits" />
+                    <button
+                        onClick={e =>
+                            this.props.submitEdit(
+                                e,
+                                this.state.displayName,
+                                this.state.email,
+                                this.state.bio
+                            )
+                        }
+                    >
+                        Submit Edits
+                    </button>
                 </form>
                 <button onClick={this.props.toggleEdit}>Cancel</button>
             </div>

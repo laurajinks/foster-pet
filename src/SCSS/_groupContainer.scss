@@ -74,6 +74,7 @@
         }
 
         .orgApp {
+            animation: fadeIn 0.5s;
             @include flexBoxColumnCenter;
             width: 20vw;
             height: 30vh;
@@ -85,6 +86,11 @@
 
             form {
                 @include flexBoxColumnCenter;
+            }
+
+            button {
+                padding: 15px;
+                background: $lightGray;
             }
         }
     }

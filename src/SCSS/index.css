@@ -207,8 +207,8 @@ table {
   background: rgba(255, 255, 255, 0.15);
   width: 30vw;
   height: 60vh;
-  -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s;
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
 }
 
 .homepage .loginSignUp button {
@@ -222,23 +222,23 @@ table {
 .homepage h1 {
   font-size: 60px;
   margin: 20px auto;
-  -webkit-animation: fadeIn 2s;
-          animation: fadeIn 2s;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
 }
 
 .homepage h3 {
   font-size: 36px;
   margin: 20px auto;
-  -webkit-animation: fadeIn 3s;
-          animation: fadeIn 3s;
+  -webkit-animation: fadeIn 1.5s;
+          animation: fadeIn 1.5s;
 }
 
 .homepage .loginSignUpBtns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-animation: fadeIn 3s;
-          animation: fadeIn 3s;
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
 }
 
 .homepage .loginSignUpForms {
@@ -591,11 +591,14 @@ table {
 }
 
 .footer {
+  -webkit-animation: fadeIn 3s;
+          animation: fadeIn 3s;
   width: 100vw;
   height: 50vh;
   background: #847577;
   position: relative;
-  margin-top: 0px;
+  bottom: 0;
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -864,6 +867,7 @@ table {
 .animalContainer {
   margin: 10px 10px;
   width: 300px;
+  position: relative;
   overflow: scroll;
 }
 
@@ -1019,6 +1023,7 @@ table {
 
 .blogPost {
   width: 80vw;
+  position: relative;
   margin: 20px auto;
   padding: 15px;
   background: #ffffff;
@@ -1165,6 +1170,8 @@ table {
 }
 
 .groupListContainer .organization .orgApp {
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1201,6 +1208,11 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.groupListContainer .organization .orgApp button {
+  padding: 15px;
+  background: #cfd2cd;
 }
 
 @media (max-width: 1200px) {
@@ -1454,10 +1466,21 @@ table {
   right: 0;
 }
 
-.editProfile input {
+.editProfile form {
+  width: 80%;
+}
+
+.editProfile input,
+.editProfile textarea {
   background: #e5e6e4;
   border: none;
   margin: 10px;
+  width: 200px;
+}
+
+.editProfile .bioEdit {
+  text-overflow: ellipsis;
+  height: 80px;
 }
 
 @media (max-width: 600px) {
@@ -1584,8 +1607,13 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 80vw;
-  position: relative;
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   z-index: 5;
   color: #fbfbf2;
   background: #a6a2a2;
@@ -1625,9 +1653,67 @@ table {
   height: 200px;
 }
 
+.editAnimal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
+  background: rgba(132, 117, 119, 0.9);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  z-index: 5;
+}
+
+.editAnimal form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editAnimal form input,
+.editAnimal form select {
+  height: 20px;
+  font-size: 14px;
+  background: #fbfbf2;
+  border: none;
+}
+
 @media (max-width: 500px) {
   .createNewAnimal {
     height: 90vh;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
