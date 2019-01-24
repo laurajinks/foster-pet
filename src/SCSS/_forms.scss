@@ -1,6 +1,6 @@
 .createNewAnimal {
     @include flexBoxColumnCenter;
-    margin: 10px auto 0px auto;
+    margin: 8vh auto 0px auto;
     width: 90vw;
     height: 90vh;
     background: $lightSilver;
@@ -16,6 +16,7 @@
 
 .createBlogPost {
     @include flexBoxColumnCenter;
+    margin: 8vh auto 0 auto;
     width: 90vw;
     height: 90vh;
     background: $lightSilver;
@@ -24,8 +25,10 @@
         width: 70vw;
         padding: 10px;
         font-size: 14px;
+        margin: 5px;
         font-family: "Roboto", sans-serif;
         line-height: 20px;
+        border: none;
     }
 
     .titleContentInput {

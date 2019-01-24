@@ -138,7 +138,7 @@ table {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  position: absolute;
+  position: relative;
   top: 0vh;
   background-image: url("https://firebasestorage.googleapis.com/v0/b/animal-foster-project.appspot.com/o/images%2Fadorable-animal-canine-1346086.jpg?alt=media&token=65a31dbb-f506-4d0e-951d-9426c62c40ba");
   background-size: cover;
@@ -368,6 +368,8 @@ table {
   width: 100vw;
   height: 7vh;
   background: none;
+  position: absolute;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -591,8 +593,6 @@ table {
 }
 
 .footer {
-  -webkit-animation: fadeIn 3s;
-          animation: fadeIn 3s;
   width: 100vw;
   height: 50vh;
   background: #847577;
@@ -649,6 +649,7 @@ table {
           align-items: center;
   top: 7vh;
   margin: 0px auto;
+  position: relative;
   width: 90vw;
   height: 90vh;
   color: #847577;
@@ -718,7 +719,6 @@ table {
   width: 90vw;
   margin-top: 20px;
   height: 7vh;
-  overflow: scroll;
   color: #847577;
 }
 
@@ -729,6 +729,10 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.appPreview .appCount h1 {
+  margin: 0px;
 }
 
 .appPreview a {
@@ -766,6 +770,7 @@ table {
 }
 
 .smallAnimalListContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -791,13 +796,14 @@ table {
 }
 
 .animalListContainer {
+  position: relative;
   width: 90vw;
   min-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   overflow: scroll;
-  margin: 20px auto 0px auto;
+  margin: 8vh auto 0px auto;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
@@ -889,6 +895,7 @@ table {
 }
 
 .adoptDash {
+  position: relative;
   min-height: 90vh;
   width: 90vw;
   background: #e5e6e4;
@@ -900,7 +907,7 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 10px auto 0px auto;
+  margin: 8vh auto 0px auto;
 }
 
 .adoptDash form {
@@ -1013,13 +1020,21 @@ table {
   padding: 20px;
 }
 
+.userNewsFeed {
+  position: relative;
+  margin-top: 8vh;
+}
+
 .userNewsFeed .title {
-  margin-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 20px;
   color: #847577;
   font-weight: bold;
+}
+
+.orgBlog {
+  margin-top: 8vh;
 }
 
 .blogPost {
@@ -1064,8 +1079,9 @@ table {
 }
 
 .search {
+  position: relative;
   width: 90vw;
-  margin: 20px auto 0px auto;
+  margin: 8vh auto 0px auto;
   padding: 20px 0;
   background: #e5e6e4;
   display: -webkit-box;
@@ -1101,6 +1117,7 @@ table {
 }
 
 .groupListContainer {
+  position: relative;
   width: 90vw;
   min-height: 90vh;
   display: -webkit-box;
@@ -1239,7 +1256,7 @@ table {
 .applicationDash {
   width: 90vw;
   min-height: 90vh;
-  margin: 20px auto;
+  margin: 8vh auto 10px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1342,7 +1359,7 @@ table {
   width: 90vw;
   min-height: 40vh;
   background: #e5e6e4;
-  margin: 10px auto;
+  margin: 8vh auto 10px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1543,7 +1560,7 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px auto 0px auto;
+  margin: 8vh auto 0px auto;
   width: 90vw;
   height: 90vh;
   background: #e5e6e4;
@@ -1571,6 +1588,7 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 8vh auto 0 auto;
   width: 90vw;
   height: 90vh;
   background: #e5e6e4;
@@ -1581,8 +1599,10 @@ table {
   width: 70vw;
   padding: 10px;
   font-size: 14px;
+  margin: 5px;
   font-family: "Roboto", sans-serif;
   line-height: 20px;
+  border: none;
 }
 
 .createBlogPost .titleContentInput {
@@ -1735,6 +1755,7 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 a {

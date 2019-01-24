@@ -97,13 +97,17 @@ export default class Animal extends Component {
                 <p>Sex: {this.props.sex}</p>
                 <p>Size: {this.props.size}</p>
                 <p>Description: {this.props.description}</p>
-                <Link to={`/profile/org/${this.props.org_id}`}>
-                    <p>Organization: {this.props.org_display_name}</p>
-                </Link>
-                {this.props.user_username && (
-                    <Link to={`/profile/user/${this.props.user_id}`}>
-                        <p>Foster: {this.props.user_username}</p>
-                    </Link>
+                {!this.props.allowEdit && (
+                    <>
+                        <Link to={`/profile/org/${this.props.org_id}`}>
+                            <p>Organization: {this.props.org_display_name}</p>
+                        </Link>
+                        {this.props.user_username && (
+                            <Link to={`/profile/user/${this.props.user_id}`}>
+                                <p>Foster: {this.props.user_username}</p>
+                            </Link>
+                        )}
+                    </>
                 )}
                 {this.props.allowEdit && (
                     <div>

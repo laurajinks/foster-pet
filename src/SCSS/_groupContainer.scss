@@ -1,6 +1,7 @@
 .search {
+    position: relative;
     width: 90vw;
-    margin: 20px auto 0px auto;
+    margin: 8vh auto 0px auto;
     padding: 20px 0;
     background: $lightSilver;
     display: flex;
@@ -26,6 +27,7 @@
     }
 }
 .groupListContainer {
+    position: relative;
     width: 90vw;
     min-height: 90vh;
     display: flex;

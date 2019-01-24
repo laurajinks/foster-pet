@@ -6,6 +6,7 @@
     align-items: center;
     top: 7vh;
     margin: 0px auto;
+    position: relative;
     width: 90vw;
     height: 90vh;
     color: $darkSilver;
@@ -63,12 +64,15 @@
     width: 90vw;
     margin-top: 20px;
     height: 7vh;
-    overflow: scroll;
     color: $darkSilver;
 
     .appCount {
         display: flex;
         align-items: center;
+        // justify-content: center;
+        h1 {
+            margin: 0px;
+        }
     }
 
     a {
