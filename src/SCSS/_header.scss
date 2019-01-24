@@ -1,7 +1,7 @@
 .headerContainer {
     width: 100vw;
     height: 7vh;
-    background: $mediumSilver;
+    background: none;
     display: flex;
     z-index: 4;
     color: $darkSilver;
@@ -12,7 +12,7 @@
         justify-self: flex-start;
         margin-left: 40px;
         font-size: 24px;
-        color: $offWhite;
+        color: $darkSilver;
     }
 }
 
@@ -40,7 +40,7 @@
     }
 
     p:hover {
-        color: $offWhite;
+        font-weight: bold;
     }
 }
 
@@ -51,9 +51,13 @@
     justify-content: space-around;
     font-weight: bold;
 
-    // p {
-    //     color: $offWhite;
-    // }
+    p {
+        color: $darkSilver;
+    }
+
+    p:hover {
+        color: $mediumSilver;
+    }
 }
 
 .hamburgerHeader {

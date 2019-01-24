@@ -137,7 +137,9 @@ table {
 .homepage {
   width: 100vw;
   height: 100vh;
-  top: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0vh;
   background-image: url("https://firebasestorage.googleapis.com/v0/b/animal-foster-project.appspot.com/o/images%2Fadorable-animal-canine-1346086.jpg?alt=media&token=65a31dbb-f506-4d0e-951d-9426c62c40ba");
   background-size: cover;
   color: #ffffff;
@@ -365,7 +367,7 @@ table {
 .headerContainer {
   width: 100vw;
   height: 7vh;
-  background: #a6a2a2;
+  background: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -383,7 +385,7 @@ table {
   justify-self: flex-start;
   margin-left: 40px;
   font-size: 24px;
-  color: #fbfbf2;
+  color: #847577;
 }
 
 .regularHeader {
@@ -420,7 +422,7 @@ table {
 }
 
 .regularHeader p:hover {
-  color: #fbfbf2;
+  font-weight: bold;
 }
 
 .regularHeaderLinks {
@@ -434,6 +436,14 @@ table {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   font-weight: bold;
+}
+
+.regularHeaderLinks p {
+  color: #847577;
+}
+
+.regularHeaderLinks p:hover {
+  color: #a6a2a2;
 }
 
 .hamburgerHeader {
@@ -635,7 +645,8 @@ table {
       -ms-flex-align: center;
           align-items: center;
   top: 7vh;
-  width: 100vw;
+  margin: 0px auto;
+  width: 90vw;
   height: 90vh;
   color: #847577;
 }
