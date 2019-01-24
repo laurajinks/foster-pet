@@ -1,6 +1,5 @@
 module.exports = {
     createApp: (req, res) => {
-        console.log(req.body);
         const { app } = req.body;
         req.app
             .get("db")
@@ -113,7 +112,6 @@ module.exports = {
     },
 
     getAppCount: (req, res) => {
-        console.log(req.session.user);
         req.app
             .get("db")
             .application.get_application_count(req.session.user.id)

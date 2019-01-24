@@ -34,13 +34,11 @@ class OrgDash extends Component {
         });
 
         axios.get("/api/applications/org/count").then(response => {
-            console.log("appCount:", response.data);
             const results = response.data[0].count;
             this.setState({ appCount: this.state.appCount + +results });
         });
 
         axios.get("/api/applications/org/animalcount").then(response => {
-            console.log("animalCount:", response.data);
             const results = response.data[0].count;
             this.setState({ appCount: this.state.appCount + +results });
         });

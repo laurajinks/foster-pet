@@ -37,7 +37,6 @@ module.exports = {
 
     getOrgs: (req, res) => {
         const { usState } = req.body;
-        console.log(req.body);
         req.app
             .get("db")
             .search.get_orgs(usState)
