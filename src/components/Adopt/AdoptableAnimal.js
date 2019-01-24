@@ -44,7 +44,15 @@ export default class AdoptableAnimal extends Component {
     render() {
         return (
             <div className="animalContainer">
-                <img src={this.props.img} alt={this.props.name} />
+                <a
+                    href={`https://www.petfinder.com/${this.state.animalType}/${
+                        this.state.name
+                    }-${this.props.id}/${this.state.usState}/${
+                        this.state.city
+                    }/${this.state.shelter}-${this.state.id}/`}
+                >
+                    <img src={this.props.img} alt={this.props.name} />
+                </a>
                 <p className="resultName">Name: {this.props.name}</p>
                 <p>Breed: {this.props.breed}</p>
                 <p>Age: {this.props.age}</p>
