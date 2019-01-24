@@ -36,7 +36,7 @@ export default class AdoptableAnimal extends Component {
                 .split(" ")
                 .filter(character => character !== "")
                 .join("-");
-            this.setState({ shelter, city, usState });
+            this.setState({ shelter });
         });
         this.setState({ city, usState, name, animalType, id });
     };

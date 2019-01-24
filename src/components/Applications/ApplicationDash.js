@@ -24,7 +24,7 @@ export default class ApplicationDash extends Component {
             .catch(err => this.props.history.push("/login"));
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         axios
             .post("/api/applications/org")
             .then(response => {
@@ -42,24 +42,14 @@ export default class ApplicationDash extends Component {
             .catch(err => console.log(err));
     };
 
-    componentDidUpdate = async (prevProps, prevState) => {
-        if (this.state.refresh) {
-            await axios
-                .post("/api/applications/org")
-                .then(response => {
-                    this.setState({ applications: response.data });
-                })
-                .catch(err => console.log(err));
+    componentDidMount = () => {
+        this.loadData();
+    };
 
-            axios
-                .get("/api/animal/applications")
-                .then(response => {
-                    this.setState({
-                        animalApplications: response.data,
-                        refresh: false
-                    });
-                })
-                .catch(err => console.log(err));
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
         }
     };
 

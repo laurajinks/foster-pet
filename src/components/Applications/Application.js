@@ -41,6 +41,7 @@ export default class Application extends Component {
             .then(
                 axios
                     .delete(`/api/applications/${application_id}`)
+                    .then(this.setState({ refresh: true }))
                     .catch(err => console.log(err))
             )
             .catch(err => console.log(err));
