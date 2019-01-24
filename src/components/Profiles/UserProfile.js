@@ -16,11 +16,12 @@ export default class UserProfile extends Component {
             animalCount: 0,
             allowEdits: false,
             showEdit: false,
-            noUser: false
+            noUser: false,
+            refresh: false
         };
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         const { id } = this.props.match.params;
 
         //get user data from param id, check to see if user is the same as user on session
@@ -72,13 +73,26 @@ export default class UserProfile extends Component {
         });
     };
 
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
+    };
+
     toggleEdit = () => {
         this.setState({ showEdit: !this.state.showEdit });
     };
 
     submitEdit = (e, displayName, email, bio) => {
         e.preventDefault();
-        axios.put("/auth/update/user", { displayName, email, bio });
+        axios.put("/auth/update/user", { displayName, email, bio }).then(() => {
+            this.setState({ refresh: true, showEdit: false });
+        });
     };
 
     render() {

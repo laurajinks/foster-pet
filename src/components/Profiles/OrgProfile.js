@@ -14,11 +14,12 @@ export default class OrgProfile extends Component {
             username: "",
             zipcode: "",
             allowEdits: false,
-            showEdit: false
+            showEdit: false,
+            refresh: false
         };
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         const { id } = this.props.match.params;
         axios.post("/api/org", { id }).then(response => {
             const {
@@ -58,13 +59,26 @@ export default class OrgProfile extends Component {
         });
     };
 
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
+    };
+
     toggleEdit = () => {
         this.setState({ showEdit: !this.state.showEdit });
     };
 
     submitEdit = (e, displayName, email, bio) => {
         e.preventDefault();
-        axios.put("/auth/update/org", { displayName, email, bio });
+        axios.put("/auth/update/org", { displayName, email, bio }).then(() => {
+            this.setState({ refresh: true, showEdit: false });
+        });
     };
 
     render() {
@@ -72,14 +86,16 @@ export default class OrgProfile extends Component {
             <div className="profileContainer">
                 <div className="profileContent">
                     <img src={this.state.img} alt="avatar" width="100" />
-                    <h1>{this.state.displayName}</h1>
+                    <h1 className="title">{this.state.displayName}</h1>
                     <h3>{this.state.username}</h3>
-                    <h2>State: {this.state.usState}</h2>
-                    <h2>Zip Code: {this.state.zipcode}</h2>
-                    <h2>Email: {this.state.email}</h2>
+                    <h2 className="bold">Email:</h2> <h2>{this.state.email}</h2>
                 </div>
                 <div className="bio">
-                    <h2>About Us:</h2>
+                    <h2 className="bold">State:</h2>
+                    <h2>{this.state.usState}</h2>
+                    <h2 className="bold">Zip Code:</h2>
+                    <h2>{this.state.zipcode}</h2>
+                    <h2 className="bold">About Us:</h2>
                     <p>{this.state.org_bio}</p>
                     {this.state.allowEdits && (
                         <button onClick={this.toggleEdit}>Edit</button>
@@ -89,8 +105,9 @@ export default class OrgProfile extends Component {
                     <EditOrgProfile
                         displayName={this.state.displayName}
                         email={this.state.email}
-                        bio={this.state.bio}
+                        bio={this.state.org_bio}
                         toggleEdit={this.toggleEdit}
+                        submitEdit={this.submitEdit}
                     />
                 )}
             </div>

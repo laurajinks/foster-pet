@@ -173,6 +173,7 @@ module.exports = {
     },
 
     updateOrg: (req, res) => {
+        console.log(req.body);
         const { displayName, email, bio } = req.body;
         req.app
             .get("db")

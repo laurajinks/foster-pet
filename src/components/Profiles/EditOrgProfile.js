@@ -10,6 +10,14 @@ export default class EditOrgProfile extends Component {
         };
     }
 
+    componentDidMount = () => {
+        this.setState({
+            displayName: this.props.displayName,
+            email: this.props.email,
+            bio: this.props.bio
+        });
+    };
+
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
@@ -48,7 +56,18 @@ export default class EditOrgProfile extends Component {
                         defaultValue={this.props.bio}
                         onChange={this.handleInputChange}
                     />
-                    <input type="submit" name="Submit Edits" />
+                    <button
+                        onClick={e =>
+                            this.props.submitEdit(
+                                e,
+                                this.state.displayName,
+                                this.state.email,
+                                this.state.bio
+                            )
+                        }
+                    >
+                        Submit Edits
+                    </button>
                 </form>
                 <button onClick={this.props.toggleEdit}>Cancel</button>
             </div>

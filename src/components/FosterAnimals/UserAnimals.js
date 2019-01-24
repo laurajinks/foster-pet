@@ -7,6 +7,7 @@ export default class UserAnimals extends Component {
         super(props);
 
         this.state = {
+            refresh: false,
             username: "",
             id: "",
             showEligible: false,
@@ -27,20 +28,33 @@ export default class UserAnimals extends Component {
         });
     }
 
-    componentDidMount = () => {
+    loadData = () => {
+        //get current animals
         axios
             .post("/api/animals/user")
             .then(response => this.setState({ currentAnimals: response.data }));
 
         axios
+            //get animals pending foster approval
             .get("/api/animals/user/pending")
             .then(response => this.setState({ pendingAnimals: response.data }));
-
+        //get eligible animals from organizations user is a member of
         axios
             .get("/api/animals/user/eligible")
             .then(response =>
                 this.setState({ eligibleAnimals: response.data })
             );
+    };
+
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
     };
 
     toggleFosterView = () => {
@@ -49,35 +63,16 @@ export default class UserAnimals extends Component {
 
     //submit Application for Organization to approve
     applyToFosterAnimal = (animal_id, org_id) => {
-        axios.post("/api/animal/application", { animal_id, org_id }).then(
-            axios.post("/api/animals/user").then(
-                response => this.setState({ currentAnimals: response.data }),
-                axios.get("/api/animals/user/eligible").then(response =>
-                    this.setState({
-                        eligibleAnimals: response.data
-                    })
-                )
-            )
-        );
+        axios
+            .post("/api/animal/application", { animal_id, org_id })
+            .then(() => this.setState({ refresh: true }));
     };
 
     //Accept foster animal after Organization has submitted approval
-    fosterAnimal = (animal_id, user_id) => {
-        axios.put("/api/animals/fosterparent", { animal_id }).then(
-            axios
-                .post("/api/animal/application/delete", { animal_id, user_id })
-                .then(
-                    axios.post("/api/animals/user").then(
-                        response =>
-                            this.setState({ currentAnimals: response.data }),
-                        axios.get("/api/animals/user/eligible").then(response =>
-                            this.setState({
-                                eligibleAnimals: response.data
-                            })
-                        )
-                    )
-                )
-        );
+    fosterAnimal = animal_id => {
+        axios
+            .put("/api/animals/fosterparent", { animal_id })
+            .then(() => this.setState({ refresh: true }));
     };
 
     render() {

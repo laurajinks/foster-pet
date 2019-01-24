@@ -7,13 +7,14 @@ export default class Organization extends Component {
         super(props);
 
         this.state = {
+            refresh: false,
             showApp: false,
             pendingApp: false,
             isMember: false
         };
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         const { user_id, org_id } = this.props;
         axios
             .post("/api/appstatus", { user_id, org_id })
@@ -34,25 +35,15 @@ export default class Organization extends Component {
             .catch(err => console.log(err));
     };
 
-    reRender = () => {
-        const { user_id, org_id } = this.props;
-        axios
-            .post("/api/appstatus", { user_id, org_id })
-            .then(response => {
-                if (response.data[0]) {
-                    this.setState({ pendingApp: true });
-                }
-            })
-            .catch(err => console.log(err));
+    componentDidMount = () => {
+        this.loadData();
+    };
 
-        axios
-            .post("/api/memberstatus", { user_id, org_id })
-            .then(response => {
-                if (response.data[0]) {
-                    this.setState({ isMember: true });
-                }
-            })
-            .catch(err => console.log(err));
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
     };
 
     showApp = () => {

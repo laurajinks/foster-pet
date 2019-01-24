@@ -8,6 +8,7 @@ class OrgAnimals extends Component {
     constructor() {
         super();
         this.state = {
+            refresh: false,
             username: "",
             id: "",
             animalList: [],
@@ -26,29 +27,28 @@ class OrgAnimals extends Component {
         });
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         axios.get(`/api/animals/org`).then(response => {
             const results = response.data;
             this.setState({ animalList: results });
         });
     };
 
+    componentDidMount = () => {
+        this.loadData();
+    };
+
     componentDidUpdate = () => {
         if (this.state.refresh === true) {
-            axios.get(`/api/animals/org`).then(response => {
-                const results = response.data;
-                this.setState({ animalList: results, refresh: false });
-            });
+            this.loadData();
+            this.setState({ refresh: false });
         }
     };
 
     removeAnimal = id => {
-        axios.delete(`/api/animals/${id}`).then(
-            axios.get(`/api/animals/org`).then(response => {
-                const results = response.data;
-                this.setState({ animalList: results });
-            })
-        );
+        axios
+            .delete(`/api/animals/${id}`)
+            .then(this.setState({ refresh: true }));
     };
 
     toggleRefresh = () => {
@@ -56,12 +56,9 @@ class OrgAnimals extends Component {
     };
 
     removeFosterParent = id => {
-        axios.put("/api/animals/org/fosterparent", { id }).then(
-            axios.get(`/api/animals/org`).then(response => {
-                const results = response.data;
-                this.setState({ animalList: results });
-            })
-        );
+        axios.put("/api/animals/org/fosterparent", { id }).then(() => {
+            this.setState({ refresh: true });
+        });
     };
 
     render() {

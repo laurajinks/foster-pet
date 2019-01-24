@@ -7,7 +7,8 @@ export default class CurrentFosters extends Component {
         super();
 
         this.state = {
-            currentFosters: []
+            currentFosters: [],
+            refresh: false
         };
 
         axios.get("/auth/getcurrentuser").then(response => {
@@ -22,23 +23,29 @@ export default class CurrentFosters extends Component {
         });
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         axios
             .post("/api/org/members")
             .then(response => this.setState({ currentFosters: response.data }))
             .catch(err => console.log(err));
     };
 
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
+    };
+
     removeFoster = user_id => {
         axios
             .delete(`/api/org/members/${user_id}`)
             .then(() => {
-                axios
-                    .post("/api/org/members")
-                    .then(response =>
-                        this.setState({ currentFosters: response.data })
-                    )
-                    .catch(err => console.log(err));
+                this.setState({ refresh: true });
             })
             .catch(err => console.log(err));
     };

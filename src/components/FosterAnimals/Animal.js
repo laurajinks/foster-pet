@@ -8,6 +8,7 @@ export default class Animal extends Component {
         super();
 
         this.state = {
+            refresh: false,
             showConfirmation: false,
             showEdit: false,
             name: "",
@@ -20,7 +21,7 @@ export default class Animal extends Component {
         };
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         this.setState({
             name: this.props.name,
             animalType: this.props.animalType,
@@ -30,6 +31,17 @@ export default class Animal extends Component {
             size: this.props.size,
             description: this.props.description
         });
+    };
+
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+            this.setState({ refresh: false });
+        }
     };
 
     toggleConfirmation = () => {
@@ -67,21 +79,10 @@ export default class Animal extends Component {
                 size,
                 description
             })
-            .then(response => {
-                this.setState(
-                    {
-                        name: "",
-                        animalType: "Cat",
-                        age: "",
-                        sex: "",
-                        breed: "",
-                        size: "",
-                        description: "",
-                        showEdit: false,
-                        reload: true
-                    },
-                    this.props.toggleRefresh()
-                );
+            .then(() => {
+                this.setState({
+                    refresh: true
+                });
             })
             .catch(err => alert(err));
     };
