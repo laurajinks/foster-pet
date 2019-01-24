@@ -193,7 +193,7 @@ class SignUp extends Component {
                                 <br />
                                 Password{" "}
                                 <input
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     onChange={this.handleInputChange}
                                 />
@@ -331,7 +331,7 @@ class SignUp extends Component {
                                 Password{" "}
                                 <input
                                     className="submit"
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     onChange={this.handleInputChange}
                                 />

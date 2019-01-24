@@ -88,7 +88,7 @@ class Login extends Component {
                                 <br />
                                 Password{" "}
                                 <input
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     onChange={this.handleInputChange}
                                 />{" "}
@@ -111,7 +111,7 @@ class Login extends Component {
                                 <br />
                                 Password
                                 <input
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     onChange={this.handleInputChange}
                                 />{" "}
