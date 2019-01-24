@@ -29,7 +29,7 @@ export default class Post extends Component {
         axios
             .put("/api/blog/org", { post_id, title, content })
             .then(() => {
-                this.setState({ showEdit: false }, this.props.reRender());
+                this.setState({ showEdit: false }, this.props.refresh());
             })
             .catch(err => console.log(err));
     };

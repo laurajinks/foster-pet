@@ -56,8 +56,10 @@
             margin: 10px auto;
         }
         img {
+            object-fit: cover;
             border: 0.5px solid $mediumSilver;
-            max-width: 100px;
+            width: 100px;
+            height: 100px;
         }
 
         button {

@@ -29,7 +29,8 @@ export default class Animal extends Component {
             sex: this.props.sex,
             breed: this.props.breed,
             size: this.props.size,
-            description: this.props.description
+            description: this.props.description,
+            refresh: false
         });
     };
 
@@ -40,7 +41,6 @@ export default class Animal extends Component {
     componentDidUpdate = () => {
         if (this.state.refresh === true) {
             this.loadData();
-            this.setState({ refresh: false });
         }
     };
 

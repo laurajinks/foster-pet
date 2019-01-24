@@ -30,7 +30,7 @@ class OrgAnimals extends Component {
     loadData = () => {
         axios.get(`/api/animals/org`).then(response => {
             const results = response.data;
-            this.setState({ animalList: results });
+            this.setState({ animalList: results, refresh: false });
         });
     };
 
@@ -41,7 +41,6 @@ class OrgAnimals extends Component {
     componentDidUpdate = () => {
         if (this.state.refresh === true) {
             this.loadData();
-            this.setState({ refresh: false });
         }
     };
 

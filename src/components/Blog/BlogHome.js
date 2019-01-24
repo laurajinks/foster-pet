@@ -10,6 +10,7 @@ export default class BlogHome extends Component {
         super();
 
         this.state = {
+            refresh: false,
             posts: [],
             allowEdit: true
         };
@@ -25,18 +26,27 @@ export default class BlogHome extends Component {
         });
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         axios
             .post("/api/blog/org")
-            .then(response => this.setState({ posts: response.data }))
+            .then(response =>
+                this.setState({ posts: response.data, refresh: false })
+            )
             .catch(err => console.log(err));
     };
 
-    reRender = () => {
-        axios
-            .post("/api/blog/org")
-            .then(response => this.setState({ posts: response.data }))
-            .catch(err => console.log(err));
+    componentDidMount = () => {
+        this.loadData();
+    };
+
+    componentDidUpdate = () => {
+        if (this.state.refresh === true) {
+            this.loadData();
+        }
+    };
+
+    refresh = () => {
+        this.setState({ refresh: true });
     };
 
     render() {
@@ -52,7 +62,7 @@ export default class BlogHome extends Component {
                     title={post.title}
                     content={post.content}
                     allowEdit={this.state.allowEdit}
-                    reRender={this.reRender}
+                    refresh={this.refresh}
                 />
             );
         });

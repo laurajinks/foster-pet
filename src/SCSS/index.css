@@ -408,8 +408,10 @@ table {
 }
 
 .regularHeader .avatar img {
-  width: 50px;
-  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 45px;
+  height: 45px;
   margin: 0 10px;
 }
 
@@ -582,6 +584,7 @@ table {
   width: 100vw;
   height: 50vh;
   background: #847577;
+  position: relative;
   margin-top: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -823,6 +826,8 @@ table {
 .animalContainer img, .smallAnimalContainer img {
   border: 0.5px solid #cfd2cd;
   margin: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .animalContainer a, .smallAnimalContainer a {
@@ -852,7 +857,8 @@ table {
 }
 
 .animalContainer img {
-  max-width: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .smallAnimalContainer {
@@ -862,7 +868,8 @@ table {
 }
 
 .smallAnimalContainer img {
-  max-width: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .adoptDash {
@@ -910,7 +917,8 @@ table {
     width: 40%;
   }
   .smallAnimalContainer img {
-    max-width: 150px;
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -976,7 +984,8 @@ table {
     margin: 5px auto;
   }
   .smallAnimalContainer img {
-    max-width: 75px;
+    width: 75px;
+    height: 75px;
   }
 }
 
@@ -1126,8 +1135,11 @@ table {
 }
 
 .groupListContainer .organization img {
+  -o-object-fit: cover;
+     object-fit: cover;
   border: 0.5px solid #a6a2a2;
-  max-width: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .groupListContainer .organization button {
@@ -1274,6 +1286,10 @@ table {
 }
 
 .applicationContainer img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 120px;
+  height: 120px;
   margin-top: 10px;
 }
 
@@ -1317,6 +1333,8 @@ table {
 }
 
 .profileContainer img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 200px;
   height: 200px;
 }
@@ -1492,7 +1510,7 @@ table {
           align-items: center;
   margin: 10px auto 0px auto;
   width: 90vw;
-  height: 60vh;
+  height: 90vh;
   background: #e5e6e4;
   color: #847577;
 }

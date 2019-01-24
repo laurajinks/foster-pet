@@ -8,6 +8,7 @@
     justify-content: center;
     flex-wrap: wrap;
     img {
+        object-fit: cover;
         width: 200px;
         height: 200px;
     }

@@ -53,6 +53,7 @@
     img {
         border: 0.5px solid $lightGray;
         margin: 20px;
+        object-fit: cover;
     }
 
     a {
@@ -82,7 +83,8 @@
     overflow: scroll;
 
     img {
-        max-width: 200px;
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -92,7 +94,8 @@
     height: 300px;
     margin: 20px;
     img {
-        max-width: 100px;
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -133,7 +136,8 @@
     .smallAnimalContainer {
         width: 40%;
         img {
-            max-width: 150px;
+            width: 150px;
+            height: 150px;
         }
     }
 }
@@ -194,7 +198,8 @@
         height: 225px;
         margin: 5px auto;
         img {
-            max-width: 75px;
+            width: 75px;
+            height: 75px;
         }
     }
 }
