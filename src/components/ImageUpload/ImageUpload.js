@@ -10,7 +10,7 @@ const ImageUpload = props => {
                     props.url ||
                     props.newImg ||
                     props.prevImg ||
-                    "http://via.placeholder.com/70x70"
+                    "https://firebasestorage.googleapis.com/v0/b/animal-foster-project.appspot.com/o/images%2Favatar_placeholder_small.png?alt=media&token=13f75385-412b-4ac1-888d-c0fd597f28a7"
                 }
                 alt="Uploaded img"
                 height="70"

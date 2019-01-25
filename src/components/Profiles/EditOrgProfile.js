@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ImageUpload from "../ImageUpload/ImageUpload";
+import { storage } from "../../firebase";
 
 export default class EditOrgProfile extends Component {
     constructor(props) {
@@ -6,7 +8,11 @@ export default class EditOrgProfile extends Component {
         this.state = {
             displayName: "",
             email: "",
-            bio: ""
+            bio: "",
+            prevImg: "",
+            newImg: "",
+            image: null,
+            url: ""
         };
     }
 
@@ -14,7 +20,9 @@ export default class EditOrgProfile extends Component {
         this.setState({
             displayName: this.props.displayName,
             email: this.props.email,
-            bio: this.props.bio
+            bio: this.props.bio,
+            prevImg: this.props.img,
+            url: this.props.img
         });
     };
 
@@ -22,9 +30,47 @@ export default class EditOrgProfile extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    handleFileChange = e => {
+        if (e.target.files[0]) {
+            const image = e.target.files[0];
+            this.setState({ image });
+        }
+    };
+
+    handleUpload = event => {
+        event.preventDefault();
+        const { image } = this.state;
+        const { username } = this.props;
+        const uploadTask = storage.ref(`images/${username}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                //progress function
+            },
+            error => {
+                //error function
+                console.log(error);
+            },
+            () => {
+                //complete function
+                storage
+                    .ref("images")
+                    .child(username)
+                    .getDownloadURL()
+                    .then(url => this.setState({ url, newImg: url }));
+            }
+        );
+    };
+
     render() {
         return (
             <div className="editProfile">
+                <ImageUpload
+                    handleFileChange={this.handleFileChange}
+                    handleUpload={this.handleUpload}
+                    prevImg={this.state.prevImg}
+                    newImg={this.state.newImg}
+                />
                 <form
                     onSubmit={e =>
                         this.props.submitEdit(
