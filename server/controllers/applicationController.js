@@ -116,7 +116,6 @@ module.exports = {
             .get("db")
             .application.get_application_count(req.session.user.id)
             .then(response => {
-                console.log(response);
                 res.status(200).json(response);
             })
             .catch(err => console.log(err));

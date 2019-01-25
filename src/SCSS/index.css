@@ -1460,6 +1460,7 @@ table {
 }
 
 .editProfile {
+  color: #fbfbf2;
   -webkit-animation: menuLower 1s;
           animation: menuLower 1s;
   display: -webkit-box;
@@ -1468,6 +1469,9 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: rgba(166, 162, 162, 0.9);
   width: 60vw;
   height: 40vh;
@@ -1478,6 +1482,10 @@ table {
 
 .editProfile form {
   margin: 10px;
+}
+
+.editProfile button {
+  margin: 10px 0;
 }
 
 .editProfile .imageUpload {
@@ -1495,6 +1503,12 @@ table {
 .editProfile .bioEdit {
   text-overflow: ellipsis;
   height: 80px;
+}
+
+@media (max-width: 970px) {
+  .editProfile {
+    width: 90vw;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1523,9 +1537,10 @@ table {
     width: 80vw;
   }
   .editProfile {
-    width: 90vw;
     height: 70vh;
     top: 7vh;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 

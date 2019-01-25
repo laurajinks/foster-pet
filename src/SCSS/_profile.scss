@@ -56,9 +56,11 @@
 }
 
 .editProfile {
+    color: $offWhite;
     animation: menuLower 1s;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: $transparentMedGray;
     width: 60vw;
     height: 40vh;
@@ -67,6 +69,10 @@
     right: 0;
     form {
         margin: 10px;
+    }
+
+    button {
+        margin: 10px 0;
     }
 
     .imageUpload {
@@ -80,9 +86,16 @@
         margin: 10px;
         width: 200px;
     }
+
     .bioEdit {
         text-overflow: ellipsis;
         height: 80px;
+    }
+}
+
+@media (max-width: 970px) {
+    .editProfile {
+        width: 90vw;
     }
 }
 
@@ -102,9 +115,9 @@
     }
 
     .editProfile {
-        width: 90vw;
         height: 70vh;
         top: 7vh;
+        flex-wrap: wrap;
     }
 }
 
