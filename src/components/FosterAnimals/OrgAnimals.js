@@ -12,8 +12,7 @@ class OrgAnimals extends Component {
             username: "",
             id: "",
             animalList: [],
-            allowEdit: true,
-            refresh: false
+            allowEdit: true
         };
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {

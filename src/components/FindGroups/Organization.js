@@ -74,8 +74,12 @@ export default class Organization extends Component {
                         Apply
                     </button>
                 )}
-                {this.state.pendingApp && <p>Status: Pending</p>}
-                {this.state.isMember && <p>Status: Member</p>}
+                {this.state.pendingApp && (
+                    <p className="status">Status: Pending</p>
+                )}
+                {this.state.isMember && (
+                    <p className="status">Status: Member</p>
+                )}
 
                 {this.state.showApp && (
                     <OrgApp

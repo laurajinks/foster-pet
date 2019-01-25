@@ -190,7 +190,9 @@ export default class Animal extends Component {
                         )}
                     </div>
                 )}
-                {this.props.org_accept === false && <p>Pending Approval</p>}
+                {this.props.org_accept === false && (
+                    <p className="status">Pending Approval</p>
+                )}
                 {this.props.removeAnimal &&
                     this.state.showConfirmation === false && (
                         <button onClick={this.toggleConfirmation}>
@@ -226,7 +228,7 @@ export default class Animal extends Component {
                 )}
                 {this.props.fosterAnimal && this.props.org_accept && (
                     <div>
-                        <p>Application Approved</p>
+                        <p className="status">Application Approved</p>
                         <button
                             onClick={() =>
                                 this.props.fosterAnimal(
