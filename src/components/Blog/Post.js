@@ -12,6 +12,11 @@ export default class Post extends Component {
         };
     }
 
+    componentDidMount = () => {
+        const { title, content } = this.props;
+        this.setState({ title, content });
+    };
+
     showEdit = () => {
         this.setState({ showEdit: true });
     };
