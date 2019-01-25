@@ -1351,11 +1351,24 @@ table {
   border: 0.5px solid #cfd2cd;
 }
 
+.applicationContainer a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .applicationContainer img {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   margin-top: 10px;
 }
 
@@ -1369,7 +1382,7 @@ table {
   }
   .applicationContainer {
     width: 250px;
-    height: 300px;
+    min-height: 350px;
   }
   .applicationContainer p {
     font-size: 14px;
@@ -1573,6 +1586,14 @@ table {
 @media (max-width: 400px) {
   .editProfile {
     height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .editProfile img {
+    width: 50px;
+    height: 50px;
   }
 }
 

@@ -5,7 +5,6 @@ export default class AnimalApplication extends Component {
     render() {
         return (
             <div className="applicationContainer">
-                <p>Application</p>
                 <img
                     src={this.props.animal_img}
                     alt="animal profile"
@@ -14,6 +13,7 @@ export default class AnimalApplication extends Component {
                 <h1>{this.props.name}</h1>
                 <Link to={`/profile/user/${this.props.user_id}`}>
                     <img src={this.props.img} alt="foster avatar" width="100" />
+                    <h1>{this.props.username}</h1>
                 </Link>
                 <div>
                     {!this.props.org_accept && (
