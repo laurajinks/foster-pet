@@ -38,10 +38,12 @@ export default class Post extends Component {
     render() {
         return (
             <div className="blogPost">
-                <Link to={`/profile/org/${this.props.org_id}`}>
-                    <img src={this.props.img} alt="avatar" />
-                    <p>{this.props.username}</p>
-                </Link>
+                <div className="postAvatar">
+                    <Link to={`/profile/org/${this.props.org_id}`}>
+                        <img src={this.props.img} alt="avatar" />
+                        <p>{this.props.username}</p>
+                    </Link>
+                </div>
                 <p>{this.props.date}</p>
                 <p>{this.props.time}</p>
                 <h1>{this.props.title}</h1>

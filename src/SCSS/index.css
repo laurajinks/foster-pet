@@ -687,6 +687,12 @@ table {
   margin: 10px auto;
 }
 
+.dashboard .newsFeedPreview img {
+  width: 50px;
+  height: 50px;
+  border: 0.5px solid #a6a2a2;
+}
+
 .dashboard .newsFeedPreview a {
   text-align: center;
   margin: 10px;
@@ -1036,6 +1042,17 @@ table {
   margin-top: 8vh;
 }
 
+.postAvatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postAvatar h2 {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
 .blogPost {
   width: 80vw;
   position: relative;
@@ -1058,6 +1075,8 @@ table {
 }
 
 .blogPost img {
+  width: 50px;
+  height: 50px;
   border: 0.5px solid #a6a2a2;
 }
 
