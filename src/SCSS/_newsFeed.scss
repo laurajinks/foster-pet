@@ -27,6 +27,7 @@
 .postAvatar {
     display: flex;
     h2 {
+        color: $darkSilver;
         margin-left: 5px;
         font-weight: bold;
     }
@@ -35,7 +36,7 @@
 .blogPost {
     width: 80vw;
     position: relative;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 15px;
     background: #ffffff;
     border: 0.5px solid $lightGray;
@@ -46,6 +47,7 @@
         font-weight: bold;
         font-size: 18px;
         margin: 10px auto;
+        color: $darkSilver;
     }
     h2 {
         margin: 10px auto;

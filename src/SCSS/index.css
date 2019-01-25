@@ -701,6 +701,7 @@ table {
 .dashboard .newsFeedPreview h1 {
   font-size: 20px;
   margin: 10px 0;
+  color: #847577;
 }
 
 .dashboard .newsFeedPreview p,
@@ -1049,6 +1050,7 @@ table {
 }
 
 .postAvatar h2 {
+  color: #847577;
   margin-left: 5px;
   font-weight: bold;
 }
@@ -1056,7 +1058,7 @@ table {
 .blogPost {
   width: 80vw;
   position: relative;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 15px;
   background: #ffffff;
   border: 0.5px solid #cfd2cd;
@@ -1068,6 +1070,7 @@ table {
   font-weight: bold;
   font-size: 18px;
   margin: 10px auto;
+  color: #847577;
 }
 
 .blogPost h2 {
