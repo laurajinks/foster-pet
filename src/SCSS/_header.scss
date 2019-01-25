@@ -127,6 +127,9 @@
         z-index: 10;
         img {
             margin-top: 50px;
+            object-fit: cover;
+            width: 45px;
+            height: 45px;
         }
 
         .dropDownLinks {

@@ -536,6 +536,10 @@ table {
   }
   .dropDown img {
     margin-top: 50px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 45px;
+    height: 45px;
   }
   .dropDown .dropDownLinks {
     display: -webkit-box;
@@ -612,6 +616,10 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #ffffff;
+}
+
+.footer h1 {
   color: #ffffff;
 }
 
@@ -1471,8 +1479,8 @@ table {
   margin: 15px 0;
 }
 
-.bio h2,
 .bio h1,
+.bio h2,
 .bio h3 {
   margin-top: 10px;
 }
