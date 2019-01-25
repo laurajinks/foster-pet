@@ -465,7 +465,7 @@ table {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 70vh;
+    height: 7vh;
     width: 30vw;
     position: absolute;
     top: 0;
@@ -525,7 +525,7 @@ table {
             align-items: flex-end;
     -webkit-animation: menuLower 0.7s;
             animation: menuLower 0.7s;
-    background: rgba(166, 162, 162, 0.8);
+    background: rgba(166, 162, 162, 0.9);
     color: #ffffff;
     width: 30vw;
     height: 100vh;
@@ -647,7 +647,6 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  top: 7vh;
   margin: 0px auto;
   position: relative;
   width: 90vw;
@@ -665,7 +664,7 @@ table {
           flex-direction: column;
   background: #e5e6e4;
   width: 40vw;
-  margin-top: 20px;
+  margin-top: 8vh;
   height: 80vh;
   overflow: scroll;
   color: #000000;
@@ -776,7 +775,7 @@ table {
   display: flex;
   width: 40vw;
   height: 80vh;
-  margin-top: 20px;
+  margin-top: 8vh;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
@@ -1466,18 +1465,11 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(166, 162, 162, 0.8);
-  width: 40vw;
+  background: rgba(166, 162, 162, 0.9);
+  width: 60vw;
   height: 40vh;
   z-index: 15;
   position: absolute;
@@ -1485,7 +1477,11 @@ table {
 }
 
 .editProfile form {
-  width: 80%;
+  margin: 10px;
+}
+
+.editProfile .imageUpload {
+  margin: 0px 20px;
 }
 
 .editProfile input,

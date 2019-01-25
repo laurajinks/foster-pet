@@ -6,7 +6,12 @@ const ImageUpload = props => {
             <input type="file" onChange={props.handleFileChange} />
             <button onClick={props.handleUpload}>Upload Image</button>
             <img
-                src={props.url || "http://via.placeholder.com/70x70"}
+                src={
+                    props.url ||
+                    props.newImg ||
+                    props.prevImg ||
+                    "http://via.placeholder.com/70x70"
+                }
                 alt="Uploaded img"
                 height="70"
                 width="70"

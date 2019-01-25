@@ -57,16 +57,22 @@
 
 .editProfile {
     animation: menuLower 1s;
-    @include flexBoxColumnCenter;
+    display: flex;
+    align-items: center;
     background: $transparentMedGray;
-    width: 40vw;
+    width: 60vw;
     height: 40vh;
     z-index: 15;
     position: absolute;
     right: 0;
     form {
-        width: 80%;
+        margin: 10px;
     }
+
+    .imageUpload {
+        margin: 0px 20px;
+    }
+
     input,
     textarea {
         background: $lightSilver;

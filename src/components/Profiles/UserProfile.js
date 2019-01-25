@@ -94,11 +94,13 @@ export default class UserProfile extends Component {
         this.setState({ showEdit: !this.state.showEdit });
     };
 
-    submitEdit = (e, displayName, email, bio) => {
+    submitEdit = (e, displayName, email, bio, url) => {
         e.preventDefault();
-        axios.put("/auth/update/user", { displayName, email, bio }).then(() => {
-            this.setState({ refresh: true, showEdit: false });
-        });
+        axios
+            .put("/auth/update/user", { displayName, email, bio, url })
+            .then(() => {
+                this.setState({ refresh: true, showEdit: false });
+            });
     };
 
     render() {
@@ -142,6 +144,8 @@ export default class UserProfile extends Component {
                         )}
                         {this.state.showEdit && (
                             <EditUserProfile
+                                img={this.state.img}
+                                username={this.state.username}
                                 displayName={this.state.displayName}
                                 email={this.state.email}
                                 bio={this.state.user_bio}

@@ -61,26 +61,24 @@ class OrgDash extends Component {
         });
         return (
             <div className="dashboard">
-                <div>
-                    <div className="animalListContainer">
-                        <div className="appPreview">
-                            {this.state.appCount > 0 && (
-                                <div>
-                                    <div className="appCount">
-                                        <h1>Applications Needing Review:</h1>
-                                        <Link to="/org/applications">
-                                            {this.state.appCount}
-                                        </Link>
-                                    </div>
+                <div className="animalListContainer">
+                    <div className="appPreview">
+                        {this.state.appCount > 0 && (
+                            <div>
+                                <div className="appCount">
+                                    <h1>Applications Needing Review:</h1>
+                                    <Link to="/org/applications">
+                                        {this.state.appCount}
+                                    </Link>
                                 </div>
-                            )}
-                            {this.state.appCount === 0 && (
-                                <h1>No Applications To Review</h1>
-                            )}
-                        </div>
-                        {!this.state.animalList && <h1>No Current Animals</h1>}
-                        {animals}
+                            </div>
+                        )}
+                        {this.state.appCount === 0 && (
+                            <h1>No Applications To Review</h1>
+                        )}
                     </div>
+                    {!this.state.animalList && <h1>No Current Animals</h1>}
+                    {animals}
                 </div>
             </div>
         );
