@@ -1529,7 +1529,7 @@ table {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 670px) {
   .profileContainer {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1555,10 +1555,16 @@ table {
     width: 80vw;
   }
   .editProfile {
-    height: 70vh;
+    height: 80vh;
     top: 7vh;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 400px) {
+  .editProfile {
+    height: 100vh;
   }
 }
 

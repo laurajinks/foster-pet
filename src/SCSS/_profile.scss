@@ -99,7 +99,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 670px) {
     .profileContainer {
         @include flexBoxColumnCenter;
         line-height: 20px;
@@ -115,9 +115,15 @@
     }
 
     .editProfile {
-        height: 70vh;
+        height: 80vh;
         top: 7vh;
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 400px) {
+    .editProfile {
+        height: 100vh;
     }
 }
 
