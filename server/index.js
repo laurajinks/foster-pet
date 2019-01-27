@@ -4,7 +4,7 @@ const session = require("express-session");
 const massive = require("massive");
 const { json } = require("body-parser");
 const cors = require("cors");
-const port = 3001;
+const port = process.env.PORT;
 const app = express();
 const {
     currentSession,
