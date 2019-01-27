@@ -72,6 +72,7 @@ const {
 } = require("./controllers/blogController");
 app.use(json());
 app.use(cors());
+app.use(express.static(`${__dirname}/../build`));
 
 massive(process.env.CONNECTION_STRING)
     .then(db => {
