@@ -16,7 +16,7 @@ const Home = () => {
                         <span className="italic">foster</span>
                         <span className="bold">PET</span>
                     </h1>
-                    <h3>Page subheader</h3>
+                    <h3>Giving animals a second chance</h3>
                     <div className="loginSignUpBtns">
                         <Link to="/login">
                             <button>Log In</button>
