@@ -1,3 +1,4 @@
+const path = require("path");
 require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
@@ -149,5 +150,9 @@ app.post("/api/blog", writePost);
 app.post("/api/blog/org", getPosts);
 app.post("/api/blog/member", getMemberPosts);
 app.put("/api/blog/org", updateBlog);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 app.listen(port, console.log(`Listening on ${port}`));
