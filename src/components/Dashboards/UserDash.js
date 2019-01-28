@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import NewsFeedPreview from "../Blog/NewsFeedPreview";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";

@@ -219,11 +219,13 @@ class Header extends Component {
                                     </Link>
                                 </div>
                             )}
-                            <Link to="/">
-                                <button onClick={() => this.logout()}>
-                                    Logout
-                                </button>
-                            </Link>
+                            {this.state.username && (
+                                <Link to="/">
+                                    <button onClick={() => this.logout()}>
+                                        Logout
+                                    </button>
+                                </Link>
+                            )}
                         </div>
                     )}
                 </div>
