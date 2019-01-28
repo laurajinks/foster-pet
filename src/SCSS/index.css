@@ -153,7 +153,7 @@ table {
 .homepage button {
   border: none;
   font-size: 16px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(166, 162, 162, 0.5);
   margin: 0px 20px;
   padding: 10px;
   border-radius: 5px;
@@ -161,7 +161,7 @@ table {
 }
 
 .homepage button:hover {
-  background: #a6a2a2;
+  background: rgba(132, 117, 119, 0.9);
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -204,7 +204,7 @@ table {
 }
 
 .homepage .loginSignUp {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   width: 30vw;
   height: 60vh;
   -webkit-animation: fadeIn 0.5s;
@@ -331,10 +331,10 @@ table {
     height: 90vh;
   }
   .homepage .loginSignUpContainer .loginSignUp button {
-    font-size: 12px;
+    font-size: 18px;
   }
   .homepage .loginSignUpContainer .loginSignUp form {
-    font-size: 14px;
+    font-size: 18px;
     width: 90%;
     margin: 0px auto;
   }

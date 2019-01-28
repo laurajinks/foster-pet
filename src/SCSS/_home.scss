@@ -18,7 +18,7 @@
     button {
         border: none;
         font-size: 16px;
-        background: $buttonBackground;
+        background: $transparentMedSilver;
         margin: 0px 20px;
         padding: 10px;
         border-radius: 5px;
@@ -26,7 +26,7 @@
     }
 
     button:hover {
-        background: $mediumSilver;
+        background: $transparentDarkSilver;
         transition: 0.2s;
     }
 
@@ -58,7 +58,7 @@
 
     .loginSignUp {
         @extend %home;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.1);
         width: 30vw;
         height: 60vh;
         animation: fadeIn 0.5s;
@@ -158,10 +158,10 @@
                 width: 90vw;
                 height: 90vh;
                 button {
-                    font-size: 12px;
+                    font-size: 18px;
                 }
                 form {
-                    font-size: 14px;
+                    font-size: 18px;
                     width: 90%;
                     margin: 0px auto;
                 }

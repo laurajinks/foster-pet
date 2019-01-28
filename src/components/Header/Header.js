@@ -40,7 +40,11 @@ class Header extends Component {
     logout = () => {
         axios
             .post(`/auth/logout`)
-            .then(() => this.props.history.push("/"))
+            .then(() => {
+                this.getCurrentUser();
+                this.props.history.push("/");
+            })
+
             .catch(err => console.log(err));
     };
 
@@ -57,12 +61,30 @@ class Header extends Component {
         return (
             <div>
                 <div className="headerContainer">
-                    <Link to="/">
-                        <h1 className="logo">
-                            <span className="italic">foster</span>
-                            <span className="bold">PET</span>
-                        </h1>
-                    </Link>
+                    {!this.state.username && (
+                        <Link to="/">
+                            <h1 className="logo">
+                                <span className="italic">foster</span>
+                                <span className="bold">PET</span>
+                            </h1>
+                        </Link>
+                    )}
+                    {this.state.username && !this.state.isOrg && (
+                        <Link to="/dashboard/user">
+                            <h1 className="logo">
+                                <span className="italic">foster</span>
+                                <span className="bold">PET</span>
+                            </h1>
+                        </Link>
+                    )}
+                    {this.state.username && this.state.isOrg && (
+                        <Link to="/dashboard/org">
+                            <h1 className="logo">
+                                <span className="italic">foster</span>
+                                <span className="bold">PET</span>
+                            </h1>
+                        </Link>
+                    )}
                     <div className="regularHeader">
                         {this.state.isOrg === false && (
                             <div className="regularHeaderLinks">
