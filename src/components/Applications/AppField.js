@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AppField = props => {
     return (
@@ -10,3 +11,8 @@ const AppField = props => {
 };
 
 export default AppField;
+
+AppField.propTypes = {
+    field: PropTypes.string.isRequired,
+    removeField: PropTypes.func.isRequired
+};
