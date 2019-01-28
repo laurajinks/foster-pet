@@ -687,6 +687,10 @@ table {
   color: #847577;
 }
 
+.dashboard .newsFeedPreview h2 {
+  text-align: center;
+}
+
 .dashboard .newsFeedPreview .previewPost {
   background: #ffffff;
   padding: 20px;
@@ -1183,6 +1187,7 @@ table {
   width: 20vw;
   border: 0.5px solid #cfd2cd;
   margin: 20px;
+  position: relative;
   color: #000000;
   line-height: 20px;
   overflow: scroll;
@@ -1228,9 +1233,11 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 20vw;
-  height: 30vh;
+  width: 100%;
+  min-height: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
   background: #847577;
   color: #ffffff;
   z-index: 15;
@@ -1251,11 +1258,20 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 10px;
+}
+
+.groupListContainer .organization .orgApp form input {
+  background: #fbfbf2;
+  border: none;
+  margin: 5px;
 }
 
 .groupListContainer .organization .orgApp button {
   padding: 15px;
-  background: #cfd2cd;
+  margin: 10px;
+  background: #a6a2a2;
+  color: #fbfbf2;
 }
 
 @media (max-width: 1200px) {

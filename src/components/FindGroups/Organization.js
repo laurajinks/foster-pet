@@ -54,6 +54,10 @@ export default class Organization extends Component {
         this.setState({ showApp: false });
     };
 
+    reRender = () => {
+        this.setState({ refresh: true });
+    };
+
     render() {
         return (
             <div className="organization">

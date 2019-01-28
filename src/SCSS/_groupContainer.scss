@@ -50,6 +50,7 @@
         width: 20vw;
         border: 0.5px solid $lightGray;
         margin: 20px;
+        position: relative;
         color: #000000;
         line-height: 20px;
         overflow: scroll;
@@ -78,9 +79,11 @@
         .orgApp {
             animation: fadeIn 0.5s;
             @include flexBoxColumnCenter;
-            width: 20vw;
-            height: 30vh;
+            width: 100%;
+            min-height: 100%;
             position: absolute;
+            top: 0;
+            left: 0;
             background: $darkSilver;
             color: #ffffff;
             z-index: 15;
@@ -88,11 +91,20 @@
 
             form {
                 @include flexBoxColumnCenter;
+                margin-top: 10px;
+
+                input {
+                    background: $offWhite;
+                    border: none;
+                    margin: 5px;
+                }
             }
 
             button {
                 padding: 15px;
-                background: $lightGray;
+                margin: 10px;
+                background: $mediumSilver;
+                color: $offWhite;
             }
         }
     }
