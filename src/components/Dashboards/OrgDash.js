@@ -14,7 +14,9 @@ class OrgDash extends Component {
             animalList: [],
             appCount: 0
         };
+    }
 
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {
                 return this.props.history.push("/login");
@@ -25,9 +27,7 @@ class OrgDash extends Component {
                 });
             }
         });
-    }
 
-    componentDidMount = () => {
         axios.get(`/api/animals/org`).then(response => {
             const results = response.data;
             this.setState({ animalList: results });

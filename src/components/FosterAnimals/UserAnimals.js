@@ -15,17 +15,6 @@ export default class UserAnimals extends Component {
             pendingAnimals: [],
             eligibleAnimals: []
         };
-
-        axios.get("/auth/getcurrentuser").then(response => {
-            if (response.data.isOrg === true || !response.data) {
-                return this.props.history.push("/login");
-            } else {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            }
-        });
     }
 
     loadData = () => {
@@ -47,6 +36,16 @@ export default class UserAnimals extends Component {
     };
 
     componentDidMount = () => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === true || !response.data) {
+                return this.props.history.push("/login");
+            } else {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            }
+        });
         this.loadData();
     };
 

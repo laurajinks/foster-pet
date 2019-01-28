@@ -11,6 +11,9 @@ export default class CreatePost extends Component {
             title: "",
             content: ""
         };
+    }
+
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {
                 return this.props.history.push("/login");
@@ -21,7 +24,7 @@ export default class CreatePost extends Component {
                 });
             }
         });
-    }
+    };
 
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });

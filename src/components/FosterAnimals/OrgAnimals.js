@@ -14,16 +14,6 @@ class OrgAnimals extends Component {
             animalList: [],
             allowEdit: true
         };
-        axios.get("/auth/getcurrentuser").then(response => {
-            if (response.data.isOrg === false || !response.data) {
-                return this.props.history.push("/login");
-            } else {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            }
-        });
     }
 
     loadData = () => {
@@ -34,6 +24,16 @@ class OrgAnimals extends Component {
     };
 
     componentDidMount = () => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            }
+        });
         this.loadData();
     };
 

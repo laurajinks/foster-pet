@@ -13,15 +13,6 @@ export default class ApplicationDash extends Component {
             animalApplications: [],
             refresh: false
         };
-        axios
-            .get(`/auth/org`)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            })
-            .catch(err => this.props.history.push("/login"));
     }
 
     loadData = () => {
@@ -43,6 +34,15 @@ export default class ApplicationDash extends Component {
     };
 
     componentDidMount = () => {
+        axios
+            .get(`/auth/org`)
+            .then(response => {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            })
+            .catch(err => this.props.history.push("/login"));
         this.loadData();
     };
 

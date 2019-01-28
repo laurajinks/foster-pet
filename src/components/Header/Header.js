@@ -13,7 +13,9 @@ class Header extends Component {
             img: "",
             dropDown: false
         };
+    }
 
+    getCurrentUser = () => {
         axios
             .get(`/auth/getcurrentuser`)
             .then(response => {
@@ -29,7 +31,12 @@ class Header extends Component {
             .catch(err => {
                 console.log(err);
             });
-    }
+    };
+
+    componentDidMount = () => {
+        this.getCurrentUser();
+    };
+
     logout = () => {
         axios
             .post(`/auth/logout`)
@@ -42,22 +49,8 @@ class Header extends Component {
     };
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (this.props.authReducer.id !== prevProps)
-            axios
-                .get(`/auth/getcurrentuser`)
-                .then(response => {
-                    this.setState({
-                        username: response.data.username,
-                        displayName: response.data.displayName,
-                        id: response.data.id,
-                        img: response.data.img,
-                        isOrg: response.data.isOrg
-                    });
-                })
-
-                .catch(err => {
-                    console.log(err);
-                });
+        if (this.props.authReducer.id !== prevProps.authReducer.id)
+            this.getCurrentUser();
     };
 
     render() {

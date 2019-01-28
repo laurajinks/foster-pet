@@ -14,7 +14,9 @@ class CreateApplication extends Component {
             input: "",
             application: []
         };
+    }
 
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === false || !response.data) {
                 return this.props.history.push("/login");
@@ -25,7 +27,7 @@ class CreateApplication extends Component {
                 });
             }
         });
-    }
+    };
 
     handleInputChange = e => {
         this.setState({ input: e.target.value });

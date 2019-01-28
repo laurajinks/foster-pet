@@ -10,6 +10,9 @@ export default class FindGroups extends Component {
             usState: "Alabama",
             organizations: []
         };
+    }
+
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === true || !response.data) {
                 return this.props.history.push("/login");
@@ -20,7 +23,7 @@ export default class FindGroups extends Component {
                 });
             }
         });
-    }
+    };
 
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });

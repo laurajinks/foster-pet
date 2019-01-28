@@ -9,6 +9,9 @@ export default class UserNewsFeed extends Component {
         this.state = {
             posts: []
         };
+    }
+
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === true || !response.data) {
                 return this.props.history.push("/");
@@ -19,9 +22,6 @@ export default class UserNewsFeed extends Component {
                 });
             }
         });
-    }
-
-    componentDidMount = () => {
         axios
             .post("/api/blog/member")
             .then(response => this.setState({ posts: response.data }))

@@ -14,16 +14,6 @@ export default class BlogHome extends Component {
             posts: [],
             allowEdit: true
         };
-        axios.get("/auth/getcurrentuser").then(response => {
-            if (response.data.isOrg === false || !response.data) {
-                return this.props.history.push("/login");
-            } else {
-                this.setState({
-                    username: response.data.username,
-                    id: response.data.id
-                });
-            }
-        });
     }
 
     loadData = () => {
@@ -36,6 +26,16 @@ export default class BlogHome extends Component {
     };
 
     componentDidMount = () => {
+        axios.get("/auth/getcurrentuser").then(response => {
+            if (response.data.isOrg === false || !response.data) {
+                return this.props.history.push("/login");
+            } else {
+                this.setState({
+                    username: response.data.username,
+                    id: response.data.id
+                });
+            }
+        });
         this.loadData();
     };
 

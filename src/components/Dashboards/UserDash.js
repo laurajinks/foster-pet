@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import NewsFeedPreview from "../Blog/NewsFeedPreview";
 import AnimalSmall from "../FosterAnimals/AnimalSmall";
@@ -15,6 +15,9 @@ class UserDash extends Component {
             currentAnimals: [],
             currentPosts: []
         };
+    }
+
+    componentDidMount = () => {
         axios.get("/auth/getcurrentuser").then(response => {
             if (response.data.isOrg === true || !response.data) {
                 return this.props.history.push("/login");
@@ -25,9 +28,6 @@ class UserDash extends Component {
                 });
             }
         });
-    }
-
-    componentDidMount = () => {
         axios
             .post("/api/animals/user")
             .then(response => this.setState({ currentAnimals: response.data }));
@@ -52,6 +52,7 @@ class UserDash extends Component {
                 />
             );
         });
+
         const recentPosts = this.state.currentPosts.slice(0, 5);
         const posts = recentPosts.map(post => {
             return (
