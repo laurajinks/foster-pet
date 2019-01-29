@@ -65,7 +65,7 @@ export default class UserProfile extends Component {
             const organizationList = response.data.map(
                 obj => obj.org_display_name
             );
-            this.setState({ orgs: organizationList.join(",") });
+            this.setState({ orgs: organizationList.join(", ") });
         });
 
         axios.post("/api/animalcount", { id }).then(response => {
