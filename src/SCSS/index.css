@@ -206,7 +206,7 @@ table {
 .homepage .loginSignUp {
   background: rgba(255, 255, 255, 0.1);
   width: 30vw;
-  height: 60vh;
+  height: 70vh;
   -webkit-animation: fadeIn 0.5s;
           animation: fadeIn 0.5s;
 }
@@ -226,7 +226,8 @@ table {
           animation: fadeIn 1s;
 }
 
-.homepage h3 {
+.homepage h3,
+.homepage a {
   font-size: 36px;
   margin: 20px auto;
   -webkit-animation: fadeIn 1.5s;
@@ -331,18 +332,25 @@ table {
     height: 90vh;
   }
   .homepage .loginSignUpContainer .loginSignUp button {
-    font-size: 18px;
+    font-size: 14px;
+    margin: 5px;
   }
   .homepage .loginSignUpContainer .loginSignUp form {
-    font-size: 18px;
+    font-size: 14px;
     width: 90%;
     margin: 0px auto;
+  }
+  .homepage .loginSignUpContainer .loginSignUp form input {
+    margin: 5px auto;
   }
   .homepage .loginSignUpContainer h1 {
     font-size: 45px;
   }
   .homepage .loginSignUpContainer h3 {
     font-size: 24px;
+  }
+  .homepage .loginSignUpContainer p {
+    font-size: 12px;
   }
 }
 

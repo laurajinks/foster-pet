@@ -60,7 +60,7 @@
         @extend %home;
         background: rgba(255, 255, 255, 0.1);
         width: 30vw;
-        height: 60vh;
+        height: 70vh;
         animation: fadeIn 0.5s;
 
         button {
@@ -78,7 +78,8 @@
         animation: fadeIn 1s;
     }
 
-    h3 {
+    h3,
+    a {
         font-size: 36px;
         margin: 20px auto;
         animation: fadeIn 1.5s;
@@ -158,12 +159,17 @@
                 width: 90vw;
                 height: 90vh;
                 button {
-                    font-size: 18px;
+                    font-size: 14px;
+                    margin: 5px;
                 }
                 form {
-                    font-size: 18px;
+                    font-size: 14px;
                     width: 90%;
                     margin: 0px auto;
+
+                    input {
+                        margin: 5px auto;
+                    }
                 }
             }
             h1 {
@@ -172,6 +178,10 @@
 
             h3 {
                 font-size: 24px;
+            }
+
+            p {
+                font-size: 12px;
             }
         }
     }

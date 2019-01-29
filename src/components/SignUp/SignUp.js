@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { storage } from "../../firebase";
 import { connect } from "react-redux";
 import { updateUser } from "../../ducks/reducers/authReducer";
@@ -338,6 +339,10 @@ class SignUp extends Component {
                                 <input type="submit" value="Submit" />
                             </form>
                         )}
+                        <p>Already Have An Account?</p>
+                        <Link to="/login">
+                            <button>Sign In</button>
+                        </Link>
                     </div>
                 </div>
             </div>

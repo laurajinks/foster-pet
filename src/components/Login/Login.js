@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { updateUser } from "../../ducks/reducers/authReducer";
 // const url = "http://localhost:3001";
@@ -123,6 +124,10 @@ class Login extends Component {
                                 />
                             </form>
                         )}
+                        <p>No Account?</p>
+                        <Link to="/signup">
+                            <button>Register</button>
+                        </Link>
                     </div>
                 </div>
             </div>
