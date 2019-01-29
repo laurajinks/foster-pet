@@ -37,24 +37,25 @@ class Header extends Component {
         this.getCurrentUser();
     };
 
-    logout = () => {
-        axios
-            .post(`/auth/logout`)
-            .then(() => {
-                this.getCurrentUser();
-                this.props.history.push("/");
-            })
-
-            .catch(err => console.log(err));
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.props.authReducer.id !== prevProps.authReducer.id)
+            this.getCurrentUser();
     };
 
     toggleDropDown = () => {
         this.setState({ dropDown: !this.state.dropDown });
     };
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (this.props.authReducer.id !== prevProps.authReducer.id)
-            this.getCurrentUser();
+    logout = () => {
+        axios
+            .post(`/auth/logout`)
+            .then(() => {
+                this.toggleDropDown();
+                this.getCurrentUser();
+                this.props.history.push("/");
+            })
+
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -143,92 +144,91 @@ class Header extends Component {
                                             <p>{this.state.username}</p>
                                         </Link>
                                     )}
-                                    <Link to="/">
-                                        <p onClick={() => this.logout()}>
-                                            Logout
-                                        </p>
-                                    </Link>
+
+                                    <p onClick={() => this.logout()}>Logout</p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-                <div className="hamburgerHeader">
-                    <div className="burger" onClick={this.toggleDropDown}>
-                        <div className="line" />
-                        <div className="line" />
-                        <div className="line" />
-                    </div>
+                {this.state.id && (
+                    <div className="hamburgerHeader">
+                        <div className="burger" onClick={this.toggleDropDown}>
+                            <div className="line" />
+                            <div className="line" />
+                            <div className="line" />
+                        </div>
 
-                    {this.state.dropDown && (
-                        <div className="dropDown">
-                            {this.state.id && (
-                                <>
-                                    <img
-                                        src={this.state.img}
-                                        alt="avatar"
-                                        width="50"
-                                    />
-                                    {!this.state.isOrg && (
-                                        <Link
-                                            to={`/profile/user/${
-                                                this.state.id
-                                            }`}
-                                        >
-                                            <p>{this.state.username}</p>
+                        {this.state.dropDown && (
+                            <div className="dropDown">
+                                {this.state.id && (
+                                    <>
+                                        <img
+                                            src={this.state.img}
+                                            alt="avatar"
+                                            width="50"
+                                        />
+                                        {!this.state.isOrg && (
+                                            <Link
+                                                to={`/profile/user/${
+                                                    this.state.id
+                                                }`}
+                                            >
+                                                <p>{this.state.username}</p>
+                                            </Link>
+                                        )}
+                                        {this.state.isOrg && (
+                                            <Link
+                                                to={`/profile/org/${
+                                                    this.state.id
+                                                }`}
+                                            >
+                                                <p>{this.state.username}</p>
+                                            </Link>
+                                        )}
+                                    </>
+                                )}
+                                {this.state.isOrg === false && (
+                                    <div className="dropDownLinks">
+                                        <Link to="/user/newsfeed">
+                                            <p>Newsfeed</p>
                                         </Link>
-                                    )}
-                                    {this.state.isOrg && (
-                                        <Link
-                                            to={`/profile/org/${this.state.id}`}
-                                        >
-                                            <p>{this.state.username}</p>
+                                        <Link to="/user/animals">
+                                            <p>Foster Animals</p>
                                         </Link>
-                                    )}
-                                </>
-                            )}
-                            {this.state.isOrg === false && (
-                                <div className="dropDownLinks">
-                                    <Link to="/user/newsfeed">
-                                        <p>Newsfeed</p>
-                                    </Link>
-                                    <Link to="/user/animals">
-                                        <p>Foster Animals</p>
-                                    </Link>
-                                    <Link to="/organizations">
-                                        <p>Find a Foster Group</p>
-                                    </Link>
-                                    <Link to="/adopt">
-                                        <p>Adopt</p>
-                                    </Link>
-                                </div>
-                            )}
-                            {this.state.isOrg === true && (
-                                <div className="dropDownLinks">
-                                    <Link to="/org/blog">
-                                        <p>Blog</p>
-                                    </Link>
-                                    <Link to="/org/applications">
-                                        <p>Applications</p>
-                                    </Link>
-                                    <Link to="/org/animals">
-                                        <p>Animals</p>
-                                    </Link>
-                                    <Link to="/org/currentfosters">
-                                        <p>Fosters</p>
-                                    </Link>
-                                </div>
-                            )}
-                            {this.state.username && (
-                                <Link to="/">
+                                        <Link to="/organizations">
+                                            <p>Find a Foster Group</p>
+                                        </Link>
+                                        <Link to="/adopt">
+                                            <p>Adopt</p>
+                                        </Link>
+                                    </div>
+                                )}
+                                {this.state.isOrg === true && (
+                                    <div className="dropDownLinks">
+                                        <Link to="/org/blog">
+                                            <p>Blog</p>
+                                        </Link>
+                                        <Link to="/org/applications">
+                                            <p>Applications</p>
+                                        </Link>
+                                        <Link to="/org/animals">
+                                            <p>Animals</p>
+                                        </Link>
+                                        <Link to="/org/currentfosters">
+                                            <p>Fosters</p>
+                                        </Link>
+                                    </div>
+                                )}
+                                {this.state.username && (
                                     <button onClick={() => this.logout()}>
                                         Logout
                                     </button>
-                                </Link>
-                            )}
-                        </div>
-                    )}
-                </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         );
     }

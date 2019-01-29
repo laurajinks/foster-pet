@@ -80,7 +80,9 @@ class UserDash extends Component {
                     </h1>
                     {!this.state.currentPosts[0] && <h2>No Posts To Show</h2>}
                     {posts}
-                    <Link to="user/newsfeed">See More...</Link>
+                    {this.state.currentPosts[0] && (
+                        <Link to="user/newsfeed">See More...</Link>
+                    )}
                 </div>
             </div>
         );

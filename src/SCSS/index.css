@@ -689,6 +689,9 @@ table {
 
 .dashboard .newsFeedPreview h2 {
   text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .dashboard .newsFeedPreview .previewPost {
