@@ -38,24 +38,18 @@ class Header extends Component {
     };
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (this.props.authReducer.id !== prevProps.authReducer.id)
-            this.getCurrentUser();
+        if (prevProps !== this.props) this.getCurrentUser();
     };
 
     toggleDropDown = () => {
         this.setState({ dropDown: !this.state.dropDown });
     };
 
-    logout = () => {
-        axios
-            .post(`/auth/logout`)
-            .then(() => {
-                this.toggleDropDown();
-                this.getCurrentUser();
-                this.props.history.push("/");
-            })
-
-            .catch(err => console.log(err));
+    logout = async () => {
+        await axios.post(`/auth/logout`).catch(err => console.log(err));
+        await this.toggleDropDown();
+        await this.getCurrentUser();
+        this.props.history.push("/");
     };
 
     render() {
