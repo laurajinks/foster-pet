@@ -61,13 +61,13 @@ export default class Organization extends Component {
     render() {
         return (
             <div className="organization">
-                <img
-                    className="resultThumb"
-                    src={this.props.img}
-                    alt={this.props.org_username}
-                />
-                <h1 className="title">{this.props.displayName}</h1>
                 <Link to={`profile/org/${this.props.org_id}`}>
+                    <img
+                        className="resultThumb"
+                        src={this.props.img}
+                        alt={this.props.org_username}
+                    />
+                    <h1 className="title">{this.props.displayName}</h1>
                     <p className="resultName">{this.props.org_username}</p>
                 </Link>
 

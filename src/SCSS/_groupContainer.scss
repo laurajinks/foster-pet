@@ -54,6 +54,10 @@
         color: #000000;
         line-height: 20px;
         overflow: scroll;
+
+        a {
+            @include flexBoxColumnCenter;
+        }
         h2,
         h1 {
             margin: 10px auto;

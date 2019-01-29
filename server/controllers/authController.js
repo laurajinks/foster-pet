@@ -173,10 +173,10 @@ module.exports = {
     },
 
     updateOrg: (req, res) => {
-        const { displayName, email, bio } = req.body;
+        const { displayName, email, bio, url } = req.body;
         req.app
             .get("db")
-            .auth.edit_org(req.session.user.id, displayName, email, bio)
+            .auth.edit_org(req.session.user.id, displayName, email, bio, url)
             .then(response => res.status(200).json(response))
             .catch(err => console.log(err));
     }

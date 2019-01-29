@@ -79,10 +79,9 @@ export default class Animal extends Component {
                 description
             })
             .then(() => {
-                this.setState({
-                    refresh: true
-                });
+                this.setState({ showEdit: false }, this.props.toggleRefresh());
             })
+
             .catch(err => alert(err));
     };
 

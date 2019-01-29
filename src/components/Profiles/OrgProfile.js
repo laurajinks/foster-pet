@@ -122,6 +122,7 @@ export default class OrgProfile extends Component {
                         {this.state.showEdit && (
                             <EditOrgProfile
                                 displayName={this.state.displayName}
+                                username={this.state.username}
                                 email={this.state.email}
                                 bio={this.state.org_bio}
                                 img={this.state.img}

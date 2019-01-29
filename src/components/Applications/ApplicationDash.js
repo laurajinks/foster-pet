@@ -118,12 +118,13 @@ export default class ApplicationDash extends Component {
                     !this.state.animalApplications[0] && (
                         <h1>No Applications To Review</h1>
                     )}
-                {this.state.applications[0] && (
+                {(this.state.applications[0] ||
+                    this.state.animalApplications[0]) && (
                     <div>
                         <h1>Animal Applications</h1>
-                        {animalApps}
+                        <div className="apps">{animalApps}</div>
                         <h1>Foster Applications</h1>
-                        {apps}
+                        <div className="apps">{apps}</div>
                     </div>
                 )}
             </div>

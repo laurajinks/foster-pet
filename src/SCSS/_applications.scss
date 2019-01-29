@@ -26,6 +26,7 @@
         color: $darkSilver;
         font-weight: bold;
         font-size: 18px;
+        text-align: center;
     }
 
     form {
@@ -41,6 +42,7 @@
 
 .applicationContainer {
     @include flexBoxColumnCenter;
+    margin: 10px;
     background: #ffffff;
     width: 300px;
     height: 400px;
@@ -65,6 +67,10 @@
     button {
         background: $lightSilver;
     }
+}
+
+.apps {
+    display: flex;
 }
 
 @media (max-width: 500px) {

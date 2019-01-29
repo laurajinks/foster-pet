@@ -863,6 +863,7 @@ table {
   background: #ffffff;
   border: 0.5px solid #cfd2cd;
   color: #000000;
+  text-align: center;
 }
 
 .animalContainer h2, .smallAnimalContainer h2 {
@@ -1204,6 +1205,22 @@ table {
   overflow: scroll;
 }
 
+.groupListContainer .organization a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .groupListContainer .organization h2,
 .groupListContainer .organization h1 {
   margin: 10px auto;
@@ -1343,6 +1360,7 @@ table {
   color: #847577;
   font-weight: bold;
   font-size: 18px;
+  text-align: center;
 }
 
 .applicationDash form {
@@ -1369,6 +1387,7 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 10px;
   background: #ffffff;
   width: 300px;
   height: 400px;
@@ -1401,6 +1420,12 @@ table {
 
 .applicationContainer button {
   background: #e5e6e4;
+}
+
+.apps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (max-width: 500px) {

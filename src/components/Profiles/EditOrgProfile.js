@@ -77,7 +77,8 @@ export default class EditOrgProfile extends Component {
                             e,
                             this.state.displayName,
                             this.state.email,
-                            this.state.bio
+                            this.state.bio,
+                            this.state.url
                         )
                     }
                 >
@@ -109,7 +110,8 @@ export default class EditOrgProfile extends Component {
                                 e,
                                 this.state.displayName,
                                 this.state.email,
-                                this.state.bio
+                                this.state.bio,
+                                this.state.url
                             )
                         }
                     >
