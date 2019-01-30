@@ -1373,6 +1373,13 @@ table {
   margin: 5px;
 }
 
+.apps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: scroll;
+}
+
 .applicationContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1422,19 +1429,20 @@ table {
   background: #e5e6e4;
 }
 
-.apps {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 @media (max-width: 500px) {
   .applicationDash {
     min-height: 200vh;
   }
+  .apps {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
   .applicationContainer {
-    width: 90vw;
-    min-height: 350px;
+    width: 80vw;
+    min-height: 300px;
   }
   .applicationContainer p {
     font-size: 14px;

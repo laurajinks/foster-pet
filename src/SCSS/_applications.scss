@@ -40,6 +40,11 @@
     }
 }
 
+.apps {
+    display: flex;
+    overflow: scroll;
+}
+
 .applicationContainer {
     @include flexBoxColumnCenter;
     margin: 10px;
@@ -69,17 +74,18 @@
     }
 }
 
-.apps {
-    display: flex;
-}
-
 @media (max-width: 500px) {
     .applicationDash {
         min-height: 200vh;
     }
+
+    .apps {
+        flex-direction: column;
+        width: 100%;
+    }
     .applicationContainer {
-        width: 90vw;
-        min-height: 350px;
+        width: 80vw;
+        min-height: 300px;
         p {
             font-size: 14px;
         }
