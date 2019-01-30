@@ -69,6 +69,7 @@ export default class UserAnimals extends Component {
 
     //Accept foster animal after Organization has submitted approval
     fosterAnimal = animal_id => {
+        console.log("hi");
         axios
             .put("/api/animals/fosterparent", { animal_id })
             .then(() => this.setState({ refresh: true }));
@@ -123,6 +124,7 @@ export default class UserAnimals extends Component {
                     key={animal.animal_id}
                     id={animal.animal_id}
                     org_id={animal.org_id}
+                    org_display_name={animal.org_display_name}
                     user_id={animal.user_id}
                     name={animal.name}
                     age={animal.age}

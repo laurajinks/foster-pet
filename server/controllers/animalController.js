@@ -65,9 +65,15 @@ module.exports = {
             .catch(err => console.log(err));
     },
 
-    addFosterParent: (req, res) => {
+    addFosterParent: async (req, res) => {
         const { animal_id } = req.body;
-        req.app
+        await req.app
+            .get("db")
+            .application.remove_all_animal_applications(animal_id)
+            .then(() => {
+                res.status(200);
+            });
+        await req.app
             .get("db")
             .animal.add_foster_parent(req.session.user.id, animal_id)
             .then(response => res.status(200).json(response))

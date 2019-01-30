@@ -17,6 +17,8 @@ export default class AdoptableAnimal extends Component {
     formatString = str => {
         const newStr = str
             .toLowerCase()
+            .replace(/['",]/g, "")
+            .replace(/[-_!@#$%^&*]/g, " ")
             .split(" ")
             .join("-");
         return newStr;
@@ -33,6 +35,7 @@ export default class AdoptableAnimal extends Component {
             const shelter = response.data
                 .toLowerCase()
                 .replace(/[-_'"!@#$%^&*]/g, " ")
+                .replace(/['",]/g, "")
                 .split(" ")
                 .filter(character => character !== "")
                 .join("-");

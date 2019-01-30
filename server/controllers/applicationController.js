@@ -69,8 +69,14 @@ module.exports = {
             })
             .catch(err => console.log(err));
     },
-    animalAppPending: (req, res) => {
+    animalAppPending: async (req, res) => {
         const { animal_id, user_id } = req.body;
+        await req.app
+            .get("db")
+            .application.remove_all_animal_applications(animal_id)
+            .then(response => {
+                res.status(200);
+            });
         req.app
             .get("db")
             .application.org_accept_animal_application(animal_id, user_id)
@@ -90,8 +96,15 @@ module.exports = {
             .catch(err => console.log(err));
     },
 
-    acceptAnimal: (req, res) => {
+    acceptAnimal: async (req, res) => {
+        console.log(req.body);
         const { animal_id } = req.body;
+        await req.app
+            .get("db")
+            .application.remove_all_animal_applications(animal_id)
+            .then(() => {
+                res.status(200);
+            });
         req.app
             .get("db")
             .application.user_accept_animal(animal_id, req.session.user.id)
