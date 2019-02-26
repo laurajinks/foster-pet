@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FosterPet
 
-## Available Scripts
+Created by Laura Jinks Jimenez
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+Javascript | React | Node.js | PostgreSQL | Express | Redux | Firebase Storage
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Purpose
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This app was built to practice building a full stack web application from start to finish.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* FosterPet is a site to connect animal foster organizations with foster volunteers. Users can sign up or log in as either a foster or organization.
 
-### `npm run build`
+<br/>
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![gif](gifs/fosterpet1.gif)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* From a foster account, users can find organizations by U.S. state and apply to join them
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![gif](gifs/fosterpet2.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Once a user is a member of one or more organizations, they can see a list of all animals in need of fostering from all of their organizations, and request to foster individual animals. The organization must then approve the request, and finally the user must accept 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<br/>
 
-## Learn More
+![gif](gifs/fosterpet3.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Foster users can also search for adoptable pets via the Petfinder API by zipcode, animal type, age, gender, and size.
 
-### Code Splitting
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![gif](gifs/fosterpet4.gif)
 
-### Analyzing the Bundle Size
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* As an organization, a user's dashboard shows a list of all current animals in the organization, as well as the number of pending applications. The organization can also create a custom application for potential members to fill out.
 
-### Making a Progressive Web App
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![gif](gifs/fosterpet5.gif)
 
-### Advanced Configuration
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+* Organizations can write and edit blog posts that are then posted on all members' dashboards.
 
-### Deployment
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+![gif](gifs/fosterpet6.gif)
 
-### `npm run build` fails to minify
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Organizations can view a detailed list of each animal in their system and edit their listings.
+
+<br/>
+
+![gif](gifs/fosterpet7.gif)
+
+<br/>
+
+* Organizations can add new animals to their database.
+
+<br/>
+
+![gif](gifs/fosterpet8.gif)
